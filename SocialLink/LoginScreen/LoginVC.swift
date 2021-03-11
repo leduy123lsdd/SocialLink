@@ -8,13 +8,18 @@
 import UIKit
 
 class LoginVC: UIViewController {
-    
-    
-    @IBOutlet weak var loginBtn: UIButton!
-    
     @IBOutlet var backgroundView: UIView!
     
-
+    @IBOutlet weak var accountTf: UITextField!
+    @IBOutlet weak var passwordTf: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
+    
+    
+    
+    
+    @IBOutlet weak var hideKeyboard: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +36,20 @@ class LoginVC: UIViewController {
     }
     
     func setUpUI(){
-        loginBtn.layer.cornerRadius = 8
+        loginBtn.layer.cornerRadius = 4
+        
+        [accountTf, passwordTf].forEach({ tf in
+            tf!.layer.borderWidth = 0.5
+            tf!.layer.cornerRadius = 6
+            tf!.layer.borderColor = UIColor.lightGray.cgColor
+        })
+    
+        accountTf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        passwordTf.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        hideKeyboard.addGestureRecognizer(tap)
+        
         
     }
 
@@ -53,4 +71,16 @@ extension UIColor {
            blue: rgb & 0xFF
        )
    }
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
