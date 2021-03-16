@@ -9,4 +9,5 @@ target 'SocialLink' do
     pod 'Alamofire'
     pod 'PusherSwift'
     pod 'NotificationBannerSwift'
+    pod 'IQKeyboardManagerSwift'
 end

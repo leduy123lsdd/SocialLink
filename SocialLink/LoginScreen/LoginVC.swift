@@ -16,8 +16,12 @@ class LoginVC: UIViewController {
     
     
     
+    @IBOutlet weak var dismiss_keyboard_1: UIView!
     
-    @IBOutlet weak var hideKeyboard: UIView!
+    
+    
+    @IBOutlet weak var dismiss_keyboard_2: UIView!
+    
     
     
     override func viewDidLoad() {
@@ -36,7 +40,9 @@ class LoginVC: UIViewController {
     }
     
     func setUpUI(){
-        loginBtn.layer.cornerRadius = 4
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        loginBtn.layer.cornerRadius = 6
         
         [accountTf, passwordTf].forEach({ tf in
             tf!.layer.borderWidth = 0.5
@@ -47,12 +53,19 @@ class LoginVC: UIViewController {
         accountTf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         passwordTf.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        hideKeyboard.addGestureRecognizer(tap)
-        
+        [dismiss_keyboard_1,dismiss_keyboard_2].forEach { (view) in
+            view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard)))
+        }
         
     }
-
+    
+    
+    
+    @IBAction func loginClicked(_ sender: Any) {
+        let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        navigationController?.pushViewController(homeVC, animated: false)
+    }
+    
 }
 
 extension UIColor {
