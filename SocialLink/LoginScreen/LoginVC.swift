@@ -24,6 +24,10 @@ class LoginVC: UIViewController {
     
     
     
+    
+    
+    
+    // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +39,7 @@ class LoginVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         setUpUI()
     }
@@ -59,7 +64,12 @@ class LoginVC: UIViewController {
         
     }
     
-    
+    // MARK: Button actions
+    @IBAction func signUpBtn(_ sender: Any) {
+        let signUpVC = CreateAccountVC(nibName: "CreateAccountVC", bundle: nil)
+        
+        navigationController?.pushViewController(signUpVC, animated: true)
+    }
     
     @IBAction func loginClicked(_ sender: Any) {
         let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)

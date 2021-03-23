@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoryVC" customModule="SocialLink" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="FRW-78-wZ5" id="ebK-Jy-3gt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +18,66 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPi-ay-ex6">
+                    <rect key="frame" x="16" y="44" width="382" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SocialLinker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7P-XF-RCS">
+                            <rect key="frame" x="0.0" y="0.0" width="164.5" height="50"/>
+                            <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="29"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWa-uD-InZ">
+                            <rect key="frame" x="164.5" y="0.0" width="195.5" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnM-wE-U6U">
+                            <rect key="frame" x="360" y="0.0" width="22" height="50"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="message" catalog="system"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="E4P-L4-fRo"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVV-UO-xgb">
+                    <rect key="frame" x="0.0" y="94" width="414" height="0.5"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="GcB-Jj-W28"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FRW-78-wZ5">
+                    <rect key="frame" x="0.0" y="94.5" width="414" height="767.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mVV-UO-xgb" secondAttribute="trailing" id="7IB-kV-0rW"/>
+                <constraint firstItem="FRW-78-wZ5" firstAttribute="top" secondItem="mVV-UO-xgb" secondAttribute="bottom" id="CGh-bE-wdC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sPi-ay-ex6" secondAttribute="trailing" constant="16" id="E6g-rE-Nu4"/>
+                <constraint firstItem="mVV-UO-xgb" firstAttribute="top" secondItem="sPi-ay-ex6" secondAttribute="bottom" id="Icu-xk-5hG"/>
+                <constraint firstItem="sPi-ay-ex6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LpH-3q-KLj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="FRW-78-wZ5" secondAttribute="bottom" id="OlA-zH-cAe"/>
+                <constraint firstItem="FRW-78-wZ5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Qe8-1g-qw9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FRW-78-wZ5" secondAttribute="trailing" id="c4A-65-09G"/>
+                <constraint firstItem="mVV-UO-xgb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gMl-Xl-moW"/>
+                <constraint firstItem="sPi-ay-ex6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="tk4-J0-dlM"/>
+            </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
         </view>
     </objects>
     <resources>
+        <image name="message" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

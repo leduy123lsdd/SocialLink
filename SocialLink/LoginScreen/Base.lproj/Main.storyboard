@@ -165,6 +165,9 @@
                                                         <state key="normal" title="Sign Up.">
                                                             <color key="titleColor" red="0.28816871529999999" green="0.64341373680000002" blue="0.8044098985" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="signUpBtn:" destination="1fD-C5-aGP" eventType="touchUpInside" id="xdt-cP-zck"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMr-To-mDQ">
                                                         <rect key="frame" x="305" y="0.0" width="85" height="40"/>

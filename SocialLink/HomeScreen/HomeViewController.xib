@@ -23,21 +23,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EC1-4i-lVG">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="835.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="845.5"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uee-Hk-gDA">
-                            <rect key="frame" x="0.0" y="835.5" width="414" height="0.5"/>
+                            <rect key="frame" x="0.0" y="845.5" width="414" height="0.5"/>
                             <color key="backgroundColor" systemColor="systemGrayColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="NWQ-Hf-19d"/>
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kib-GT-Dlt">
-                            <rect key="frame" x="0.0" y="836" width="414" height="60"/>
+                            <rect key="frame" x="0.0" y="846" width="414" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mm-Fu-Q0e">
-                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="house.fill" catalog="system"/>
@@ -46,7 +46,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BI8-hw-YhE">
-                                    <rect key="frame" x="103.5" y="0.0" width="103.5" height="60"/>
+                                    <rect key="frame" x="103.5" y="0.0" width="103.5" height="50"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="magnifyingglass" catalog="system"/>
                                     <connections>
@@ -54,7 +54,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W12-IP-xuf">
-                                    <rect key="frame" x="207" y="0.0" width="103.5" height="60"/>
+                                    <rect key="frame" x="207" y="0.0" width="103.5" height="50"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="plus.app" catalog="system"/>
                                     <connections>
@@ -62,7 +62,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzz-gz-5pS">
-                                    <rect key="frame" x="310.5" y="0.0" width="103.5" height="60"/>
+                                    <rect key="frame" x="310.5" y="0.0" width="103.5" height="50"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal" image="person.circle.fill" catalog="system"/>
                                     <connections>
@@ -74,7 +74,7 @@
                                 <constraint firstItem="W12-IP-xuf" firstAttribute="width" secondItem="Mzz-gz-5pS" secondAttribute="width" id="IzW-nT-bni"/>
                                 <constraint firstItem="BI8-hw-YhE" firstAttribute="width" secondItem="W12-IP-xuf" secondAttribute="width" id="PWf-aK-nKP"/>
                                 <constraint firstItem="7Mm-Fu-Q0e" firstAttribute="width" secondItem="BI8-hw-YhE" secondAttribute="width" id="V8X-LS-vuA"/>
-                                <constraint firstAttribute="height" constant="60" id="ptH-lu-JzU"/>
+                                <constraint firstAttribute="height" constant="50" id="ptH-lu-JzU"/>
                             </constraints>
                         </stackView>
                     </subviews>

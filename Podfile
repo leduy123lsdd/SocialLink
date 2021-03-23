@@ -10,4 +10,5 @@ target 'SocialLink' do
     pod 'PusherSwift'
     pod 'NotificationBannerSwift'
     pod 'IQKeyboardManagerSwift'
+    pod 'YPImagePicker'
 end

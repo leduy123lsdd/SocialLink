@@ -49,6 +49,10 @@ extension SearchUserVC:UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension SearchUserVC: UISearchBarDelegate {
@@ -65,5 +69,9 @@ extension SearchUserVC: UISearchBarDelegate {
             }
         }
         self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
 }
