@@ -72,8 +72,16 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: Any) {
-        let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
-        navigationController?.pushViewController(homeVC, animated: false)
+//        let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+//        navigationController?.pushViewController(homeVC, animated: false)
+        
+        ServerFirebase.setValue(data: [
+            "name":"Duy",
+            "age":"18"
+        ])
+        
+        
+        
     }
     
 }

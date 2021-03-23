@@ -11,4 +11,7 @@ target 'SocialLink' do
     pod 'NotificationBannerSwift'
     pod 'IQKeyboardManagerSwift'
     pod 'YPImagePicker'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Firestore'
 end
