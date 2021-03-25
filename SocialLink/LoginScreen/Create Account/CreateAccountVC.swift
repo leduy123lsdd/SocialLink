@@ -9,22 +9,10 @@ import UIKit
 
 class CreateAccountVC: UIViewController {
     
-    
-    @IBOutlet var underlinePhone: UIView!
-    @IBOutlet var underlineEmail: UIView!
-    
-    @IBOutlet var underlinePhoneHeight: NSLayoutConstraint!
-    @IBOutlet var underlineEmailHeight: NSLayoutConstraint!
-    
-    
-    @IBOutlet var phoneBtn: UIButton!
-    @IBOutlet var emailBtn: UIButton!
-    
-    
-    @IBOutlet var phoneTf: UITextField!
-    @IBOutlet var emailTf: UITextField!
-    
-    
+    @IBOutlet var endEditView: UIView!
+    @IBOutlet var displayTf: UITextField!
+    @IBOutlet var userNameTf: UITextField!
+    @IBOutlet var passwordTf: UITextField!
     @IBOutlet var nextBtn: UIButton!
     
     // MARK: viewDidLoad
@@ -32,10 +20,9 @@ class CreateAccountVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        btnClicked(is: true)
-        phoneTf.becomeFirstResponder()
+        displayTf.becomeFirstResponder()
         endEditView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard)))
-        nextBtn.layer.cornerRadius = 8
+        nextBtn.layer.cornerRadius = 6
     }
     
     // MARK: btn actions
@@ -43,32 +30,22 @@ class CreateAccountVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    @IBAction func phoneBtn(_ sender: Any) {
-        btnClicked(is: true)
-        phoneTf.becomeFirstResponder()
-    }
-    
-    @IBAction func emailBtn(_ sender: Any) {
-        btnClicked(is: false)
-        emailTf.becomeFirstResponder()
-    }
-    
-    
-    @IBOutlet var endEditView: UIView!
-    
-    private func btnClicked(is phone:Bool = false) {
-        emailBtn.setTitleColor(phone ? .lightGray : .black, for: .normal)
-        underlineEmailHeight.constant = phone ? 0.5 : 2
-        underlineEmail.backgroundColor = phone ? UIColor.lightGray : UIColor.black
-        emailTf.isHidden = phone ? true : false
-        emailTf.endEditing(phone ? true : false)
+    @IBAction func nextBtn(_ sender: Any) {
+        nextBtn.isEnabled = false
+        let newUser:[String:Any] = [
+            "display_name":displayTf.text!,
+            "pass_word":passwordTf.text!,
+            "user_account":userNameTf.text!
+        ]
         
-        phoneBtn.setTitleColor(phone ? .black : .lightGray, for: .normal)
-        underlinePhoneHeight.constant = phone ? 2 : 0.5
-        underlinePhone.backgroundColor = phone ? UIColor.black : UIColor.darkGray
-        phoneTf.isHidden = phone ? false : true
-        phoneTf.endEditing(phone ? true : false)
+        ServerFirebase.signUpNewUser(newUser: newUser) {
+            let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+            self.navigationController?.pushViewController(homeVC, animated: false)
+        }
+    }
+    
+    @IBAction func signIn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

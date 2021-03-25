@@ -13,19 +13,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var accountTf: UITextField!
     @IBOutlet weak var passwordTf: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
-    
-    
-    
     @IBOutlet weak var dismiss_keyboard_1: UIView!
-    
-    
-    
     @IBOutlet weak var dismiss_keyboard_2: UIView!
-    
-    
-    
-    
-    
     
     // MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -71,47 +60,20 @@ class LoginVC: UIViewController {
         navigationController?.pushViewController(signUpVC, animated: true)
     }
     
+    let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+    
     @IBAction func loginClicked(_ sender: Any) {
-//        let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
-//        navigationController?.pushViewController(homeVC, animated: false)
+        let account = accountTf.text ?? ""
+        let password = passwordTf.text ?? ""
         
-        ServerFirebase.setValue(data: [
-            "name":"Duy",
-            "age":"18"
-        ])
-        
-        
-        
+        ServerFirebase.userLogin(account,password) {
+            print("login successed")
+            self.navigationController?.pushViewController(self.homeVC, animated: false)
+        } loginFailed: {
+            print("login failed")
+        }
+
     }
     
 }
 
-extension UIColor {
-   convenience init(red: Int, green: Int, blue: Int) {
-       assert(red >= 0 && red <= 255, "Invalid red component")
-       assert(green >= 0 && green <= 255, "Invalid green component")
-       assert(blue >= 0 && blue <= 255, "Invalid blue component")
-
-       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-   }
-
-   convenience init(rgb: Int) {
-       self.init(
-           red: (rgb >> 16) & 0xFF,
-           green: (rgb >> 8) & 0xFF,
-           blue: rgb & 0xFF
-       )
-   }
-}
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
