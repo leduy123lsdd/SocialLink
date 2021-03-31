@@ -11,9 +11,10 @@ class MainContentCell: UITableViewCell {
     
     
     @IBOutlet var avatarContainer: UIView!
-    
-    
     @IBOutlet var avatarImage: UIImageView!
+    
+    
+    @IBOutlet var commentUserAvt: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +24,8 @@ class MainContentCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.selectionStyle = .none
+        
     }
     
     private func setupUI(){
@@ -34,6 +35,8 @@ class MainContentCell: UITableViewCell {
         avatarImage.layer.cornerRadius = 18
         avatarImage.layer.borderWidth = 2
         avatarImage.layer.borderColor = UIColor.white.cgColor
+        
+        commentUserAvt.layer.cornerRadius = 15
     }
     
 }

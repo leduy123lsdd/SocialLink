@@ -18,23 +18,23 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBm-dL-foU">
-                        <rect key="frame" x="5" y="5" width="90" height="80"/>
+                        <rect key="frame" x="5" y="5" width="90" height="70"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im3" translatesAutoresizingMaskIntoConstraints="NO" id="vSb-Ov-m55">
-                                <rect key="frame" x="2" y="2" width="86" height="76"/>
+                                <rect key="frame" x="2" y="2" width="86" height="66"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="vSb-Ov-m55" secondAttribute="bottom" constant="2" id="DDz-S6-1sl"/>
-                            <constraint firstAttribute="height" constant="80" id="TGT-6d-6jk"/>
+                            <constraint firstAttribute="height" constant="70" id="TGT-6d-6jk"/>
                             <constraint firstItem="vSb-Ov-m55" firstAttribute="top" secondItem="NBm-dL-foU" secondAttribute="top" constant="2" id="d2T-rf-BWm"/>
                             <constraint firstItem="vSb-Ov-m55" firstAttribute="leading" secondItem="NBm-dL-foU" secondAttribute="leading" constant="2" id="emW-qv-RTJ"/>
                             <constraint firstAttribute="trailing" secondItem="vSb-Ov-m55" secondAttribute="trailing" constant="2" id="tvy-tI-ewQ"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWH-Jb-2un">
-                        <rect key="frame" x="34.5" y="90" width="31" height="25"/>
+                        <rect key="frame" x="34.5" y="80" width="31" height="35"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>

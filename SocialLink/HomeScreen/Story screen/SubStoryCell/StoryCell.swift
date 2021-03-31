@@ -17,10 +17,10 @@ class StoryCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containerView.layer.cornerRadius = 40
+        containerView.layer.cornerRadius = 35
         containerView.backgroundColor = .green
         
-        imageView.layer.cornerRadius = 38
+        imageView.layer.cornerRadius = 33
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
     }

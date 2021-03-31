@@ -8,16 +8,14 @@
 import Foundation
 import Firebase
 
+
 let ServerFirebase = FirebaseDatabase()
 
 class FirebaseDatabase {
     var ref: DocumentReference? = nil
+//    let storageRef = Storage.storage().reference()
     
     private let db = Firestore.firestore()
-    
-    
-    func setValue(data:[String:Any]){
-    }
     
     /**
       new user data form:
@@ -26,17 +24,18 @@ class FirebaseDatabase {
         user_account
      */
     func signUpNewUser(newUser:[String:Any], success:(@escaping()->Void)){
-        ref = db.collection("users").addDocument(data: newUser) { err in
+        db.collection("users").addDocument(data: newUser) { err in
             if let err = err {
-                print("error when add new data: \(err)")
+                print("error when add new user: \(err)")
             } else {
-                print("add new data success")
+                print("add new user success")
                 success()
             }
         }
     }
     
     func userLogin(_ account:String,_ password:String, loginSuccess:(@escaping ()->Void ), loginFailed:(@escaping ()->Void ) ){
+        
         db.collection("users").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -53,5 +52,40 @@ class FirebaseDatabase {
                 loginFailed()
             }
         }
+        
+    }
+    
+    func createNewPost(newPost:[String:Any], success:(@escaping ()->Void ), failed:(@escaping ()->Void )) {
+        let postContent:[String:Any] = [
+            "post_id": newPost["post_id"]!,
+            "user_name":newPost["user_name"]!,
+            "caption":newPost["caption"]!,
+            "amount_like":newPost["amount_like"]!
+        ]
+        let images = [
+            "images":newPost["images"]!
+        ]
+        
+        
+        db.collection("posts").addDocument(data: postContent) { (error) in
+            if let err = error {
+                print("error when create new post  \(err)")
+            } else {
+                success()
+                return
+            }
+            failed()
+        }
+        
+        db.collection("postImages").document("\(newPost["post_id"]!)").setData(images) { (error) in
+            if let err = error {
+                print(err)
+            }
+        }
+    }
+    
+    func uploadImages(imagesData:Data,post_id:String , success:(@escaping ()->Void ), failed:(@escaping ()->Void )){
+        let data = imagesData
+        let imageRef =
     }
 }

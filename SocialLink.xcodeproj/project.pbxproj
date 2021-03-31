@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0C54B00625F66FFF00A76F9E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54B00525F66FFF00A76F9E /* Post.swift */; };
 		0C54B00F25F67D2600A76F9E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54B00E25F67D2600A76F9E /* LoginVC.swift */; };
+		0C6D35E3260F46D900D27DB0 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D35E2260F46D900D27DB0 /* UserStatus.swift */; };
+		0C6D35E7260F4AC100D27DB0 /* StoryCreateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D35E5260F4AC100D27DB0 /* StoryCreateStatus.swift */; };
+		0C6D35E8260F4AC100D27DB0 /* StoryCreateStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D35E6260F4AC100D27DB0 /* StoryCreateStatus.xib */; };
 		0C80CA0F25FC7ACE0094FCC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C80CA0D25FC7ACE0094FCC0 /* HomeViewController.swift */; };
 		0C80CA1025FC7ACF0094FCC0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C80CA0E25FC7ACE0094FCC0 /* HomeViewController.xib */; };
 		0C80CA1525FCA3910094FCC0 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C80CA1325FCA3910094FCC0 /* StoryVC.swift */; };
@@ -43,6 +46,9 @@
 /* Begin PBXFileReference section */
 		0C54B00525F66FFF00A76F9E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0C54B00E25F67D2600A76F9E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0C6D35E2260F46D900D27DB0 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
+		0C6D35E5260F4AC100D27DB0 /* StoryCreateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCreateStatus.swift; sourceTree = "<group>"; };
+		0C6D35E6260F4AC100D27DB0 /* StoryCreateStatus.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCreateStatus.xib; sourceTree = "<group>"; };
 		0C80CA0D25FC7ACE0094FCC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0C80CA0E25FC7ACE0094FCC0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0C80CA1325FCA3910094FCC0 /* StoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
@@ -148,6 +154,8 @@
 			children = (
 				0C80CA1D25FCA4010094FCC0 /* CreatePostVC.swift */,
 				0C80CA1E25FCA4010094FCC0 /* CreatePostVC.xib */,
+				0C6D35E5260F4AC100D27DB0 /* StoryCreateStatus.swift */,
+				0C6D35E6260F4AC100D27DB0 /* StoryCreateStatus.xib */,
 			);
 			path = "Create post screen";
 			sourceTree = "<group>";
@@ -213,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				0CBF26FD2609EA7000043BA9 /* FirebaseDatabase.swift */,
+				0C6D35E2260F46D900D27DB0 /* UserStatus.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -240,12 +249,12 @@
 			children = (
 				0CCACCA8260C3D1E0008D4CB /* Server */,
 				0CCACCA7260C3D130008D4CB /* Extension */,
-				0CCCA73F25F512C600C4832A /* Info.plist */,
-				0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */,
-				0CBF26DD2608F1A600043BA9 /* Project Configuration */,
 				0C80CA0825FC66920094FCC0 /* HomeScreen */,
 				0C54B00825F67A4C00A76F9E /* LoginScreen */,
 				0C0ACFB425F61E7C00070948 /* DataForm */,
+				0CBF26DD2608F1A600043BA9 /* Project Configuration */,
+				0CCCA73F25F512C600C4832A /* Info.plist */,
+				0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */,
 			);
 			path = SocialLink;
 			sourceTree = "<group>";
@@ -332,6 +341,7 @@
 				0CCCA73B25F512C600C4832A /* Assets.xcassets in Resources */,
 				0CCCA73925F512C300C4832A /* Main.storyboard in Resources */,
 				0C80CA2525FCA4110094FCC0 /* UserProfileVC.xib in Resources */,
+				0C6D35E8260F4AC100D27DB0 /* StoryCreateStatus.xib in Resources */,
 				0C81DEBA25FE7EE900A19B1C /* SearchResultCell.xib in Resources */,
 				0C80CA2025FCA4010094FCC0 /* CreatePostVC.xib in Resources */,
 				0CBF26D92608E53200043BA9 /* StoryCell.xib in Resources */,
@@ -393,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80CA1F25FCA4010094FCC0 /* CreatePostVC.swift in Sources */,
+				0C6D35E3260F46D900D27DB0 /* UserStatus.swift in Sources */,
 				0C80CA1525FCA3910094FCC0 /* StoryVC.swift in Sources */,
 				0CA00CC12601D27E006B0A72 /* CreateAccountVC.swift in Sources */,
 				0CBF26D82608E53200043BA9 /* StoryCell.swift in Sources */,
@@ -402,6 +413,7 @@
 				0CCACCA5260C3CEC0008D4CB /* Extension.swift in Sources */,
 				0C54B00F25F67D2600A76F9E /* LoginVC.swift in Sources */,
 				0C81DEB925FE7EE900A19B1C /* SearchResultCell.swift in Sources */,
+				0C6D35E7260F4AC100D27DB0 /* StoryCreateStatus.swift in Sources */,
 				0CCCA73425F512C300C4832A /* SceneDelegate.swift in Sources */,
 				0C80CA2425FCA4110094FCC0 /* UserProfileVC.swift in Sources */,
 				0CA5C4882605F3C600D929CC /* MainContentCell.swift in Sources */,

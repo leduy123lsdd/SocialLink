@@ -20,8 +20,11 @@ class HomeViewController: UIViewController {
     let searchUserVC = SearchUserVC(nibName: "SearchUserVC", bundle: nil)
     let createPostVC = CreatePostVC(nibName: "CreatePostVC", bundle: nil)
     let userProfileVC = UserProfileVC(nibName: "UserProfileVC", bundle: nil)
+    let storyCreateStatus = StoryCreateStatus(nibName: "StoryCreateStatus", bundle: nil)
     
     var pagesVC = [UIViewController]()
+    var config = YPImagePickerConfiguration()
+    var picker:YPImagePicker!
     
     // MARK: Buttons functions
     
@@ -35,19 +38,28 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func createPostClicked(_ sender: Any) {
-//        setViewController(index: 2)
         
-        let picker = YPImagePicker()
+        var pickedImages = [UIImage]()
+        picker = YPImagePicker(configuration: config)
+        
         picker.didFinishPicking { [unowned picker] items, _ in
-            if let photo = items.singlePhoto {
-                print(photo.fromCamera) // Image source (camera or library)
-                print(photo.image) // Final image selected by the user
-                print(photo.originalImage) // original image selected by the user, unfiltered
-                print(photo.modifiedImage) // Transformed image, can be nil
-                print(photo.exifMeta) // Print exif meta data of original image.
+            
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    pickedImages.append(photo.image)
+                case .video(let video):
+                    print(video)
+                }
             }
-            picker.dismiss(animated: true, completion: nil)
+            
+            self.storyCreateStatus.pickedImages = pickedImages
+            self.storyCreateStatus.pickerViewRoot = picker
+            
+            
+            picker!.pushViewController(self.storyCreateStatus, animated: true)
         }
+        
         present(picker, animated: true, completion: nil)
     }
     
@@ -88,7 +100,9 @@ class HomeViewController: UIViewController {
         self.pageViewController.view.rightAnchor.constraint(equalTo: self.scrollContainer.rightAnchor).isActive = true
         
         
-        
+        config.library.maxNumberOfItems = 5
+        config.usesFrontCamera = true
+        config.screens = [.video,.photo,.library]
         
     }
 

@@ -213,6 +213,7 @@ PODS:
     - abseil/base/config
     - abseil/meta/type_traits
   - Alamofire (5.4.1)
+  - Alertift (4.2.0)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -333,6 +334,7 @@ PODS:
     - MarqueeLabel (~> 4.0.5)
     - SnapKit (~> 5.0.1)
   - NWWebSocket (0.5.1)
+  - ProgressHUD (13.5)
   - PromisesObjC (1.2.12)
   - PryntTrimmerView (4.0.2)
   - PusherSwift (9.2.1):
@@ -347,11 +349,13 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Alertift
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
   - IQKeyboardManagerSwift
   - NotificationBannerSwift
+  - ProgressHUD
   - PusherSwift
   - YPImagePicker
 
@@ -359,6 +363,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - Alamofire
+    - Alertift
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -378,6 +383,7 @@ SPEC REPOS:
     - nanopb
     - NotificationBannerSwift
     - NWWebSocket
+    - ProgressHUD
     - PromisesObjC
     - PryntTrimmerView
     - PusherSwift
@@ -389,6 +395,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Alertift: 17b37be915cd28edeceabd438e4134d041ea825c
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Firebase: d59ad4129167f9f0d2a4f6c1f0c462254b6002c8
   FirebaseAnalytics: 3b98b563d7d64c07900511198b4805cfd9f9f61c
@@ -408,6 +415,7 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   NWWebSocket: 8156fe77508d5b86ce46ef2df87cc0c228402b10
+  ProgressHUD: 028e3828c7b582022c34a74604fc6073f8628d99
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   PusherSwift: a464a5eea842b9a62e3cb8f01746a4476ae56079
@@ -416,6 +424,6 @@ SPEC CHECKSUMS:
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: a3beace839075dab7fac619ea8c17969d42d2619
+PODFILE CHECKSUM: 8ce9273d857a2111797a166478d0f038d75f9a40
 
 COCOAPODS: 1.10.1
