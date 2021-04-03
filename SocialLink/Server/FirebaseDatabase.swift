@@ -8,21 +8,13 @@
 import Foundation
 import Firebase
 
-
 let ServerFirebase = FirebaseDatabase()
 
 class FirebaseDatabase {
-    var ref: DocumentReference? = nil
-//    let storageRef = Storage.storage().reference()
-    
+    private var ref: DocumentReference? = nil
     private let db = Firestore.firestore()
     
-    /**
-      new user data form:
-        display_name
-        pass_word
-        user_account
-     */
+    // MARK: - Sign up new user
     func signUpNewUser(newUser:[String:Any], success:(@escaping()->Void)){
         db.collection("users").addDocument(data: newUser) { err in
             if let err = err {
@@ -34,6 +26,7 @@ class FirebaseDatabase {
         }
     }
     
+    // MARK: - Login server
     func userLogin(_ account:String,_ password:String, loginSuccess:(@escaping ()->Void ), loginFailed:(@escaping ()->Void ) ){
         
         db.collection("users").getDocuments() { (querySnapshot, err) in
@@ -55,6 +48,7 @@ class FirebaseDatabase {
         
     }
     
+    // MARK: - Create new post
     func createNewPost(newPost:[String:Any], success:(@escaping ()->Void ), failed:(@escaping ()->Void )) {
         let postContent:[String:Any] = [
             "post_id": newPost["post_id"]!,
@@ -62,10 +56,7 @@ class FirebaseDatabase {
             "caption":newPost["caption"]!,
             "amount_like":newPost["amount_like"]!
         ]
-        let images = [
-            "images":newPost["images"]!
-        ]
-        
+
         
         db.collection("posts").addDocument(data: postContent) { (error) in
             if let err = error {
@@ -77,15 +68,24 @@ class FirebaseDatabase {
             failed()
         }
         
-        db.collection("postImages").document("\(newPost["post_id"]!)").setData(images) { (error) in
-            if let err = error {
-                print(err)
-            }
+        for image in (newPost["images"] as! [Data]) {
+            uploadImages(data: image,post_id: newPost["post_id"]! as! String)
         }
+        
     }
-    
-    func uploadImages(imagesData:Data,post_id:String , success:(@escaping ()->Void ), failed:(@escaping ()->Void )){
-        let data = imagesData
-        let imageRef =
+
+    // MARK: - Support functions (not use this)
+    private func uploadImages (data:Data,post_id:String){
+        let randomId = UUID.init().uuidString
+        let uploadRef = Storage.storage().reference(withPath:"images/\(post_id)/\(randomId).jpg")
+        
+        let imageData = data
+        
+        let uploadMetadata = StorageMetadata.init()
+        uploadMetadata.contentType = "image/jpeg"
+        
+        uploadRef.putData(imageData)
+
+        
     }
 }

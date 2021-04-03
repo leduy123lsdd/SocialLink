@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 import Firebase
 import ProgressHUD
 
@@ -19,8 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ProgressHUD.animationType = .horizontalCirclesPulse
         ProgressHUD.colorAnimation = .systemBlue
         
-        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.toolbarTintColor = .blue
+//        IQKeyboardManager.shared.placeholderColor = .white
+        
         FirebaseApp.configure()
+        
+        
         return true
     }
     

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C238BA926150FA300DB3CE1 /* MakeCommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C238BA726150FA300DB3CE1 /* MakeCommentVC.swift */; };
+		0C238BAA26150FA300DB3CE1 /* MakeCommentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C238BA826150FA300DB3CE1 /* MakeCommentVC.xib */; };
+		0C238BAF2615108100DB3CE1 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C238BAD2615108100DB3CE1 /* CommentCell.swift */; };
+		0C238BB02615108100DB3CE1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C238BAE2615108100DB3CE1 /* CommentCell.xib */; };
 		0C54B00625F66FFF00A76F9E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54B00525F66FFF00A76F9E /* Post.swift */; };
 		0C54B00F25F67D2600A76F9E /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C54B00E25F67D2600A76F9E /* LoginVC.swift */; };
 		0C6D35E3260F46D900D27DB0 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D35E2260F46D900D27DB0 /* UserStatus.swift */; };
@@ -34,6 +38,7 @@
 		0CBF26D92608E53200043BA9 /* StoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CBF26D72608E53200043BA9 /* StoryCell.xib */; };
 		0CBF26E22609D62900043BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */; };
 		0CBF26FE2609EA7000043BA9 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF26FD2609EA7000043BA9 /* FirebaseDatabase.swift */; };
+		0CC8C1BD26168B53004B720C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8C1BC26168B53004B720C /* PaddingLabel.swift */; };
 		0CCACCA5260C3CEC0008D4CB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCACCA4260C3CEC0008D4CB /* Extension.swift */; };
 		0CCCA73225F512C300C4832A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCA73125F512C300C4832A /* AppDelegate.swift */; };
 		0CCCA73425F512C300C4832A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCA73325F512C300C4832A /* SceneDelegate.swift */; };
@@ -44,6 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C238BA726150FA300DB3CE1 /* MakeCommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCommentVC.swift; sourceTree = "<group>"; };
+		0C238BA826150FA300DB3CE1 /* MakeCommentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MakeCommentVC.xib; sourceTree = "<group>"; };
+		0C238BAD2615108100DB3CE1 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		0C238BAE2615108100DB3CE1 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		0C54B00525F66FFF00A76F9E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0C54B00E25F67D2600A76F9E /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		0C6D35E2260F46D900D27DB0 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
@@ -71,6 +80,7 @@
 		0CBF26D72608E53200043BA9 /* StoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCell.xib; sourceTree = "<group>"; };
 		0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0CBF26FD2609EA7000043BA9 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
+		0CC8C1BC26168B53004B720C /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		0CCACCA4260C3CEC0008D4CB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0CCCA72E25F512C300C4832A /* SocialLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCCA73125F512C300C4832A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +114,17 @@
 			path = DataForm;
 			sourceTree = "<group>";
 		};
+		0C238BA626150F8700DB3CE1 /* Make comment */ = {
+			isa = PBXGroup;
+			children = (
+				0C238BA726150FA300DB3CE1 /* MakeCommentVC.swift */,
+				0C238BA826150FA300DB3CE1 /* MakeCommentVC.xib */,
+				0C238BAD2615108100DB3CE1 /* CommentCell.swift */,
+				0C238BAE2615108100DB3CE1 /* CommentCell.xib */,
+			);
+			path = "Make comment";
+			sourceTree = "<group>";
+		};
 		0C54B00825F67A4C00A76F9E /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +151,7 @@
 		0C80CA2725FCA4280094FCC0 /* Story screen */ = {
 			isa = PBXGroup;
 			children = (
+				0C238BA626150F8700DB3CE1 /* Make comment */,
 				0CA5C4852605F3A400D929CC /* MainContentCell */,
 				0CA5C4842605F39300D929CC /* SubStoryCell */,
 				0C80CA1325FCA3910094FCC0 /* StoryVC.swift */,
@@ -213,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				0CCACCA4260C3CEC0008D4CB /* Extension.swift */,
+				0CC8C1BC26168B53004B720C /* PaddingLabel.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -343,10 +366,12 @@
 				0C80CA2525FCA4110094FCC0 /* UserProfileVC.xib in Resources */,
 				0C6D35E8260F4AC100D27DB0 /* StoryCreateStatus.xib in Resources */,
 				0C81DEBA25FE7EE900A19B1C /* SearchResultCell.xib in Resources */,
+				0C238BB02615108100DB3CE1 /* CommentCell.xib in Resources */,
 				0C80CA2025FCA4010094FCC0 /* CreatePostVC.xib in Resources */,
 				0CBF26D92608E53200043BA9 /* StoryCell.xib in Resources */,
 				0CA5C48F2605F3D500D929CC /* SubStoryCell.xib in Resources */,
 				0C80CA1625FCA3910094FCC0 /* StoryVC.xib in Resources */,
+				0C238BAA26150FA300DB3CE1 /* MakeCommentVC.xib in Resources */,
 				0C80CA1025FC7ACF0094FCC0 /* HomeViewController.xib in Resources */,
 				0C80CA1B25FCA3EA0094FCC0 /* SearchUserVC.xib in Resources */,
 				0CBF26E22609D62900043BA9 /* GoogleService-Info.plist in Resources */,
@@ -404,6 +429,7 @@
 			files = (
 				0C80CA1F25FCA4010094FCC0 /* CreatePostVC.swift in Sources */,
 				0C6D35E3260F46D900D27DB0 /* UserStatus.swift in Sources */,
+				0C238BA926150FA300DB3CE1 /* MakeCommentVC.swift in Sources */,
 				0C80CA1525FCA3910094FCC0 /* StoryVC.swift in Sources */,
 				0CA00CC12601D27E006B0A72 /* CreateAccountVC.swift in Sources */,
 				0CBF26D82608E53200043BA9 /* StoryCell.swift in Sources */,
@@ -416,6 +442,8 @@
 				0C6D35E7260F4AC100D27DB0 /* StoryCreateStatus.swift in Sources */,
 				0CCCA73425F512C300C4832A /* SceneDelegate.swift in Sources */,
 				0C80CA2425FCA4110094FCC0 /* UserProfileVC.swift in Sources */,
+				0CC8C1BD26168B53004B720C /* PaddingLabel.swift in Sources */,
+				0C238BAF2615108100DB3CE1 /* CommentCell.swift in Sources */,
 				0CA5C4882605F3C600D929CC /* MainContentCell.swift in Sources */,
 				0C54B00625F66FFF00A76F9E /* Post.swift in Sources */,
 				0C80CA1A25FCA3EA0094FCC0 /* SearchUserVC.swift in Sources */,

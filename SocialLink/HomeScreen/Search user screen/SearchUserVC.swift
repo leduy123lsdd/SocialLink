@@ -29,6 +29,8 @@ class SearchUserVC: UIViewController {
         searchBar.delegate = self
         
         filteredData = []
+        searchBar.layer.masksToBounds = true
+        searchBar.layer.borderColor = UIColor.white.cgColor
         
     }
 

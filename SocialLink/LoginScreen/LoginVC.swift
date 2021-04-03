@@ -25,6 +25,8 @@ class LoginVC: UIViewController {
     let signUpVC = CreateAccountVC(nibName: "CreateAccountVC", bundle: nil)
     let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
     
+    let emoji = ["❤️","👍","🔥","👏","🥺","😢","😍","😂"]
+    
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,41 +55,26 @@ class LoginVC: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        loginBtn.layer.cornerRadius = 6
+        loginBtn.layer.cornerRadius = 25
         
         [accountTf, passwordTf].forEach({ tf in
+            tf!.layer.masksToBounds = true
             tf!.layer.borderWidth = 0.7
-            tf!.layer.cornerRadius = 6
-            tf!.layer.borderColor = UIColor.white.cgColor
+            tf!.layer.cornerRadius = 25
+            tf!.layer.borderColor = UIColor.clear.cgColor
+            tf!.setLeftPaddingPoints(10)
+            tf!.setRightPaddingPoints(10)
         })
     
-        accountTf.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        accountTf.attributedPlaceholder = NSAttributedString(string: "User account", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         passwordTf.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         [dismiss_keyboard_1,dismiss_keyboard_2].forEach { (view) in
             view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard)))
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-    }
-    
-    @objc func keyboardWillAppear(notification: NSNotification) {
-        //Do something here
         
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            distanceStackToBottom.constant = (50 + keyboardHeight - distanceLoginBtnToBottomScreen.constant)
-            
-        }
-    }
-
-    @objc func keyboardWillDisappear() {
-        //Do
-        distanceStackToBottom.constant = defaultDistanceStackToBottom!
     }
     
     // MARK: Button actions

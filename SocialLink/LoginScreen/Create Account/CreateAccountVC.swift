@@ -38,6 +38,7 @@ class CreateAccountVC: UIViewController {
             "user_account":userNameTf.text!
         ]
         
+        // Connect to server and sign new user account.
         ServerFirebase.signUpNewUser(newUser: newUser) {
             let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
             self.navigationController?.pushViewController(homeVC, animated: false)

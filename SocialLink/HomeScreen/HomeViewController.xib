@@ -37,40 +37,59 @@
                             <rect key="frame" x="0.0" y="846" width="414" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mm-Fu-Q0e">
-                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="83" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="house.fill" catalog="system"/>
+                                    <state key="normal" image="house.fill" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                    </state>
                                     <connections>
                                         <action selector="homeBtnClicked:" destination="-1" eventType="touchUpInside" id="Gdn-DP-4Dl"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BI8-hw-YhE">
-                                    <rect key="frame" x="103.5" y="0.0" width="103.5" height="50"/>
+                                    <rect key="frame" x="83" y="0.0" width="82.5" height="50"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="magnifyingglass" catalog="system"/>
+                                    <state key="normal" image="magnifyingglass" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                    </state>
                                     <connections>
                                         <action selector="searchUserBtnClicked:" destination="-1" eventType="touchUpInside" id="dKw-yq-HBp"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W12-IP-xuf">
-                                    <rect key="frame" x="207" y="0.0" width="103.5" height="50"/>
+                                    <rect key="frame" x="165.5" y="0.0" width="83" height="50"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="plus.app" catalog="system"/>
+                                    <state key="normal" image="plus.app" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                    </state>
                                     <connections>
                                         <action selector="createPostClicked:" destination="-1" eventType="touchUpInside" id="FOn-gB-JPi"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzz-gz-5pS">
-                                    <rect key="frame" x="310.5" y="0.0" width="103.5" height="50"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLq-xy-9t0">
+                                    <rect key="frame" x="248.5" y="0.0" width="82.5" height="50"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="person.circle.fill" catalog="system"/>
+                                    <state key="normal" image="bell" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="createPostClicked:" destination="-1" eventType="touchUpInside" id="DJC-IF-Qd8"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzz-gz-5pS">
+                                    <rect key="frame" x="331" y="0.0" width="83" height="50"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" image="person.circle.fill" catalog="system">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                    </state>
                                     <connections>
                                         <action selector="userProfileClicked:" destination="-1" eventType="touchUpInside" id="jpt-H5-D2s"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="W12-IP-xuf" firstAttribute="width" secondItem="WLq-xy-9t0" secondAttribute="width" id="BRX-sw-u28"/>
                                 <constraint firstItem="W12-IP-xuf" firstAttribute="width" secondItem="Mzz-gz-5pS" secondAttribute="width" id="IzW-nT-bni"/>
                                 <constraint firstItem="BI8-hw-YhE" firstAttribute="width" secondItem="W12-IP-xuf" secondAttribute="width" id="PWf-aK-nKP"/>
                                 <constraint firstItem="7Mm-Fu-Q0e" firstAttribute="width" secondItem="BI8-hw-YhE" secondAttribute="width" id="V8X-LS-vuA"/>
@@ -93,6 +112,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>

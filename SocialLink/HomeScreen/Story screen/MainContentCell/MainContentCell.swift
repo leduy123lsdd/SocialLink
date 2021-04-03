@@ -9,12 +9,12 @@ import UIKit
 
 class MainContentCell: UITableViewCell {
     
+    var rootVC:UIViewController?
     
-    @IBOutlet var avatarContainer: UIView!
-    @IBOutlet var avatarImage: UIImageView!
+//    @IBOutlet var avatarImage: UIImageView!
+//    @IBOutlet var userName: UILabel!
+//    @IBOutlet var uploadTime: UILabel!
     
-    
-    @IBOutlet var commentUserAvt: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,14 +29,20 @@ class MainContentCell: UITableViewCell {
     }
     
     private func setupUI(){
-        avatarContainer.layer.cornerRadius = 20
-        avatarContainer.backgroundColor = .green
         
-        avatarImage.layer.cornerRadius = 18
-        avatarImage.layer.borderWidth = 2
-        avatarImage.layer.borderColor = UIColor.white.cgColor
+//        avatarImage.layer.cornerRadius = 20
+//        avatarImage.layer.borderWidth = 2
+//        avatarImage.layer.borderColor = UIColor.white.cgColor
         
-        commentUserAvt.layer.cornerRadius = 15
+    }
+    
+    
+    @IBAction func addComment(_ sender: Any) {
+        if let rootVC = rootVC {
+            let addComment = MakeCommentVC(nibName: "MakeCommentVC", bundle: nil)
+            rootVC.navigationController?.pushViewController(addComment, animated: true)
+        }
+        
     }
     
 }

@@ -16,4 +16,5 @@ target 'SocialLink' do
     pod 'Firebase/Firestore'
     pod 'ProgressHUD'
     pod 'Alertift'
+    pod 'Firebase/Storage'
 end

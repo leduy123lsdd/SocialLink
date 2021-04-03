@@ -29,14 +29,24 @@
                         <textInputTraits key="textInputTraits"/>
                     </searchBar>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYi-6F-3vK">
+                    <rect key="frame" x="0.0" y="44" width="414" height="2"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="z5y-oH-YMO"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="5Fy-Qz-E6Q" secondAttribute="bottom" id="OOS-ST-nJ6"/>
+                <constraint firstItem="XYi-6F-3vK" firstAttribute="leading" secondItem="5Fy-Qz-E6Q" secondAttribute="leading" id="OTH-i1-Foc"/>
                 <constraint firstItem="5Fy-Qz-E6Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SdD-Gb-MpZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Fy-Qz-E6Q" secondAttribute="trailing" id="kPB-zO-w97"/>
+                <constraint firstItem="XYi-6F-3vK" firstAttribute="trailing" secondItem="5Fy-Qz-E6Q" secondAttribute="trailing" id="kka-JU-9LK"/>
                 <constraint firstItem="5Fy-Qz-E6Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="stM-If-6iy"/>
+                <constraint firstItem="XYi-6F-3vK" firstAttribute="top" secondItem="5Fy-Qz-E6Q" secondAttribute="top" id="xDq-3P-oMr"/>
             </constraints>
             <point key="canvasLocation" x="221.73913043478262" y="121.875"/>
         </view>

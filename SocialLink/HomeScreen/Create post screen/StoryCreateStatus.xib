@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StoryCreateStatus" customModule="SocialLink" customModuleProvider="target">
             <connections>
-                <outlet property="caption" destination="lU0-LD-B1R" id="hMI-BY-Mul"/>
+                <outlet property="captionTextView" destination="nKh-XV-U8f" id="PfQ-n3-vau"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,28 +19,61 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Write a caption..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lU0-LD-B1R">
-                    <rect key="frame" x="8" y="54" width="398" height="80"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-XV-U8f">
+                    <rect key="frame" x="65" y="54" width="339" height="80"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="CTF-Xr-672"/>
+                        <constraint firstAttribute="height" constant="80" id="xen-td-TZv"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                </textField>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mW-R8-yRc">
+                    <rect key="frame" x="0.0" y="134" width="414" height="0.5"/>
+                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.59999999999999998" id="OQ7-ra-ls9"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_avt" translatesAutoresizingMaskIntoConstraints="NO" id="zRz-SQ-jMn">
+                    <rect key="frame" x="10" y="54" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="aQa-Bv-NQT"/>
+                        <constraint firstAttribute="width" constant="50" id="ySG-xQ-8k0"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="lU0-LD-B1R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="RJj-Qq-KxQ"/>
-                <constraint firstItem="lU0-LD-B1R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="TcE-h2-S9b"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lU0-LD-B1R" secondAttribute="trailing" constant="8" id="Tkp-FP-ydf"/>
+                <constraint firstAttribute="trailing" secondItem="4mW-R8-yRc" secondAttribute="trailing" id="1bi-Kz-LzR"/>
+                <constraint firstItem="4mW-R8-yRc" firstAttribute="top" secondItem="nKh-XV-U8f" secondAttribute="bottom" id="Ghx-Sa-R6H"/>
+                <constraint firstItem="nKh-XV-U8f" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="JWi-K9-hAa"/>
+                <constraint firstItem="zRz-SQ-jMn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="O13-YO-qiT"/>
+                <constraint firstItem="zRz-SQ-jMn" firstAttribute="top" secondItem="nKh-XV-U8f" secondAttribute="top" id="SLX-1L-jRd"/>
+                <constraint firstItem="4mW-R8-yRc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V3v-43-0CT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nKh-XV-U8f" secondAttribute="trailing" constant="10" id="eiH-LC-sOV"/>
+                <constraint firstItem="nKh-XV-U8f" firstAttribute="leading" secondItem="zRz-SQ-jMn" secondAttribute="trailing" constant="5" id="fXR-bI-eNH"/>
             </constraints>
-            <point key="canvasLocation" x="-157" y="-21"/>
+            <point key="canvasLocation" x="-157.97101449275362" y="-21.428571428571427"/>
         </view>
     </objects>
     <resources>
+        <image name="user_avt" width="540" height="630.5"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

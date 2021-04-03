@@ -12,10 +12,6 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var scrollContainer: UIView!
     
-    
-    
-    
-    
     let storyVC = StoryVC(nibName: "StoryVC", bundle: nil)
     let searchUserVC = SearchUserVC(nibName: "SearchUserVC", bundle: nil)
     let createPostVC = CreatePostVC(nibName: "CreatePostVC", bundle: nil)
@@ -27,7 +23,6 @@ class HomeViewController: UIViewController {
     var picker:YPImagePicker!
     
     // MARK: Buttons functions
-    
     @IBAction func homeBtnClicked(_ sender: Any) {
         setViewController(index: 0)
     }
@@ -42,7 +37,11 @@ class HomeViewController: UIViewController {
         var pickedImages = [UIImage]()
         picker = YPImagePicker(configuration: config)
         
-        picker.didFinishPicking { [unowned picker] items, _ in
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            if cancelled {
+                picker?.dismiss(animated: true, completion: nil)
+                return
+            }
             
             for item in items {
                 switch item {
@@ -60,6 +59,8 @@ class HomeViewController: UIViewController {
             picker!.pushViewController(self.storyCreateStatus, animated: true)
         }
         
+        
+        
         present(picker, animated: true, completion: nil)
     }
     
@@ -72,17 +73,21 @@ class HomeViewController: UIViewController {
     }()
     
     
-
+    // MARK: View did load
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        storyVC.rootVC = self
         
         pagesVC = [storyVC,searchUserVC,createPostVC,userProfileVC]
         setupPageViewController()
     }
     
-    func setupPageViewController() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func setupPageViewController() {
         self.pageViewController.delegate = self
         self.pageViewController.dataSource = self
         self.pageViewController.view.frame = .zero
