@@ -107,7 +107,7 @@ class HomeViewController: UIViewController {
         
         config.library.maxNumberOfItems = 5
         config.usesFrontCamera = true
-        config.screens = [.video,.photo,.library]
+        config.screens = [.photo,.library]
         
     }
 

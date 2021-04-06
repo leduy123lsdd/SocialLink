@@ -24,30 +24,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cab-ne-99s">
-                    <rect key="frame" x="0.0" y="44" width="414" height="713"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="723"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <stackView opaque="NO" tag="5" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e7q-lW-SUT">
-                    <rect key="frame" x="16" y="802" width="382" height="50"/>
+                    <rect key="frame" x="16" y="812" width="382" height="40"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im3" translatesAutoresizingMaskIntoConstraints="NO" id="cSw-pi-537">
-                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="cSw-pi-537" secondAttribute="height" multiplier="1:1" id="weS-jd-Ow2"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jo6-gO-2LR">
-                            <rect key="frame" x="60" y="0.0" width="322" height="50"/>
+                            <rect key="frame" x="50" y="0.0" width="332" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Qbx-dX-nA4"/>
+                        <constraint firstAttribute="height" constant="40" id="Qbx-dX-nA4"/>
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFQ-SX-Rhw">
-                    <rect key="frame" x="16" y="757" width="382" height="40"/>
+                    <rect key="frame" x="16" y="767" width="382" height="40"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RE6-Hr-bZi">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
@@ -154,16 +154,16 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCc-Lr-y2d">
-                    <rect key="frame" x="358" y="809.5" width="35" height="35"/>
+                    <rect key="frame" x="363" y="817" width="30" height="30"/>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="35" id="LM1-ld-dvl"/>
-                        <constraint firstAttribute="height" constant="35" id="clI-RA-2Yp"/>
+                        <constraint firstAttribute="width" constant="30" id="LM1-ld-dvl"/>
+                        <constraint firstAttribute="height" constant="30" id="clI-RA-2Yp"/>
                     </constraints>
                     <state key="normal" image="arrowshape.turn.up.forward.fill" catalog="system"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="17.5"/>
+                            <integer key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>

@@ -115,9 +115,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="iDx-Dw-VHT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <state key="normal" title="Login">
-                                                    <color key="titleColor" red="0.81176470588235294" green="0.81176470588235294" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="titleColor" systemColor="tertiarySystemBackgroundColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="loginClicked:" destination="1fD-C5-aGP" eventType="touchUpInside" id="LSF-hq-lYY"/>
@@ -269,6 +269,9 @@
         <image name="white_back" width="1224" height="1632"/>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

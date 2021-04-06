@@ -78,9 +78,9 @@ class MakeCommentVC: UIViewController {
         
         defaultConstraint = tableviewToTopConstraint.constant
         
-        userImage.layer.cornerRadius = 25
+        userImage.layer.cornerRadius = 20
         commentSection.layer.masksToBounds = true
-        commentSection.layer.cornerRadius = 25
+        commentSection.layer.cornerRadius = 20
         commentSection.layer.borderColor = UIColor.lightGray.cgColor
         commentSection.layer.borderWidth = 0.6
         commentSection.setLeftPaddingPoints(10)
