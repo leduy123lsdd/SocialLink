@@ -35,7 +35,12 @@ class CreateAccountVC: UIViewController {
         let newUser:[String:Any] = [
             "display_name":displayTf.text!,
             "pass_word":passwordTf.text!,
-            "user_account":userNameTf.text!
+            "user_account":userNameTf.text!,
+            "follow_friends":[String](),
+            "followers":0,
+            "following":0,
+            "posted_id":[String](),
+            "amount_post":0
         ]
         
         // Connect to server and sign new user account.

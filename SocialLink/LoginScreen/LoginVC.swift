@@ -8,6 +8,7 @@
 import UIKit
 import ProgressHUD
 import Alertift
+import Pastel
 
 class LoginVC: UIViewController {
     @IBOutlet var backgroundView: UIView!
@@ -34,8 +35,8 @@ class LoginVC: UIViewController {
         // Do any additional setup after loading the view.
         let color2 = UIColor(rgb: 0x121212)
         
-        backgroundView.backgroundColor = color2
-        
+//        backgroundView.backgroundColor = color2
+        setupGradientColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +61,7 @@ class LoginVC: UIViewController {
         [accountTf, passwordTf].forEach({ tf in
             tf!.layer.masksToBounds = true
             tf!.layer.borderWidth = 0.7
-            tf!.layer.cornerRadius = 25
+            tf!.layer.cornerRadius = 8
             tf!.layer.borderColor = UIColor.clear.cgColor
             tf!.setLeftPaddingPoints(10)
             tf!.setRightPaddingPoints(10)
@@ -88,10 +89,16 @@ class LoginVC: UIViewController {
         self.view.endEditing(true)
         ProgressHUD.show()
         
-        ServerFirebase.userLogin(account,password) {
+        
+        
+        
+        ServerFirebase.userLogin(account,password) { userInfo in
             print("login successed")
             ProgressHUD.showSucceed()
-            userStatus.setState(userName: account)
+            
+            // Save userName and fiend from server
+            userStatus = UserStatus(info_data: userInfo)
+            
             self.navigationController?.pushViewController(self.homeVC, animated: false)
         } loginFailed: {
             ProgressHUD.showFailed()
@@ -104,5 +111,24 @@ class LoginVC: UIViewController {
 
     }
     
+    // MARK: Setup gradient color
+    private func setupGradientColor(){
+        let pastelView = PastelView(frame: self.view.bounds)
+        
+        // Custom Direction
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 3.0
+        pastelView.setColors([UIColor(red: 156/255, green: 39/255, blue: 176/255, alpha: 1.0),
+                              UIColor(red: 255/255, green: 64/255, blue: 129/255, alpha: 1.0),
+                              UIColor(red: 123/255, green: 31/255, blue: 162/255, alpha: 1.0),
+                              UIColor(red: 90/255, green: 120/255, blue: 127/255, alpha: 1.0)])
+        
+        
+        pastelView.startAnimation()
+        view.insertSubview(pastelView, at: 0)
+    }
 }
 

@@ -329,6 +329,9 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
+  - ImageSlideshow (1.9.2):
+    - ImageSlideshow/Core (= 1.9.2)
+  - ImageSlideshow/Core (1.9.2)
   - IQKeyboardManagerSwift (6.5.6)
   - leveldb-library (1.22.1)
   - MarqueeLabel (4.0.5)
@@ -341,6 +344,7 @@ PODS:
     - MarqueeLabel (~> 4.0.5)
     - SnapKit (~> 5.0.1)
   - NWWebSocket (0.5.1)
+  - Pastel (0.6.0)
   - ProgressHUD (13.5)
   - PromisesObjC (1.2.12)
   - PryntTrimmerView (4.0.2)
@@ -361,8 +365,10 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - ImageSlideshow
   - IQKeyboardManagerSwift
   - NotificationBannerSwift
+  - Pastel
   - ProgressHUD
   - PusherSwift
   - YPImagePicker
@@ -387,12 +393,14 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - ImageSlideshow
     - IQKeyboardManagerSwift
     - leveldb-library
     - MarqueeLabel
     - nanopb
     - NotificationBannerSwift
     - NWWebSocket
+    - Pastel
     - ProgressHUD
     - PromisesObjC
     - PryntTrimmerView
@@ -421,12 +429,14 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   NWWebSocket: 8156fe77508d5b86ce46ef2df87cc0c228402b10
+  Pastel: 814f081efbe2859c37e65ee44f396e6e5be88619
   ProgressHUD: 028e3828c7b582022c34a74604fc6073f8628d99
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
@@ -436,6 +446,6 @@ SPEC CHECKSUMS:
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 75115a1c979b972edbd787f3f1729a575bd7b9a5
+PODFILE CHECKSUM: 3c9d8870dc0fe213b3159884d9b58242c5d43911
 
 COCOAPODS: 1.10.1

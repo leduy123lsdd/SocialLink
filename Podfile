@@ -17,4 +17,6 @@ target 'SocialLink' do
     pod 'ProgressHUD'
     pod 'Alertift'
     pod 'Firebase/Storage'
+    pod 'ImageSlideshow'
+    pod 'Pastel'
 end

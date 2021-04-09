@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
     var config = YPImagePickerConfiguration()
     var picker:YPImagePicker!
     
+    var postsData = [String:Any]()
+    
     // MARK: Buttons functions
     @IBAction func homeBtnClicked(_ sender: Any) {
         setViewController(index: 0)
@@ -66,6 +68,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func userProfileClicked(_ sender: Any) {
         setViewController(index: 3)
+        // log out
+//        userStatus = UserStatus()
+//        self.navigationController?.popToRootViewController(animated: true)
     }
     
     lazy var pageViewController: UIPageViewController = {

@@ -28,12 +28,16 @@
 		0C80CA2525FCA4110094FCC0 /* UserProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C80CA2325FCA4110094FCC0 /* UserProfileVC.xib */; };
 		0C81DEB925FE7EE900A19B1C /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C81DEB725FE7EE900A19B1C /* SearchResultCell.swift */; };
 		0C81DEBA25FE7EE900A19B1C /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C81DEB825FE7EE900A19B1C /* SearchResultCell.xib */; };
+		0C8ED102262041A700A3C462 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8ED100262041A700A3C462 /* EditProfileVC.swift */; };
+		0C8ED103262041A700A3C462 /* EditProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8ED101262041A700A3C462 /* EditProfileVC.xib */; };
 		0CA00CC12601D27E006B0A72 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA00CBF2601D27E006B0A72 /* CreateAccountVC.swift */; };
 		0CA00CC22601D27E006B0A72 /* CreateAccountVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA00CC02601D27E006B0A72 /* CreateAccountVC.xib */; };
 		0CA5C4882605F3C600D929CC /* MainContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5C4862605F3C600D929CC /* MainContentCell.swift */; };
 		0CA5C4892605F3C600D929CC /* MainContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA5C4872605F3C600D929CC /* MainContentCell.xib */; };
 		0CA5C48E2605F3D500D929CC /* SubStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5C48C2605F3D500D929CC /* SubStoryCell.swift */; };
 		0CA5C48F2605F3D500D929CC /* SubStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA5C48D2605F3D500D929CC /* SubStoryCell.xib */; };
+		0CBA94EE261EB95B003EB371 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA94EC261EB95B003EB371 /* PostImageCell.swift */; };
+		0CBA94EF261EB95B003EB371 /* PostImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CBA94ED261EB95B003EB371 /* PostImageCell.xib */; };
 		0CBF26D82608E53200043BA9 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF26D62608E53200043BA9 /* StoryCell.swift */; };
 		0CBF26D92608E53200043BA9 /* StoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CBF26D72608E53200043BA9 /* StoryCell.xib */; };
 		0CBF26E22609D62900043BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */; };
@@ -70,12 +74,16 @@
 		0C80CA2325FCA4110094FCC0 /* UserProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileVC.xib; sourceTree = "<group>"; };
 		0C81DEB725FE7EE900A19B1C /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		0C81DEB825FE7EE900A19B1C /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		0C8ED100262041A700A3C462 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		0C8ED101262041A700A3C462 /* EditProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileVC.xib; sourceTree = "<group>"; };
 		0CA00CBF2601D27E006B0A72 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		0CA00CC02601D27E006B0A72 /* CreateAccountVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountVC.xib; sourceTree = "<group>"; };
 		0CA5C4862605F3C600D929CC /* MainContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentCell.swift; sourceTree = "<group>"; };
 		0CA5C4872605F3C600D929CC /* MainContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainContentCell.xib; sourceTree = "<group>"; };
 		0CA5C48C2605F3D500D929CC /* SubStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStoryCell.swift; sourceTree = "<group>"; };
 		0CA5C48D2605F3D500D929CC /* SubStoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubStoryCell.xib; sourceTree = "<group>"; };
+		0CBA94EC261EB95B003EB371 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
+		0CBA94ED261EB95B003EB371 /* PostImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageCell.xib; sourceTree = "<group>"; };
 		0CBF26D62608E53200043BA9 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		0CBF26D72608E53200043BA9 /* StoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCell.xib; sourceTree = "<group>"; };
 		0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -185,10 +193,21 @@
 		0C80CA2A25FCA44F0094FCC0 /* User profile screen */ = {
 			isa = PBXGroup;
 			children = (
+				0C8ED0FF2620417600A3C462 /* Edit profile */,
+				0CBA94EB261EB927003EB371 /* Collection cell */,
 				0C80CA2225FCA4110094FCC0 /* UserProfileVC.swift */,
 				0C80CA2325FCA4110094FCC0 /* UserProfileVC.xib */,
 			);
 			path = "User profile screen";
+			sourceTree = "<group>";
+		};
+		0C8ED0FF2620417600A3C462 /* Edit profile */ = {
+			isa = PBXGroup;
+			children = (
+				0C8ED100262041A700A3C462 /* EditProfileVC.swift */,
+				0C8ED101262041A700A3C462 /* EditProfileVC.xib */,
+			);
+			path = "Edit profile";
 			sourceTree = "<group>";
 		};
 		0CA00CBE2601D256006B0A72 /* Create Account */ = {
@@ -218,6 +237,15 @@
 				0CA5C4872605F3C600D929CC /* MainContentCell.xib */,
 			);
 			path = MainContentCell;
+			sourceTree = "<group>";
+		};
+		0CBA94EB261EB927003EB371 /* Collection cell */ = {
+			isa = PBXGroup;
+			children = (
+				0CBA94EC261EB95B003EB371 /* PostImageCell.swift */,
+				0CBA94ED261EB95B003EB371 /* PostImageCell.xib */,
+			);
+			path = "Collection cell";
 			sourceTree = "<group>";
 		};
 		0CBF26DD2608F1A600043BA9 /* Project Configuration */ = {
@@ -359,6 +387,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA00CC22601D27E006B0A72 /* CreateAccountVC.xib in Resources */,
+				0C8ED103262041A700A3C462 /* EditProfileVC.xib in Resources */,
+				0CBA94EF261EB95B003EB371 /* PostImageCell.xib in Resources */,
 				0CCCA73E25F512C600C4832A /* LaunchScreen.storyboard in Resources */,
 				0CA5C4892605F3C600D929CC /* MainContentCell.xib in Resources */,
 				0CCCA73B25F512C600C4832A /* Assets.xcassets in Resources */,
@@ -434,6 +464,7 @@
 				0CA00CC12601D27E006B0A72 /* CreateAccountVC.swift in Sources */,
 				0CBF26D82608E53200043BA9 /* StoryCell.swift in Sources */,
 				0CA5C48E2605F3D500D929CC /* SubStoryCell.swift in Sources */,
+				0C8ED102262041A700A3C462 /* EditProfileVC.swift in Sources */,
 				0CBF26FE2609EA7000043BA9 /* FirebaseDatabase.swift in Sources */,
 				0CCCA73225F512C300C4832A /* AppDelegate.swift in Sources */,
 				0CCACCA5260C3CEC0008D4CB /* Extension.swift in Sources */,
@@ -446,6 +477,7 @@
 				0C238BAF2615108100DB3CE1 /* CommentCell.swift in Sources */,
 				0CA5C4882605F3C600D929CC /* MainContentCell.swift in Sources */,
 				0C54B00625F66FFF00A76F9E /* Post.swift in Sources */,
+				0CBA94EE261EB95B003EB371 /* PostImageCell.swift in Sources */,
 				0C80CA1A25FCA3EA0094FCC0 /* SearchUserVC.swift in Sources */,
 				0C80CA0F25FC7ACE0094FCC0 /* HomeViewController.swift in Sources */,
 			);

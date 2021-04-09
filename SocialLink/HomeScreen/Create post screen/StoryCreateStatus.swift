@@ -51,7 +51,7 @@ class StoryCreateStatus: UIViewController {
         // New post data
         let newPost:[String:Any] = [
             "post_id": UUID().uuidString,
-            "user_name":userStatus.user_name,
+            "user_account":userStatus.user_account,
             "caption":captionTextView.text ?? "",
             "amount_like":0,
             "images":imagesData

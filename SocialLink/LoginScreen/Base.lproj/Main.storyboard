@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_back" translatesAutoresizingMaskIntoConstraints="NO" id="v3m-Hh-FFq">
-                                <rect key="frame" x="0.0" y="38" width="390" height="817"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yLk-Pw-52s">
                                 <rect key="frame" x="0.0" y="88" width="390" height="756"/>
                                 <subviews>
@@ -212,19 +209,15 @@
                         <viewLayoutGuide key="safeArea" id="Neu-Yw-xB8"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Neu-Yw-xB8" firstAttribute="bottom" secondItem="v3m-Hh-FFq" secondAttribute="bottom" constant="-45" id="4D5-Hn-idK"/>
                             <constraint firstItem="yLk-Pw-52s" firstAttribute="top" secondItem="Neu-Yw-xB8" secondAttribute="top" id="6dX-ah-rtH"/>
                             <constraint firstItem="cxL-nq-eTM" firstAttribute="bottom" secondItem="oGZ-R2-gyf" secondAttribute="bottom" id="7c8-uP-Yek"/>
                             <constraint firstItem="Neu-Yw-xB8" firstAttribute="trailing" secondItem="yLk-Pw-52s" secondAttribute="trailing" id="BxJ-Lc-xnE"/>
                             <constraint firstItem="HIM-Wd-el2" firstAttribute="leading" secondItem="GfW-LZ-eWY" secondAttribute="leading" id="CvV-pa-XRr"/>
-                            <constraint firstItem="v3m-Hh-FFq" firstAttribute="leading" secondItem="Neu-Yw-xB8" secondAttribute="leading" id="OTk-bU-cDV"/>
                             <constraint firstItem="yLk-Pw-52s" firstAttribute="leading" secondItem="Neu-Yw-xB8" secondAttribute="leading" id="VLw-ja-eNj"/>
-                            <constraint firstItem="Neu-Yw-xB8" firstAttribute="trailing" secondItem="v3m-Hh-FFq" secondAttribute="trailing" id="WvK-Fs-Epr"/>
                             <constraint firstAttribute="bottom" secondItem="cxL-nq-eTM" secondAttribute="bottom" priority="250" constant="223" id="Ycr-Jh-hya"/>
                             <constraint firstItem="cxL-nq-eTM" firstAttribute="trailing" secondItem="oGZ-R2-gyf" secondAttribute="trailing" id="Ydt-26-3Bn"/>
                             <constraint firstAttribute="bottom" secondItem="yLk-Pw-52s" secondAttribute="bottom" id="ZV1-NT-ozy"/>
                             <constraint firstItem="HIM-Wd-el2" firstAttribute="bottom" secondItem="Gin-Ng-eaa" secondAttribute="bottom" id="cum-o1-bCY"/>
-                            <constraint firstItem="v3m-Hh-FFq" firstAttribute="top" secondItem="Neu-Yw-xB8" secondAttribute="top" constant="-50" id="fm0-7F-4GL"/>
                             <constraint firstItem="cxL-nq-eTM" firstAttribute="leading" secondItem="oGZ-R2-gyf" secondAttribute="leading" id="fsc-bX-0NG"/>
                             <constraint firstItem="HIM-Wd-el2" firstAttribute="top" secondItem="GfW-LZ-eWY" secondAttribute="top" id="gq3-ZH-9S3"/>
                             <constraint firstItem="HIM-Wd-el2" firstAttribute="trailing" secondItem="GfW-LZ-eWY" secondAttribute="trailing" id="nTm-85-zII"/>
@@ -266,7 +259,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="white_back" width="1224" height="1632"/>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -11,13 +11,11 @@ class MakeCommentVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableviewToTopConstraint: NSLayoutConstraint!
-    var defaultConstraint:CGFloat?
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var commentSection: UITextField!
     @IBOutlet var commentToBottomArea: NSLayoutConstraint!
     
     let emoji = ["❤️","👍","🔥","👏","🥺","😢","😍","😂"]
-    
     
     @IBAction func btn1(_ sender: Any) {
         commentSection.text! += emoji[0]
@@ -50,22 +48,14 @@ class MakeCommentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setupUI()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        print("viewWillAppear")
         self.navigationController?.isNavigationBarHidden = false
     }
-    
-
-    
-    
 
     private func setupUI(){
         tableView.delegate = self
@@ -75,8 +65,6 @@ class MakeCommentVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        defaultConstraint = tableviewToTopConstraint.constant
         
         userImage.layer.cornerRadius = 20
         commentSection.layer.masksToBounds = true
@@ -89,10 +77,6 @@ class MakeCommentVC: UIViewController {
         self.navigationItem.title = "Comments"
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.backBarButtonItem?.title = ""
-        
-        
-        
-        
     }
     
     // MARK: - Hide and show keyboard
@@ -114,6 +98,8 @@ class MakeCommentVC: UIViewController {
             
         }
     }
+    
+    let postId = ""
 
 }
 

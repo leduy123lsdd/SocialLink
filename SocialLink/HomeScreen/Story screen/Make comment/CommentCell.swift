@@ -35,9 +35,9 @@ class CommentCell: UITableViewCell {
         addSingleAndDoubleTapGesture()
         
         
-        let fullText = "\(userStatus.user_name)\nHello guys, this is a comment "
+        let fullText = "\(userStatus.user_account)\nHello guys, this is a comment "
         
-        let boldString = (fullText as NSString).range(of: userStatus.user_name)
+        let boldString = (fullText as NSString).range(of: userStatus.user_account)
         let attributeBold = NSMutableAttributedString(
             string: fullText,
             attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)])
