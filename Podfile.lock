@@ -275,6 +275,9 @@ PODS:
   - FirebaseStorage (7.8.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
+  - FirebaseUI/Storage (10.0.2):
+    - Firebase/Storage
+    - SDWebImage (~> 5.6)
   - GoogleAppMeasurement (7.8.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -351,6 +354,9 @@ PODS:
   - PusherSwift (9.2.1):
     - NWWebSocket (~> 0.5.1)
     - TweetNacl (~> 1.0.0)
+  - SDWebImage (5.11.0):
+    - SDWebImage/Core (= 5.11.0)
+  - SDWebImage/Core (5.11.0)
   - SnapKit (5.0.1)
   - SteviaLayout (4.7.3)
   - TweetNacl (1.0.2)
@@ -365,6 +371,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
+  - FirebaseUI/Storage
   - ImageSlideshow
   - IQKeyboardManagerSwift
   - NotificationBannerSwift
@@ -387,6 +394,7 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseStorage
+    - FirebaseUI
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -405,6 +413,7 @@ SPEC REPOS:
     - PromisesObjC
     - PryntTrimmerView
     - PusherSwift
+    - SDWebImage
     - SnapKit
     - SteviaLayout
     - TweetNacl
@@ -423,6 +432,7 @@ SPEC CHECKSUMS:
   FirebaseFirestore: f1ededef972dea136e88a7bae9732f52afe64221
   FirebaseInstallations: 7f7ed0e7e27fb51f57291e1876e2ddb1524126c1
   FirebaseStorage: 84d1eb7bfe8c3cbfe6beeeb02ce712f65dcb8b83
+  FirebaseUI: 59db3d833773f985550897d54ceb811ba37fb9a5
   GoogleAppMeasurement: 50a254ee92c1b94fbe2abea7e3da35e4c6dedce0
   GoogleDataTransport: b006084b73915a42c28a3466961a4edda3065da6
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
@@ -441,11 +451,12 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   PusherSwift: a464a5eea842b9a62e3cb8f01746a4476ae56079
+  SDWebImage: 7acbb57630ac7db4a495547fb73916ff3e432f6b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 3c9d8870dc0fe213b3159884d9b58242c5d43911
+PODFILE CHECKSUM: c69949d91ac4c5068150aa83650ef409922cf0fb
 
 COCOAPODS: 1.10.1

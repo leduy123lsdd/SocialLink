@@ -19,4 +19,5 @@ target 'SocialLink' do
     pod 'Firebase/Storage'
     pod 'ImageSlideshow'
     pod 'Pastel'
+    pod 'FirebaseUI/Storage'
 end

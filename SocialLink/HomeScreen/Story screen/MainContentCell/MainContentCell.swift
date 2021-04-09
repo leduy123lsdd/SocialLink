@@ -7,17 +7,26 @@
 
 import UIKit
 import ImageSlideshow
+import FirebaseUI
+
 
 class MainContentCell: UITableViewCell {
     
     var rootVC:UIViewController?
+    
+    
+    
     
 //    @IBOutlet var avatarImage: UIImageView!
 //    @IBOutlet var userName: UILabel!
 //    @IBOutlet var uploadTime: UILabel!
     // test image
     let localSource = [BundleImageSource(imageString: "im1"), BundleImageSource(imageString: "im2"), BundleImageSource(imageString: "im3"), BundleImageSource(imageString: "im4")]
+//    let localSource = []
+    
     @IBOutlet var slideshow: ImageSlideshow!
+    
+    var imagessss = UIImageView()
     
     
     override func awakeFromNib() {
@@ -25,6 +34,7 @@ class MainContentCell: UITableViewCell {
         // Initialization code
         setupUI()
         setupSlideShow()
+//        imagessss.sd_setImage(with: )
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -128,8 +128,8 @@ class FirebaseDatabase {
                 for post_id in yourPosts_id {
                     // Get info (like caption blabla)
                     
-                    self.getPostBy_post_id(post_id: post_id) { _ in
-//                        self.delegate?.newPostUpdated(post: res)
+                    self.getPostBy_post_id(post_id: post_id) { res in
+                        self.delegate?.newPostUpdated(post: res)
                     }
                     // Get images
 //                    self.db
@@ -146,18 +146,11 @@ class FirebaseDatabase {
         // get post info and then get images of that post
         self.db.collection("posts").document(post_id).getDocument { dataSnap, _ in
             // This is post data
-            guard let postInfo = dataSnap?.data() else {fatalError()}
+            guard var postInfo = dataSnap?.data() else {fatalError()}
             self.storageReference.child("images/\(post_id)").listAll { list, _ in
-                for item in list.items {
-                    print(item)
-                }
+                postInfo["images_url"] = list.items
+                completion(postInfo)
             }
-            
-            
-//            if let data = dataSnap?.data() {
-//                completion(data)
-//                putBackData.newPostUpdated(post: data)
-//            }
         }
     }
     
@@ -166,3 +159,5 @@ class FirebaseDatabase {
 protocol UpdateNewDataDelegate {
     func newPostUpdated(post:[String:Any])
 }
+
+

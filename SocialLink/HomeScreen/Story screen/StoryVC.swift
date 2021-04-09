@@ -43,8 +43,8 @@ class StoryVC: UIViewController, UpdateNewDataDelegate {
     
     // MARK: Get new post from server.
     func newPostUpdated(post: [String : Any]) {
-//        postData.append(post)
-//        tableView.reloadData()
+        postData.append(post)
+        tableView.reloadData()
     }
     
 }

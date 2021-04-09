@@ -6,6 +6,8 @@
 //
 
 import UIKit
+//import FirebaseUI
+import Firebase
 
 class UserProfileVC: UIViewController {
     
@@ -19,6 +21,7 @@ class UserProfileVC: UIViewController {
     @IBOutlet var followBtn: UIButton!
     @IBOutlet var messageBtn: UIButton!
     
+    
     var images = [UIImage]()
     let storyData = ["doc","cat","bird","mouse","banana","mango"]
     
@@ -27,6 +30,9 @@ class UserProfileVC: UIViewController {
 
         // Do any additional setup after loading the view.
         setupUI()
+        
+        
+        
     }
     
     private func setupUI(){
