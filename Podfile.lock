@@ -335,6 +335,9 @@ PODS:
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
   - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/SDWebImage (1.9.2):
+    - ImageSlideshow/Core
+    - SDWebImage (>= 3.7)
   - IQKeyboardManagerSwift (6.5.6)
   - leveldb-library (1.22.1)
   - MarqueeLabel (4.0.5)
@@ -373,6 +376,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseUI/Storage
   - ImageSlideshow
+  - ImageSlideshow/SDWebImage
   - IQKeyboardManagerSwift
   - NotificationBannerSwift
   - Pastel
@@ -457,6 +461,6 @@ SPEC CHECKSUMS:
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: c69949d91ac4c5068150aa83650ef409922cf0fb
+PODFILE CHECKSUM: dfc907e53d112c8e1acf77a1d49bf64d9d6c37c1
 
 COCOAPODS: 1.10.1

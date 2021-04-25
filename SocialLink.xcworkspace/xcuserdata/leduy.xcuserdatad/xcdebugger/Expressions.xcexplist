@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #2 in UserProfileVC.fetchDataFor(user_account:completion:):UserProfileVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "res">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainContentCell.parseData(data:):MainContentCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "data[&quot;images_url&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "data">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EditProfileVC.setupUI():EditProfileVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userStatus">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "userProfileStoriesVC.postData.getter:userProfileStoriesVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "postData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

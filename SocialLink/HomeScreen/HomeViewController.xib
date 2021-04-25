@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="SocialLink" customModuleProvider="target">
             <connections>
+                <outlet property="homeBtn" destination="7Mm-Fu-Q0e" id="SKb-nc-cRF"/>
                 <outlet property="scrollContainer" destination="EC1-4i-lVG" id="D0A-sR-cnf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

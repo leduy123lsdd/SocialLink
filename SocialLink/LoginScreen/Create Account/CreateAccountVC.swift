@@ -36,17 +36,27 @@ class CreateAccountVC: UIViewController {
             "display_name":displayTf.text!,
             "pass_word":passwordTf.text!,
             "user_account":userNameTf.text!,
-            "follow_friends":[String](),
             "followers":0,
             "following":0,
             "posted_id":[String](),
-            "amount_post":0
+            "amount_post":0,
+            "avatarUrl":""
         ]
         
         // Connect to server and sign new user account.
         ServerFirebase.signUpNewUser(newUser: newUser) {
-            let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
-            self.navigationController?.pushViewController(homeVC, animated: false)
+            let account = self.userNameTf.text ?? ""
+            let password = self.passwordTf.text ?? ""
+            
+            ServerFirebase.userLogin(account, password) { userInfo in
+                
+                userStatus = UserStatus(info_data: userInfo)
+                let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+                self.navigationController?.pushViewController(homeVC, animated: false)
+                
+            } loginFailed: {
+                
+            }
         }
     }
     

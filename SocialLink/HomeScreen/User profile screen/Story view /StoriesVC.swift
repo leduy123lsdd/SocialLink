@@ -1,93 +1,93 @@
 //
-//  StoryVC.swift
+//  StoriesVC.swift
 //  SocialLink
 //
-//  Created by Lê Duy on 3/13/21.
+//  Created by Lê Duy on 4/25/21.
 //
 
 import UIKit
+import ProgressHUD
 
-class StoryVC: UIViewController {
+class StoriesVC: UIViewController {
+    
     
     @IBOutlet var tableView: UITableView!
-    var postData = [[String:Any]]()
+//    @IBOutlet var userAccountLabel: UILabel!
+    
     var rootVC:UIViewController?
-    
-    private let refreshControl = UIRefreshControl()
-    
+    var postData = [[String:Any]]()
+    var user:String=""
+    var scrollToPost:(()->Void)?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "MainContentCell", bundle: nil), forCellReuseIdentifier: "MainContentCell")
         
-        setupUI()
-        getPost()
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 800
+        
+        self.navigationItem.title = "\(user)"
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationItem.backBarButtonItem?.title = ""
+        if let scrollAction = scrollToPost {
+            scrollAction()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        
     }
     
     // MARK: Fetch posts from friends or yours
-    private func getPost(){
-        refreshControl.beginRefreshing()
-        ServerFirebase.getUserPost(user_account: userStatus.user_account) { data in
+    func getPost(for user:String){
+        self.user = user
+//        ProgressHUD.show()
+        ServerFirebase.getUserPost(user_account: user) { data in
             var existed = false
             
             for post in self.postData {
                 if (post["post_id"] as! String) == (data["post_id"] as! String) {
+               
                     existed = true
                 }
             }
             
             if !existed {
                 self.postData.append(data)
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
+//                ProgressHUD.dismiss()
             }
             
-            self.refreshControl.endRefreshing()
             
-        } failed: {
-            self.refreshControl.endRefreshing()
-            
-        }
+        } failed: {}
     }
     
-    // MARK: Scroll to top
-    func scrollToTop(){
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-    }
     
-    // MARK: setup UI
-    private func setupUI(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "SubStoryCell", bundle: nil), forCellReuseIdentifier: "SubStoryCell")
-        tableView.register(UINib(nibName: "MainContentCell", bundle: nil), forCellReuseIdentifier: "MainContentCell")
-        tableView.refreshControl = refreshControl
-        
-        refreshControl.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
-    }
-    
-    @objc private func refreshWeatherData(){
-        getPost()
+    @IBAction func backBtn(_ sender: Any) {
+        rootVC?.navigationController?.popViewController(animated: true)
     }
     
 }
 
-extension StoryVC:UITableViewDelegate, UITableViewDataSource {
+extension StoriesVC: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postData.count + 1
+        // #warning Incomplete implementation, return the number of rows
+        return postData.count
     }
+
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Story
-        if indexPath.row == 0 {
-            tableView.rowHeight = 100
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SubStoryCell") as! SubStoryCell
-            return cell
-        }
         
         // Posts
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 800
         
-        let data = postData[indexPath.row - 1]
+        let data = postData[indexPath.row]
         let post_id = data["post_id"] as! String
         let liked_user = data["liked_by_users"] as! [String]
         
@@ -124,11 +124,6 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-        
-        // Update row when new comment is added
-    
         return cell
-        
     }
-    
 }

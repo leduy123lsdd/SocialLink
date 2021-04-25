@@ -45,6 +45,7 @@
             <size key="customSize" width="342" height="301"/>
             <connections>
                 <outlet property="image" destination="wQG-I2-Xbp" id="iVd-xK-tqi"/>
+                <outlet property="postImage" destination="wQG-I2-Xbp" id="g8E-4f-oox"/>
             </connections>
             <point key="canvasLocation" x="291.304347826087" y="237.38839285714283"/>
         </collectionViewCell>

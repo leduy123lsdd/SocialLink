@@ -10,6 +10,10 @@ import YPImagePicker
 
 class HomeViewController: UIViewController {
     
+    
+    @IBOutlet var homeBtn: UIButton!
+    
+    
     @IBOutlet weak var scrollContainer: UIView!
     
     let storyVC = StoryVC(nibName: "StoryVC", bundle: nil)
@@ -23,9 +27,11 @@ class HomeViewController: UIViewController {
     var picker:YPImagePicker!
     
     var postsData = [String:Any]()
+
     
     // MARK: Buttons functions
     @IBAction func homeBtnClicked(_ sender: Any) {
+        
         setViewController(index: 0)
     }
     
@@ -33,6 +39,8 @@ class HomeViewController: UIViewController {
         setViewController(index: 1)
         self.view.bringSubviewToFront(pagesVC[1].view)
     }
+    
+    
     
     @IBAction func createPostClicked(_ sender: Any) {
         
@@ -67,10 +75,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func userProfileClicked(_ sender: Any) {
+        userProfileVC.user_account = userStatus.user_account
         setViewController(index: 3)
-        // log out
-//        userStatus = UserStatus()
-//        self.navigationController?.popToRootViewController(animated: true)
     }
     
     lazy var pageViewController: UIPageViewController = {
@@ -83,8 +89,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         storyVC.rootVC = self
         
+        userProfileVC.rootView = self
+        
         pagesVC = [storyVC,searchUserVC,createPostVC,userProfileVC]
         setupPageViewController()
+        
+        // Double tap for home button action 
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTappedHomeBtn))
+        tap.numberOfTapsRequired = 2
+        homeBtn.addGestureRecognizer(tap)
+    }
+    
+    //MARK: Double tap to home btn
+    @objc func doubleTappedHomeBtn() {
+        storyVC.scrollToTop()
     }
     
     override func viewWillAppear(_ animated: Bool) {

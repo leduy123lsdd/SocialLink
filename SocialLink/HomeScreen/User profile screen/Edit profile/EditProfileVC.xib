@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileVC" customModule="SocialLink" customModuleProvider="target">
             <connections>
+                <outlet property="avatarImage" destination="SSH-Jd-BzB" id="8K4-rL-26s"/>
                 <outlet property="bio" destination="iH2-po-VeT" id="4JR-sN-tcs"/>
                 <outlet property="displayName" destination="4qv-gg-E4j" id="q7F-I2-ECB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,13 +36,13 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PU-fG-iKw">
-                            <rect key="frame" x="360" y="8" width="44" height="34"/>
+                            <rect key="frame" x="343" y="8" width="61" height="34"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                            <state key="normal" title="Done">
+                            <state key="normal" title="Update">
                                 <color key="titleColor" name="AccentColor"/>
                             </state>
                             <connections>
-                                <action selector="doneBtn:" destination="-1" eventType="touchUpInside" id="fbZ-pT-lfQ"/>
+                                <action selector="updateBtn:" destination="-1" eventType="touchUpInside" id="fbZ-pT-lfQ"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SN6-9I-cQu">
@@ -75,10 +76,11 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOS-X5-65M">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-Jd-BzB">
-                                    <rect key="frame" x="137" y="10" width="140" height="140"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-Jd-BzB">
+                                    <rect key="frame" x="137" y="11.5" width="140" height="140"/>
+                                    <color key="tintColor" systemColor="linkColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="140" id="Zdg-6e-lmG"/>
+                                        <constraint firstAttribute="height" constant="143" id="Zdg-6e-lmG"/>
                                         <constraint firstAttribute="width" constant="140" id="czA-cY-G3Z"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
@@ -88,9 +90,12 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa2-0w-jsU">
-                                    <rect key="frame" x="127.5" y="155" width="159" height="40"/>
+                                    <rect key="frame" x="127.5" y="158" width="159" height="37"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                     <state key="normal" title="Change profile photo"/>
+                                    <connections>
+                                        <action selector="changeProfilePhotoAction:" destination="-1" eventType="touchUpInside" id="NfC-jn-nRi"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -176,16 +181,32 @@
                                 <constraint firstAttribute="height" constant="0.40000000000000002" id="cxr-fL-NJe"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OX9-Xp-iZq">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14A-yR-bNX">
                             <rect key="frame" x="0.0" y="321" width="414" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OX9-Xp-iZq">
+                                    <rect key="frame" x="10" y="0.0" width="394" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="YAx-da-gXw"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <state key="normal" title="Sign out">
+                                        <color key="titleColor" systemColor="linkColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="signOutBtnAction:" destination="-1" eventType="touchUpInside" id="Kec-aG-k2C"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="YAx-da-gXw"/>
+                                <constraint firstAttribute="trailing" secondItem="OX9-Xp-iZq" secondAttribute="trailing" constant="10" id="0Ov-i6-Tca"/>
+                                <constraint firstAttribute="height" constant="50" id="4bb-ZU-hep"/>
+                                <constraint firstAttribute="bottom" secondItem="OX9-Xp-iZq" secondAttribute="bottom" id="9Zi-BB-6QJ"/>
+                                <constraint firstItem="OX9-Xp-iZq" firstAttribute="top" secondItem="14A-yR-bNX" secondAttribute="top" id="Npi-mW-PJW"/>
+                                <constraint firstItem="OX9-Xp-iZq" firstAttribute="leading" secondItem="14A-yR-bNX" secondAttribute="leading" constant="10" id="tkL-Hp-Iyk"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <state key="normal" title="    Sign out">
-                                <color key="titleColor" systemColor="linkColor"/>
-                            </state>
-                        </button>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3o-FE-Scr">
                             <rect key="frame" x="0.0" y="376" width="414" height="0.5"/>
                             <color key="backgroundColor" systemColor="systemGray2Color"/>
@@ -218,7 +239,7 @@
         </view>
     </objects>
     <resources>
-        <image name="girl" width="330" height="330"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

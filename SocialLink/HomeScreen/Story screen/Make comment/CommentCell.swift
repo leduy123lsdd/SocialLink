@@ -13,8 +13,12 @@ class CommentCell: UITableViewCell {
     @IBOutlet var commentLabel: UILabel!
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var replyButton: UIButton!
+    @IBOutlet var viewAllReplies: UIButton!
     
     var doubleTapHandler:(()->Void)?
+    var replyAction:(()->Void)?
+    var viewAllRepliesAction:(()->Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,12 +34,14 @@ class CommentCell: UITableViewCell {
     
     private func setupUI(){
         commentLabel.layer.masksToBounds = true
-        avatarImage.layer.cornerRadius = 20
+        avatarImage.layer.cornerRadius = 15
         commentLabel.layer.cornerRadius = 15
         addSingleAndDoubleTapGesture()
         
-        
-        let fullText = "\(userStatus.user_account)\nHello guys, this is a comment "
+    }
+    
+    func setComment(_ comment:String, user_account:String){
+        let fullText = "\(user_account)\n\(comment)"
         
         let boldString = (fullText as NSString).range(of: userStatus.user_account)
         let attributeBold = NSMutableAttributedString(
@@ -57,6 +63,8 @@ class CommentCell: UITableViewCell {
 
         singleTapGesture.require(toFail: doubleTapGesture)
     }
+    
+    
 
     @objc private func handleSingleTap(_ tapGesture: UITapGestureRecognizer) {
         print("1 tap")
@@ -69,4 +77,18 @@ class CommentCell: UITableViewCell {
         print("2 tap")
     }
     
+    // MARK: - Reply button action
+    @IBAction func replyBtnAction(_ sender: Any) {
+        if let reply = replyAction {
+            reply()
+        }
+        
+    }
+    
+    // MARK: - View replies button action
+    @IBAction func viewAllReplies(_ sender: Any) {
+        if let viewRepliesClicked = viewAllRepliesAction {
+            viewRepliesClicked()
+        }
+    }
 }

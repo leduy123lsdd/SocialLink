@@ -16,6 +16,8 @@
 		0C6D35E3260F46D900D27DB0 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D35E2260F46D900D27DB0 /* UserStatus.swift */; };
 		0C6D35E7260F4AC100D27DB0 /* StoryCreateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6D35E5260F4AC100D27DB0 /* StoryCreateStatus.swift */; };
 		0C6D35E8260F4AC100D27DB0 /* StoryCreateStatus.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6D35E6260F4AC100D27DB0 /* StoryCreateStatus.xib */; };
+		0C76C34626353515001CD4DC /* StoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C76C34426353515001CD4DC /* StoriesVC.swift */; };
+		0C76C34726353515001CD4DC /* StoriesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C76C34526353515001CD4DC /* StoriesVC.xib */; };
 		0C80CA0F25FC7ACE0094FCC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C80CA0D25FC7ACE0094FCC0 /* HomeViewController.swift */; };
 		0C80CA1025FC7ACF0094FCC0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C80CA0E25FC7ACE0094FCC0 /* HomeViewController.xib */; };
 		0C80CA1525FCA3910094FCC0 /* StoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C80CA1325FCA3910094FCC0 /* StoryVC.swift */; };
@@ -49,6 +51,8 @@
 		0CCCA73925F512C300C4832A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCCA73725F512C300C4832A /* Main.storyboard */; };
 		0CCCA73B25F512C600C4832A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCCA73A25F512C600C4832A /* Assets.xcassets */; };
 		0CCCA73E25F512C600C4832A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCCA73C25F512C600C4832A /* LaunchScreen.storyboard */; };
+		0CD07DF626258DFC00F2FAB0 /* ReplyCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */; };
+		0CD07DF726258DFC00F2FAB0 /* ReplyCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */; };
 		A65BA6E5BE296F02E35E3F88 /* Pods_SocialLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E011B74B796BD6C914D50EF2 /* Pods_SocialLink.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +66,8 @@
 		0C6D35E2260F46D900D27DB0 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		0C6D35E5260F4AC100D27DB0 /* StoryCreateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCreateStatus.swift; sourceTree = "<group>"; };
 		0C6D35E6260F4AC100D27DB0 /* StoryCreateStatus.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCreateStatus.xib; sourceTree = "<group>"; };
+		0C76C34426353515001CD4DC /* StoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesVC.swift; sourceTree = "<group>"; };
+		0C76C34526353515001CD4DC /* StoriesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoriesVC.xib; sourceTree = "<group>"; };
 		0C80CA0D25FC7ACE0094FCC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0C80CA0E25FC7ACE0094FCC0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0C80CA1325FCA3910094FCC0 /* StoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryVC.swift; sourceTree = "<group>"; };
@@ -97,6 +103,8 @@
 		0CCCA73A25F512C600C4832A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCCA73D25F512C600C4832A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CCCA73F25F512C600C4832A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentCell.swift; sourceTree = "<group>"; };
+		0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyCommentCell.xib; sourceTree = "<group>"; };
 		C9A957AD828E1B08CA90301B /* Pods-SocialLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLink.release.xcconfig"; path = "Target Support Files/Pods-SocialLink/Pods-SocialLink.release.xcconfig"; sourceTree = "<group>"; };
 		E011B74B796BD6C914D50EF2 /* Pods_SocialLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFAC2BA01AC4EEF216DFA0DE /* Pods-SocialLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLink.debug.xcconfig"; path = "Target Support Files/Pods-SocialLink/Pods-SocialLink.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +137,8 @@
 				0C238BA826150FA300DB3CE1 /* MakeCommentVC.xib */,
 				0C238BAD2615108100DB3CE1 /* CommentCell.swift */,
 				0C238BAE2615108100DB3CE1 /* CommentCell.xib */,
+				0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */,
+				0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */,
 			);
 			path = "Make comment";
 			sourceTree = "<group>";
@@ -141,6 +151,15 @@
 				0CCCA73725F512C300C4832A /* Main.storyboard */,
 			);
 			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		0C76C33E2635312A001CD4DC /* Story view  */ = {
+			isa = PBXGroup;
+			children = (
+				0C76C34426353515001CD4DC /* StoriesVC.swift */,
+				0C76C34526353515001CD4DC /* StoriesVC.xib */,
+			);
+			path = "Story view ";
 			sourceTree = "<group>";
 		};
 		0C80CA0825FC66920094FCC0 /* HomeScreen */ = {
@@ -193,6 +212,7 @@
 		0C80CA2A25FCA44F0094FCC0 /* User profile screen */ = {
 			isa = PBXGroup;
 			children = (
+				0C76C33E2635312A001CD4DC /* Story view  */,
 				0C8ED0FF2620417600A3C462 /* Edit profile */,
 				0CBA94EB261EB927003EB371 /* Collection cell */,
 				0C80CA2225FCA4110094FCC0 /* UserProfileVC.swift */,
@@ -390,6 +410,7 @@
 				0C8ED103262041A700A3C462 /* EditProfileVC.xib in Resources */,
 				0CBA94EF261EB95B003EB371 /* PostImageCell.xib in Resources */,
 				0CCCA73E25F512C600C4832A /* LaunchScreen.storyboard in Resources */,
+				0CD07DF726258DFC00F2FAB0 /* ReplyCommentCell.xib in Resources */,
 				0CA5C4892605F3C600D929CC /* MainContentCell.xib in Resources */,
 				0CCCA73B25F512C600C4832A /* Assets.xcassets in Resources */,
 				0CCCA73925F512C300C4832A /* Main.storyboard in Resources */,
@@ -402,6 +423,7 @@
 				0CA5C48F2605F3D500D929CC /* SubStoryCell.xib in Resources */,
 				0C80CA1625FCA3910094FCC0 /* StoryVC.xib in Resources */,
 				0C238BAA26150FA300DB3CE1 /* MakeCommentVC.xib in Resources */,
+				0C76C34726353515001CD4DC /* StoriesVC.xib in Resources */,
 				0C80CA1025FC7ACF0094FCC0 /* HomeViewController.xib in Resources */,
 				0C80CA1B25FCA3EA0094FCC0 /* SearchUserVC.xib in Resources */,
 				0CBF26E22609D62900043BA9 /* GoogleService-Info.plist in Resources */,
@@ -457,7 +479,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD07DF626258DFC00F2FAB0 /* ReplyCommentCell.swift in Sources */,
 				0C80CA1F25FCA4010094FCC0 /* CreatePostVC.swift in Sources */,
+				0C76C34626353515001CD4DC /* StoriesVC.swift in Sources */,
 				0C6D35E3260F46D900D27DB0 /* UserStatus.swift in Sources */,
 				0C238BA926150FA300DB3CE1 /* MakeCommentVC.swift in Sources */,
 				0C80CA1525FCA3910094FCC0 /* StoryVC.swift in Sources */,

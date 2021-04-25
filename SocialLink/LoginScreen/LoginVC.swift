@@ -24,7 +24,7 @@ class LoginVC: UIViewController {
     
     var defaultDistanceStackToBottom:CGFloat?
     let signUpVC = CreateAccountVC(nibName: "CreateAccountVC", bundle: nil)
-    let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+    
     
     let emoji = ["❤️","👍","🔥","👏","🥺","😢","😍","😂"]
     
@@ -89,9 +89,7 @@ class LoginVC: UIViewController {
         self.view.endEditing(true)
         ProgressHUD.show()
         
-        
-        
-        
+        // Login to app
         ServerFirebase.userLogin(account,password) { userInfo in
             print("login successed")
             ProgressHUD.showSucceed()
@@ -99,7 +97,8 @@ class LoginVC: UIViewController {
             // Save userName and fiend from server
             userStatus = UserStatus(info_data: userInfo)
             
-            self.navigationController?.pushViewController(self.homeVC, animated: false)
+            let homeVC = HomeViewController(nibName: "HomeViewController", bundle: nil)
+            self.navigationController?.pushViewController(homeVC, animated: false)
         } loginFailed: {
             ProgressHUD.showFailed()
             

@@ -10,20 +10,45 @@ import UIKit
 import Firebase
 
 class UserProfileVC: UIViewController {
+    typealias FirebaseData = [String:Any]
+    
+    var rootView:UIViewController?
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var displayName: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
     
-    @IBOutlet var storyCollectionView: UICollectionView!
-    
-    @IBOutlet var followBtn: UIButton!
+    @IBOutlet var editProfileBtn: UIButton!
     @IBOutlet var messageBtn: UIButton!
+    @IBOutlet var followBtn: UIButton!
+    @IBOutlet var avatarImage: UIImageView!
+    
+    @IBOutlet var postCount: UILabel!
+    @IBOutlet var followersCount: UILabel!
+    @IBOutlet var followingCount: UILabel!
     
     
-    var images = [UIImage]()
+    @IBOutlet var descriptionInfo: UITextView!
+    
+//    var images = [UIImage]()
     let storyData = ["doc","cat","bird","mouse","banana","mango"]
+    var postData = [[String:Any]]() {
+        didSet {
+            let cellWidth = (self.view.frame.width-6) / 3
+            let collumn = Int(postData.count/3)
+            
+            if postData.count%3 != 0 {
+                
+                self.collectionViewHeight.constant = CGFloat(collumn + 1)*cellWidth
+            } else {
+                self.collectionViewHeight.constant = CGFloat(collumn)*cellWidth
+            }
+        }
+    }
+    var user_account = ""
+    let stories = StoriesVC(nibName: "StoriesVC", bundle: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +56,29 @@ class UserProfileVC: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
         
+        // Check condition for hide or show btns (edit profile, follow, message). Hide follow, message btn if user profile is from current user. Whereas hide edit profile.
+        if user_account == userStatus.user_account {
+            // Hide follow and message btn.
+            messageBtn.isHidden = true
+            followBtn.isHidden = true
+        } else {
+            editProfileBtn.isHidden = true
+        }
         
+        // Setup for stories VC
+        stories.rootVC = self.rootView
+        stories.getPost(for: userStatus.user_account)
         
+        postData.removeAll()
+        
+        fetchDataFor(user_account: self.user_account, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+    }
+    
+    // MARK: setup UI for view
     private func setupUI(){
         self.nameLabel.text = userStatus.user_account
         self.displayName.text = userStatus.display_name
@@ -42,95 +86,116 @@ class UserProfileVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "PostImageCell", bundle: nil), forCellWithReuseIdentifier: "PostImageCell")
+        collectionView.isScrollEnabled = false
         
-        storyCollectionView.delegate = self
-        storyCollectionView.dataSource = self
-        storyCollectionView.register(UINib(nibName: "StoryCell", bundle: nil), forCellWithReuseIdentifier: "StoryCell")
-        
-        for index in 1...9 {
-            images.append(UIImage(named: "im\(index)")!)
-        }
-        
-        
-        let cellWidth = (self.view.frame.width-6) / 3
-        let collumn = Int(images.count/3)
-        
-        if images.count%3 != 0 {
-            let collumn = Int(images.count/3)
-            
-            collectionViewHeight.constant = CGFloat(collumn + 1)*cellWidth
-        } else {
-            collectionViewHeight.constant = CGFloat(collumn)*cellWidth
-        }
-        
-        
-        [followBtn,messageBtn].forEach { btn in
+        [editProfileBtn,messageBtn].forEach { btn in
             btn?.layer.borderWidth = 0.6
             btn?.layer.borderColor = UIColor.lightGray.cgColor
         }
         
+        // Config for description text field
+        descriptionInfo.translatesAutoresizingMaskIntoConstraints = true
+        descriptionInfo.sizeToFit()
+        descriptionInfo.isScrollEnabled = false
+    }
+    
+    // MARK: Fetch data for user
+    func fetchDataFor(user_account:String, completion:(()->Void)?) {
+        // Get avatar
+        ServerFirebase.getAvatarImageURL(user_account: userStatus.user_account) { urlRes in
+            if let url = urlRes {
+                self.avatarImage.sd_setImage(with: url, completed: nil)
+            }
+        }
+    
+        ServerFirebase.getUserProfile(user_account: user_account) { res in
+            if let response = res {
+                if let followers = response["followers"] {
+                    self.followersCount.text = "\(followers)"
+                }
+                if let following = response["following"] {
+                    self.followingCount.text = "\(following)"
+                }
+                if let posted = response["posted_id"] as? [String] {
+                    self.postCount.text = ("\(posted.count)")
+                }
+                
+            }
+        }
         
-        
-        
+        // Get post data
+        ServerFirebase.getUserPost(user_account: userStatus.user_account) { data in
+            self.postData.append(data)
+            self.collectionView.reloadData()
+        } failed: {}
     }
     
     
-    // MARK: - Buttons action.
-
+    // MARK: Following, followers and post count action
 
     @IBAction func postAction(_ sender: Any) {
         print("post clicked")
     }
+    
     @IBAction func followerAction(_ sender: Any) {
         print("follower clicked")
     }
+    
     @IBAction func followingAction(_ sender: Any) {
         print("following clicked")
     }
+    
+    // MARK: Edit profile button clicked
     @IBAction func editProfile(_ sender: Any) {
+        // Present edit profile view
         let editProfileVC = EditProfileVC(nibName: "EditProfileVC", bundle: nil)
-        navigationController?.pushViewController(editProfileVC, animated: true)
+        editProfileVC.rootView = self
+        self.dismiss(animated: true) {
+            self.rootView?.navigationController?.pushViewController(editProfileVC, animated: true)
+        }
     }
     
+    @IBAction func followBtnAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func messageBtnAction(_ sender: Any) {
+        
+    }
 }
 
+// MARK: Collection View extension
 extension UserProfileVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.collectionView {
-            return images.count
-        }
-        if collectionView == self.storyCollectionView {
-            return storyData.count
-        }
-        return 0
+        return postData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.collectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCell", for: indexPath) as!
-                PostImageCell
-            cell.setImage(imageData: images[indexPath.row])
-            return cell
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCell", for: indexPath) as!
+            PostImageCell
+//        cell.setImage(imageData: images[indexPath.row])
+        cell.tapIntoImage = { [self] in
+            print(indexPath.row)
+            
+            self.stories.scrollToPost = {
+                self.stories.tableView.scrollToRow(at: IndexPath(row: indexPath.row, section: 0), at: .top, animated: false)
+            }
+            
+            self.rootView?.navigationController?.pushViewController(stories, animated: true)
+            
         }
-        if collectionView == self.storyCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCell", for: indexPath) as! StoryCell
-            cell.fillData(image: nil, name: storyData[indexPath.row])
-            cell.name.text = ""
-//            cell.containerView.layer.cornerRadius = 30
-            return cell
-        }
-        return UICollectionViewCell()
+        
+        return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.collectionView {
-            let cellWidth = (self.view.frame.width-6) / 3
-            return CGSize(width: cellWidth, height: cellWidth)
-        }
-        if collectionView == self.storyCollectionView {
-            return CGSize(width: 80.0, height: 100.0)
-        }
-        return CGSize(width: 0, height: 0)
+        
+        let cellWidth = (self.view.frame.width-6) / 3
+        return CGSize(width: cellWidth, height: cellWidth)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

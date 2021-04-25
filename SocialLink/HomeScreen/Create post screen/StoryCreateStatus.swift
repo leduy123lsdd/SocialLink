@@ -89,14 +89,3 @@ extension StoryCreateStatus: UITextViewDelegate {
         }
     }
 }
-
-struct Comment {
-    var user_comment:String?
-    var comment_content:String?
-    var reply:[Reply]?
-}
-
-struct Reply {
-    var user_reply:String?
-    var reply_content:String?
-}

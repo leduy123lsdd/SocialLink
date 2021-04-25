@@ -115,7 +115,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="792.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Con buồn quá cô chú ơi Con buồn quá cô chú ơi Con buồn quá cô chú ơi Con buồn quá cô chú ơi " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9V-M3-lYy" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="387.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="235.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -129,10 +129,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XgK-lj-W9p" customClass="ImageSlideshow" customModule="ImageSlideshow">
-                                                <rect key="frame" x="0.0" y="392.5" width="414" height="400"/>
+                                                <rect key="frame" x="0.0" y="240.5" width="414" height="552"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="400" id="PZR-Fq-kL3"/>
+                                                    <constraint firstAttribute="width" secondItem="XgK-lj-W9p" secondAttribute="height" multiplier="3:4" id="zoN-b6-5IZ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -163,7 +163,7 @@
                                     <constraint firstAttribute="trailing" secondItem="L4u-Tx-TSl" secondAttribute="trailing" constant="10" id="hKd-Kt-sCW"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8B-aC-oGs">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8B-aC-oGs" userLabel="button view">
                                 <rect key="frame" x="0.0" y="848" width="414" height="30"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q2-fe-sc1">
@@ -172,11 +172,14 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-0C-WgR">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title=" Like">
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <imageReference key="image" image="hand.thumbsup" catalog="system" symbolScale="medium"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="likeBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2t2-M2-QT8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZO-kY-6pf">
                                                 <rect key="frame" x="138" y="0.0" width="138" height="30"/>
@@ -198,6 +201,9 @@
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <imageReference key="image" image="arrowshape.turn.up.right" catalog="system" symbolScale="medium"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="shareBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="h6h-oW-HaY"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -225,12 +231,12 @@
                         </subviews>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSp-SO-iiV" userLabel="likes">
-                        <rect key="frame" x="0.0" y="817.5" width="414" height="30"/>
+                        <rect key="frame" x="0.0" y="817.5" width="414" height="35"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJj-sF-J4N">
-                                <rect key="frame" x="10" y="5" width="394" height="20"/>
+                                <rect key="frame" x="10" y="0.0" width="394" height="35"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️ 100 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxv-UF-26K">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️ 0 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxv-UF-26K">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="9QV-lO-qtw"/>
@@ -259,15 +265,16 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="Adp-Bb-pm9"/>
+                            <constraint firstItem="lJj-sF-J4N" firstAttribute="top" secondItem="MSp-SO-iiV" secondAttribute="top" id="9Em-wR-tfw"/>
+                            <constraint firstAttribute="height" constant="35" id="Adp-Bb-pm9"/>
                             <constraint firstAttribute="trailing" secondItem="lJj-sF-J4N" secondAttribute="trailing" constant="10" id="OvU-on-f3Q"/>
                             <constraint firstItem="lJj-sF-J4N" firstAttribute="leading" secondItem="MSp-SO-iiV" secondAttribute="leading" constant="10" id="VhJ-Cg-q7p"/>
-                            <constraint firstItem="lJj-sF-J4N" firstAttribute="centerY" secondItem="MSp-SO-iiV" secondAttribute="centerY" id="k55-y7-OVS"/>
+                            <constraint firstAttribute="bottom" secondItem="lJj-sF-J4N" secondAttribute="bottom" id="sXn-7e-BMT"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="MSp-SO-iiV" firstAttribute="bottom" secondItem="XgK-lj-W9p" secondAttribute="bottom" id="G2C-wo-g4f"/>
+                    <constraint firstItem="MSp-SO-iiV" firstAttribute="bottom" secondItem="XgK-lj-W9p" secondAttribute="bottom" constant="5" id="G2C-wo-g4f"/>
                     <constraint firstItem="MSp-SO-iiV" firstAttribute="leading" secondItem="XgK-lj-W9p" secondAttribute="leading" id="QXi-gk-WpS"/>
                     <constraint firstAttribute="bottom" secondItem="zey-Dw-sMc" secondAttribute="bottom" id="bO8-Ch-Io7"/>
                     <constraint firstItem="zey-Dw-sMc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="loT-nl-6dv"/>
@@ -278,7 +285,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="caption" destination="D9V-M3-lYy" id="wiW-PS-VA9"/>
+                <outlet property="comments" destination="wxi-RT-3YV" id="Ywf-JF-Xpz"/>
+                <outlet property="displayAvatar" destination="dRf-Xg-K76" id="t4B-PC-QEv"/>
+                <outlet property="displayName" destination="UNB-pe-E57" id="mIM-aO-9Y4"/>
+                <outlet property="likeBtn" destination="W8Q-0C-WgR" id="FJg-WM-Lnm"/>
+                <outlet property="likes" destination="Mxv-UF-26K" id="nWs-2D-RJd"/>
                 <outlet property="slideshow" destination="XgK-lj-W9p" id="1Ea-GU-zuK"/>
+                <outlet property="uploadTime" destination="PMG-nT-6aX" id="g4L-wV-cvQ"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="189.17410714285714"/>
         </tableViewCell>
