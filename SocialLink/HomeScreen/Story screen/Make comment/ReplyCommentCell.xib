@@ -87,20 +87,26 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0E-XX-NFD">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d0E-XX-NFD">
                                                 <rect key="frame" x="0.0" y="137" width="373" height="20"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhq-Ko-tHd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="L8G-Bd-K8I"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="0.0" width="14.5" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h0-gZ-T9C">
+                                                        <rect key="frame" x="24.5" y="0.0" width="37.5" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzI-cP-D4i">
-                                                        <rect key="frame" x="30" y="0.0" width="293" height="20"/>
+                                                        <rect key="frame" x="72" y="0.0" width="59" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="59" id="xDa-Mb-mtq"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <state key="normal" title="Reply">
                                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,7 +116,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3U-9H-A2f">
-                                                        <rect key="frame" x="323" y="0.0" width="50" height="20"/>
+                                                        <rect key="frame" x="141" y="0.0" width="232" height="20"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
@@ -141,8 +147,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="amountLikes" destination="4h0-gZ-T9C" id="mgQ-pN-BV9"/>
                 <outlet property="avatarImage" destination="ZoY-1j-cEf" id="mXG-k9-Uw9"/>
                 <outlet property="commentLabel" destination="d1W-Hs-gHz" id="5y1-oZ-63a"/>
+                <outlet property="heartBtn" destination="h2H-YP-CBR" id="eeJ-1n-aPP"/>
                 <outlet property="likeButton" destination="h2H-YP-CBR" id="oMS-rI-07v"/>
                 <outlet property="replyButton" destination="fzI-cP-D4i" id="Q39-Wf-57q"/>
                 <outlet property="uploadTimeLabel" destination="Qhq-Ko-tHd" id="7Qk-e1-ivT"/>

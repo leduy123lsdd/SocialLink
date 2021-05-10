@@ -6,8 +6,6 @@
 //
 
 import UIKit
-//import FirebaseUI
-import Firebase
 
 class UserProfileVC: UIViewController {
     typealias FirebaseData = [String:Any]
@@ -31,6 +29,11 @@ class UserProfileVC: UIViewController {
     
     @IBOutlet var descriptionInfo: UITextView!
     
+    @IBOutlet var descriptionLabel: PaddingLabel!
+    
+    
+    @IBOutlet var backBtn: UIButton!
+    
 //    var images = [UIImage]()
     let storyData = ["doc","cat","bird","mouse","banana","mango"]
     var postData = [[String:Any]]() {
@@ -44,6 +47,8 @@ class UserProfileVC: UIViewController {
             } else {
                 self.collectionViewHeight.constant = CGFloat(collumn)*cellWidth
             }
+            
+            postData = postData.sorted(by: {($0["time"] as! Double) > ($1["time"] as! Double)})
         }
     }
     var user_account = ""
@@ -56,19 +61,8 @@ class UserProfileVC: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
         
-        // Check condition for hide or show btns (edit profile, follow, message). Hide follow, message btn if user profile is from current user. Whereas hide edit profile.
-        if user_account == userStatus.user_account {
-            // Hide follow and message btn.
-            messageBtn.isHidden = true
-            followBtn.isHidden = true
-        } else {
-            editProfileBtn.isHidden = true
-        }
-        
         // Setup for stories VC
         stories.rootVC = self.rootView
-        stories.getPost(for: userStatus.user_account)
-        
         postData.removeAll()
         
         fetchDataFor(user_account: self.user_account, completion: nil)
@@ -76,6 +70,20 @@ class UserProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        updatePost()
+        collectionView.reloadData()
+        navigationController?.isNavigationBarHidden = true
+        
+        // Check condition for hide or show btns (edit profile, follow, message). Hide follow, message btn if user profile is from current user. Whereas hide edit profile.
+        if user_account == userStatus.user_account {
+            // Hide follow and message btn.
+            messageBtn.isHidden = true
+            followBtn.isHidden = true
+        } else {
+            editProfileBtn.isHidden = true
+            messageBtn.isHidden = false
+            followBtn.isHidden = false
+        }
     }
     
     // MARK: setup UI for view
@@ -97,12 +105,14 @@ class UserProfileVC: UIViewController {
         descriptionInfo.translatesAutoresizingMaskIntoConstraints = true
         descriptionInfo.sizeToFit()
         descriptionInfo.isScrollEnabled = false
+        descriptionInfo.isUserInteractionEnabled = false
+        
     }
     
     // MARK: Fetch data for user
     func fetchDataFor(user_account:String, completion:(()->Void)?) {
         // Get avatar
-        ServerFirebase.getAvatarImageURL(user_account: userStatus.user_account) { urlRes in
+        ServerFirebase.getAvatarImageURL(user_account: user_account) { urlRes in
             if let url = urlRes {
                 self.avatarImage.sd_setImage(with: url, completed: nil)
             }
@@ -119,14 +129,43 @@ class UserProfileVC: UIViewController {
                 if let posted = response["posted_id"] as? [String] {
                     self.postCount.text = ("\(posted.count)")
                 }
+                if let bio = response["bio"] as? String {
+                    self.descriptionInfo.text = bio
+                    if bio == "" {
+                        self.descriptionInfo.isHidden = true
+                        self.descriptionLabel.isHidden = true
+                    } else {
+                        self.descriptionInfo.text = bio
+                        self.descriptionInfo.sizeToFit()
+                        self.descriptionLabel.isHidden = false
+                    }
+                }
                 
             }
         }
-        
-        // Get post data
-        ServerFirebase.getUserPost(user_account: userStatus.user_account) { data in
-            self.postData.append(data)
-            self.collectionView.reloadData()
+
+    }
+    
+    
+    private func updatePost(){
+        ServerFirebase.getUserPost(user_account: self.user_account) { data in
+
+            let newPost = data["post_id"] as! String
+            var existed = false
+
+            for post in self.postData {
+                let post = post["post_id"] as! String
+                if post == newPost {
+                    existed = true
+                    break
+                }
+            }
+
+            if !existed {
+                self.postData.append(data)
+                self.stories.postData = self.postData
+                self.collectionView.reloadData()
+            }
         } failed: {}
     }
     
@@ -150,10 +189,23 @@ class UserProfileVC: UIViewController {
         // Present edit profile view
         let editProfileVC = EditProfileVC(nibName: "EditProfileVC", bundle: nil)
         editProfileVC.rootView = self
-        self.dismiss(animated: true) {
-            self.rootView?.navigationController?.pushViewController(editProfileVC, animated: true)
+        editProfileVC.reloadUserInfo = {
+            self.fetchDataFor(user_account: self.user_account, completion: nil)
         }
+//        self.dismiss(animated: true) {
+            self.rootView?.navigationController?.pushViewController(editProfileVC, animated: true)
+//        }
     }
+    
+    @IBAction func backBtn(_ sender: Any) {
+        if let navi = self.navigationController {
+            navi.popToViewController(rootView!, animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+    }
+    
     
     @IBAction func followBtnAction(_ sender: Any) {
         
@@ -165,25 +217,43 @@ class UserProfileVC: UIViewController {
 }
 
 // MARK: Collection View extension
-extension UserProfileVC:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension UserProfileVC:UICollectionViewDelegate,
+                        UICollectionViewDataSource,
+                        UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        
         return postData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Data for present of this cell
+        let data = postData[indexPath.row]
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostImageCell", for: indexPath) as!
             PostImageCell
-//        cell.setImage(imageData: images[indexPath.row])
+        
+        // Present first image of post
+        if let images_url = data["images_url"] as? [URL] {
+            cell.postImage.sd_setImage(with: images_url[0], completed: nil)
+        }
+        
         cell.tapIntoImage = { [self] in
-            print(indexPath.row)
+            print("duy dep trai ")
             
             self.stories.scrollToPost = {
-                self.stories.tableView.scrollToRow(at: IndexPath(row: indexPath.row, section: 0), at: .top, animated: false)
+                self.stories.tableView.scrollToRow(at: indexPath,
+                                                   at: .top,
+                                                   animated: false)
             }
             
-            self.rootView?.navigationController?.pushViewController(stories, animated: true)
+            self.stories.user = self.user_account
+            
+            self.rootView?.navigationController?.pushViewController(stories,
+                                                                    animated: true)
             
         }
         
@@ -191,18 +261,29 @@ extension UserProfileVC:UICollectionViewDelegate, UICollectionViewDataSource, UI
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        // Data for present of this cell
+//        let data = postData[indexPath.row]
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let cellWidth = (self.view.frame.width-6) / 3
         return CGSize(width: cellWidth, height: cellWidth)
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
     }
     
 }

@@ -31,11 +31,6 @@ class LoginVC: UIViewController {
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let color2 = UIColor(rgb: 0x121212)
-        
-//        backgroundView.backgroundColor = color2
         setupGradientColor()
     }
     
@@ -55,6 +50,8 @@ class LoginVC: UIViewController {
         defaultDistanceStackToBottom = distanceStackToBottom.constant
         
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        
         
         loginBtn.layer.cornerRadius = 25
         
@@ -105,7 +102,6 @@ class LoginVC: UIViewController {
             Alertift.alert(title: "Try again please :)", message: "In case you had forgoten your password. Click forgot password")
                 .action(.default("OK"))
                 .show(on: self)
-            print("login failed")
         }
 
     }

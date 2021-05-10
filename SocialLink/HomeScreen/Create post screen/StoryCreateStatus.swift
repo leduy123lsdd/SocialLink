@@ -8,10 +8,10 @@
 import UIKit
 import ProgressHUD
 import YPImagePicker
-
 class StoryCreateStatus: UIViewController {
     
     var pickedImages:[UIImage]?
+    
     @IBOutlet var caption: UITextField!
     
     var pickerViewRoot:YPImagePicker?
@@ -59,7 +59,9 @@ class StoryCreateStatus: UIViewController {
         
         // Push post to server.
         ServerFirebase.createNewPost(newPost: newPost) {
+            
             ProgressHUD.showSucceed()
+            
         } failed: {
             ProgressHUD.showFailed()
         }

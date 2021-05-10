@@ -7,6 +7,7 @@
 
 import UIKit
 import ProgressHUD
+import Alertift
 
 class MakeCommentVC: UIViewController {
     
@@ -56,6 +57,8 @@ class MakeCommentVC: UIViewController {
     var replying_to_comment_id:String = ""
     var replying_at = 0
     
+    
+    
     // MARK: Send comment
     @IBAction func sendBtnAction(_ sender: Any) {
         
@@ -89,7 +92,8 @@ class MakeCommentVC: UIViewController {
             "message":message,
             "user_account": userStatus.user_account,
             "time" : uploadTime,
-            "comment_id": comment_id
+            "comment_id": comment_id,
+            "liked_by_users":[String]()
         ]
         
         ServerFirebase.uploadComment(post_id: self.postId!, newComment: newComment) {
@@ -107,7 +111,8 @@ class MakeCommentVC: UIViewController {
             "message":message,
             "time":uploadTime,
             "type":"reply",
-            "reply_id":("\(userStatus.user_account)\(uploadTime)")
+            "reply_id":("\(userStatus.user_account)\(uploadTime)"),
+            "liked_by_users":[String]()
         ]
         
         ServerFirebase.uploadReplyToComment(newReply: newReply, comment_id: comment_id) {
@@ -156,13 +161,6 @@ class MakeCommentVC: UIViewController {
             // Assign comments
             self.commentsData = dataRes
             
-            var index = 0
-            for comment in self.commentsData {
-                
-                
-                index += 1
-            }
-            
             // Reload tableview to present comments
             self.tableView.reloadData()
             ProgressHUD.dismiss()
@@ -174,7 +172,6 @@ class MakeCommentVC: UIViewController {
     // MARK: close replying BUTTon Action
     @IBAction func closeReplying(_ sender: Any) {
         isHideReplyingView(true)
-        isComment = true
     }
     
     // MARK: Add emoji
@@ -202,9 +199,6 @@ class MakeCommentVC: UIViewController {
     @IBAction func btn8(_ sender: Any) {
         commentSection.text! += emoji[7]
     }
-    
-    // MARK: Load avatar for each comments
-    var user_account_filter = [[String:Any]]()
 }
 
 // MARK: TableView
@@ -222,7 +216,8 @@ extension MakeCommentVC: UITableViewDelegate, UITableViewDataSource {
         let message = comment["message"] as! String
         let user_account = comment["user_account"] as! String
         let avatar = comment["avatarUrl"] as? URL
-
+        let amount_like = comment["liked_by_users"] as? [String]
+        let comment_id = comment["comment_id"] as! String
         
         if type == "comment" {
             // For comments cells
@@ -230,71 +225,106 @@ extension MakeCommentVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.setComment(message,user_account: user_account)
             
-            let cmt_id = comment["comment_id"] as! String
-            
-            // Set avatar for comments and replies
-            ServerFirebase.getAvatarImageURL(user_account: user_account) { urlRes in
-                guard let url = urlRes else {return}
-                cell.avatarImage.sd_setImage(with: url, completed: nil)
-            }
             
             // Set and get avatar
             if let url = avatar {
-                
                 cell.avatarImage.sd_setImage(with: url, completed: nil)
-                
             } else {
                 ServerFirebase.getAvatarImageURL(user_account: user_account) { urlRes in
                     guard let url = urlRes else {return}
                     cell.avatarImage.sd_setImage(with: url, completed: nil)
-                    
                     self.commentsData[indexPath.row]["avatarUrl"] = "\(url)"
+                }
+            }
+            
+            if let hideReply = comment["hide_comment"] {
+                let value = hideReply as! String
+                if value == "true" {
+                    cell.viewAllReplies.isHidden = true
+                }
+            } else {
+                cell.viewAllReplies.isHidden = false
+            }
+            
+            if let replies = comment["replies"] {
+                let rep = replies as! [[String:Any]]
+                if rep.count == 0 {
+                    cell.viewAllReplies.isHidden = true
+                }
+            } else {
+                ServerFirebase.getMultipReply(comment_id: comment_id) { replyArr in
+                    self.commentsData[indexPath.row]["replies"] = (replyArr as! [[String:Any]])
+                    self.tableView.reloadData()
                 }
             }
             
             // Get reply action
             cell.viewAllRepliesAction = {
-                
                 cell.viewAllReplies.isHidden = true
+                self.commentsData[indexPath.row]["hide_comment"] = "true"
                 
-                ServerFirebase.getReply(comment_id: cmt_id) { replyArr in
-                    let comment_id = comment["comment_id"] as! String
-                    
-                    // Find in commentsData, clear all current reply with type = reply and commen_id equal to this comment's comment_id
-                    var index2 = 0
-                    for i in self.commentsData {
-                        let id = i["comment_id"] as! String
-                        let type = i["type"] as! String
-                        if comment_id == id && type == "reply" {
-                            self.commentsData.remove(at: index2)
-                        }
-                        index2 += 1
+                // Find in commentsData, clear all current reply with type = reply and commen_id equal to this comment's comment_id
+                var index2 = 0
+                for i in self.commentsData {
+                    let id = i["comment_id"] as! String
+                    let type = i["type"] as! String
+                    if comment_id == id && type == "reply" {
+                        self.commentsData.remove(at: index2)
                     }
-                    
-                    // Replies get from server.
-                    var replies = (replyArr as! [[String:Any]])
-                    var index = 0
-                    
-                    // Sort replies by time, from past to present.
-                    replies = replies.sorted(by: {($0["time"] as! Double) < ($1["time"] as! Double)})
-                    
-                    for rep in replies {
-                        self.commentsData.insert(rep, at: indexPath.row + 1 + index)
-                        index += 1
-                    }
-                    
-                    self.tableView.reloadData()
+                    index2 += 1
                 }
+                
+                // Replies get from server.
+                var replies = comment["replies"] as! [[String:Any]]
+                var index = 0
+                
+                // Sort replies by time, from past to present.
+                replies = replies.sorted(by: {($0["time"] as! Double) < ($1["time"] as! Double)})
+                
+                for rep in replies {
+                    self.commentsData.insert(rep, at: indexPath.row + 1 + index)
+                    index += 1
+                }
+                
+                self.tableView.reloadData()
+                
             }
             
             // Action when user clicked on reply button
             cell.replyAction = {
-                self.isComment = false
                 self.isHideReplyingView(false)
                 self.replyingToWho.text = "Replying to \(comment["user_account"] ?? "nil")"
                 
                 self.replying_to_comment_id = comment["comment_id"] as! String
                 self.replying_at = indexPath.row
+            }
+            
+            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+            cell.heartBtn.tintColor = UIColor.gray
+            
+            // Amount like
+            if let likes = amount_like {
+                cell.amountLikes.text = "\(likes.count) likes"
+                
+                if likes.count > 0 {
+                    for user in likes {
+                        if user == userStatus.user_account {
+                            cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                            cell.heartBtn.tintColor = UIColor.systemPink
+                            break
+                        }
+                    }
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = UIColor.gray
+                }
+            }
+            
+            cell.likeCommentAction = {
+                ServerFirebase.like_unlike_comment(comment_id: comment_id, postId: self.postId!, fromUser: userStatus.user_account) { data in
+                    self.commentsData[indexPath.row] = data
+                    self.tableView.reloadData()
+                }
             }
             
             return cell
@@ -308,9 +338,7 @@ extension MakeCommentVC: UITableViewDelegate, UITableViewDataSource {
             
             // Set avatar for comments and replies
             if let url = avatar {
-                
                 cell.avatarImage.sd_setImage(with: url, completed: nil)
-                
             } else {
                 ServerFirebase.getAvatarImageURL(user_account: user_account) { urlRes in
                     guard let url = urlRes else {return}
@@ -329,6 +357,36 @@ extension MakeCommentVC: UITableViewDelegate, UITableViewDataSource {
                 self.replying_at = indexPath.row
             }
             
+            cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+            cell.heartBtn.tintColor = UIColor.gray
+            
+            // Amount like
+            if let likes = amount_like {
+                cell.amountLikes.text = "\(likes.count) likes"
+                
+                if likes.count > 0 {
+                    for user in likes {
+                        if user == userStatus.user_account {
+                            cell.heartBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                            cell.heartBtn.tintColor = UIColor.systemPink
+                            break
+                        }
+                    }
+                } else {
+                    cell.heartBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                    cell.heartBtn.tintColor = UIColor.gray
+                }
+            }
+            
+            // Process like or unlike action of cell
+            cell.likeReplyAction = {
+                ServerFirebase.like_unlike_Reply(comment_id: comment_id, reply_id: reply_id, fromUser: userStatus.user_account) { dataRes in
+                    self.commentsData[indexPath.row] = dataRes
+                    self.tableView.reloadData()
+
+                }
+            }
+            
             return cell
         }
         
@@ -337,6 +395,84 @@ extension MakeCommentVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         commentSection.endEditing(true)
     }
+    
+    // MARK: Swipe for delete cell action
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let comment = commentsData[indexPath.row]
+        
+        // Owner of comment
+        let user_account_comment = comment["user_account"] as! String
+        // Owner of current user login
+        let user_login = userStatus.user_account
+        
+        // Remove action
+        let removeAction = UIContextualAction(style: .normal, title: "") { (action, view, actionPerformed) in
+            
+            let comment_type = comment["type"] as! String
+            let comment_id = comment["comment_id"] as! String
+            
+            if comment_type == "comment" {
+                Alertift.alert(title: "Confirm", message: "Delete this comment?")
+                    .action(.destructive("Delete")) {
+                        ServerFirebase.deleteComment(comment_id: comment_id, at: self.postId ?? "") {
+                            self.commentsData.removeAll()
+                            
+                            self.getComments(post_id: self.postId!)
+                        }
+                    }
+                    .action(.cancel("Cancel"))
+                    .show()
+            }
+            
+            if comment_type == "reply" {
+                Alertift.alert(title: "Confirm", message: "Delete this reply?")
+                    .action(.destructive("Delete")) {
+                        guard let reply_id = comment["reply_id"] as? String else {return}
+                        
+                        ServerFirebase.deleteReply(comment_id: comment_id, reply_id: reply_id) {
+                            self.commentsData.remove(at: indexPath.row)
+                            self.tableView.reloadData()
+                        }
+                    }
+                    .action(.cancel("Cancel"))
+                    .show()
+            }
+            
+        }
+        
+        removeAction.backgroundColor = .red
+        removeAction.image = UIImage(systemName: "trash")
+        
+        // Reply action
+        let replyActon = UIContextualAction(style: .normal, title: "") { (action, view, actionPerformed) in
+            self.isHideReplyingView(false)
+            self.replyingToWho.text = "Replying to \(comment["user_account"] ?? "nil")"
+            
+            self.replying_to_comment_id = comment["comment_id"] as! String
+            self.replying_at = indexPath.row
+        }
+        
+        replyActon.backgroundColor = .gray
+        replyActon.image = UIImage(systemName: "arrow.turn.up.left")
+        
+        if user_account_comment == user_login {
+            // Can reply and delete comment
+            return UISwipeActionsConfiguration(actions: [removeAction,replyActon])
+        } else {
+            // Can reply comment
+            return UISwipeActionsConfiguration(actions: [replyActon])
+        }
+        
+    }
+    
+    func setCell(color:UIColor, at indexPath: IndexPath){
+            // I can change external things
+            self.view.backgroundColor = color
+            // Or more likely change something related to this cell specifically.
+            let cell = tableView.cellForRow(at: indexPath )
+            cell?.backgroundColor = color
+        }
     
     func updateAvatarFor(cell:UITableViewCell, with url:URL) {
         let commentCell = cell as? CommentCell
@@ -403,11 +539,13 @@ extension MakeCommentVC {
     
     // MARK: Hide or show replying label, false: present, true: hide.
     private func isHideReplyingView(_ value:Bool = false){
+        isComment = value
+        
         if value {
-            self.replyingLabelHeight.constant = 0
+            replyingLabelHeight.constant = 0
             hideReplyingButton.isHidden = true
         } else {
-            self.replyingLabelHeight.constant = 40
+            replyingLabelHeight.constant = 40
             hideReplyingButton.isHidden = false
         }
         UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut) {

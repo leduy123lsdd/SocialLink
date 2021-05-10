@@ -166,10 +166,11 @@ class MainContentCell: UITableViewCell {
         let userProfileVC = UserProfileVC(nibName: "UserProfileVC", bundle: nil)
         userProfileVC.user_account = displayName.text ?? ""
         userProfileVC.rootView = rootVC
-        rootVC?.present(userProfileVC, animated: true, completion: nil)
+        
+        rootVC?.navigationController?.pushViewController(userProfileVC, animated: true)
+
     }
 }
-
 
 extension MainContentCell: ImageSlideshowDelegate {
     func imageSlideshow(_ imageSlideshow: ImageSlideshow, didChangeCurrentPageTo page: Int) {

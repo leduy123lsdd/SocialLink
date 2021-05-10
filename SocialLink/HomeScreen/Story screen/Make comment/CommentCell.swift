@@ -15,6 +15,12 @@ class CommentCell: UITableViewCell {
     @IBOutlet var replyButton: UIButton!
     @IBOutlet var viewAllReplies: UIButton!
     
+    
+    @IBOutlet var amountLikes: UILabel!
+    
+    
+    @IBOutlet var heartBtn: UIButton!
+    
     var doubleTapHandler:(()->Void)?
     var replyAction:(()->Void)?
     var viewAllRepliesAction:(()->Void)?
@@ -89,6 +95,13 @@ class CommentCell: UITableViewCell {
     @IBAction func viewAllReplies(_ sender: Any) {
         if let viewRepliesClicked = viewAllRepliesAction {
             viewRepliesClicked()
+        }
+    }
+    
+    var likeCommentAction:(()->Void)?
+    @IBAction func likeActionBtn(_ sender: Any) {
+        if let like = likeCommentAction {
+            like()
         }
     }
 }

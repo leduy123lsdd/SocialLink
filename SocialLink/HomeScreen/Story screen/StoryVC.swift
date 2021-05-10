@@ -31,6 +31,7 @@ class StoryVC: UIViewController {
             for post in self.postData {
                 if (post["post_id"] as! String) == (data["post_id"] as! String) {
                     existed = true
+                    break
                 }
             }
             
@@ -124,9 +125,6 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-        
-        // Update row when new comment is added
-    
         return cell
         
     }

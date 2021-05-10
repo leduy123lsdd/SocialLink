@@ -9,6 +9,7 @@ import UIKit
 import YPImagePicker
 import ProgressHUD
 import SDWebImage
+import Alertift
 
 class EditProfileVC: UIViewController {
     
@@ -29,6 +30,7 @@ class EditProfileVC: UIViewController {
     var config = YPImagePickerConfiguration()
     var picker:YPImagePicker!
     var pickedImages = [UIImage]()
+    var reloadUserInfo:(()->Void)?
     
     // MARK: View did load
     override func viewDidLoad() {
@@ -100,7 +102,9 @@ class EditProfileVC: UIViewController {
             self.avatarImage.image = self.pickedImages.first
             ProgressHUD.showSuccess()
             self.navigationController?.popViewController(animated: true)
-            
+            if let reload = self.reloadUserInfo {
+                reload()
+            }
         } failed: {
             ProgressHUD.showFailed()
         }
@@ -138,8 +142,14 @@ class EditProfileVC: UIViewController {
     
     // MARK: Sign out button action 
     @IBAction func signOutBtnAction(_ sender: Any) {
-        userStatus = UserStatus()
-        rootView?.navigationController?.popToRootViewController(animated: true)
+        Alertift.alert(title: "Confirm", message: "Really want to log out ?")
+            .action(.destructive("Sign Out")) {
+                userStatus = UserStatus()
+                self.rootView?.navigationController?.popToRootViewController(animated: true)
+                
+            }
+            .action(.cancel("Cancel"))
+            .show()
     }
     
     //MARK: Setup ui functions

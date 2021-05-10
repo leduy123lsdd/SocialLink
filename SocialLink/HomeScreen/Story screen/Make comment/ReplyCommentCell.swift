@@ -15,6 +15,10 @@ class ReplyCommentCell: UITableViewCell {
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var replyButton: UIButton!
     
+    
+    @IBOutlet var heartBtn: UIButton!
+    @IBOutlet var amountLikes: UILabel!
+    
     var replyBtnAction:(()->Void)?
 
     override func awakeFromNib() {

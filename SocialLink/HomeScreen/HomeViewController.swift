@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     var picker:YPImagePicker!
     
     var postsData = [String:Any]()
+    
 
     
     // MARK: Buttons functions
@@ -65,11 +66,8 @@ class HomeViewController: UIViewController {
             self.storyCreateStatus.pickedImages = pickedImages
             self.storyCreateStatus.pickerViewRoot = picker
             
-            
             picker!.pushViewController(self.storyCreateStatus, animated: true)
         }
-        
-        
         
         present(picker, animated: true, completion: nil)
     }
@@ -88,6 +86,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         storyVC.rootVC = self
+        searchUserVC.rootVC = self 
         
         userProfileVC.rootView = self
         

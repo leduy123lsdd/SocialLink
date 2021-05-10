@@ -38,6 +38,7 @@
 		0CA5C4892605F3C600D929CC /* MainContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA5C4872605F3C600D929CC /* MainContentCell.xib */; };
 		0CA5C48E2605F3D500D929CC /* SubStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA5C48C2605F3D500D929CC /* SubStoryCell.swift */; };
 		0CA5C48F2605F3D500D929CC /* SubStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA5C48D2605F3D500D929CC /* SubStoryCell.xib */; };
+		0CB2EA6826467FF700829D55 /* SearchUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB2EA6726467FF700829D55 /* SearchUserService.swift */; };
 		0CBA94EE261EB95B003EB371 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA94EC261EB95B003EB371 /* PostImageCell.swift */; };
 		0CBA94EF261EB95B003EB371 /* PostImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CBA94ED261EB95B003EB371 /* PostImageCell.xib */; };
 		0CBF26D82608E53200043BA9 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF26D62608E53200043BA9 /* StoryCell.swift */; };
@@ -88,6 +89,7 @@
 		0CA5C4872605F3C600D929CC /* MainContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainContentCell.xib; sourceTree = "<group>"; };
 		0CA5C48C2605F3D500D929CC /* SubStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStoryCell.swift; sourceTree = "<group>"; };
 		0CA5C48D2605F3D500D929CC /* SubStoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubStoryCell.xib; sourceTree = "<group>"; };
+		0CB2EA6726467FF700829D55 /* SearchUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserService.swift; sourceTree = "<group>"; };
 		0CBA94EC261EB95B003EB371 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		0CBA94ED261EB95B003EB371 /* PostImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageCell.xib; sourceTree = "<group>"; };
 		0CBF26D62608E53200043BA9 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				0CBF26FD2609EA7000043BA9 /* FirebaseDatabase.swift */,
 				0C6D35E2260F46D900D27DB0 /* UserStatus.swift */,
+				0CB2EA6726467FF700829D55 /* SearchUserService.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB2EA6826467FF700829D55 /* SearchUserService.swift in Sources */,
 				0CD07DF626258DFC00F2FAB0 /* ReplyCommentCell.swift in Sources */,
 				0C80CA1F25FCA4010094FCC0 /* CreatePostVC.swift in Sources */,
 				0C76C34626353515001CD4DC /* StoriesVC.swift in Sources */,

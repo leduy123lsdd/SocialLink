@@ -40,7 +40,8 @@ class CreateAccountVC: UIViewController {
             "following":0,
             "posted_id":[String](),
             "amount_post":0,
-            "avatarUrl":""
+            "avatarUrl":"",
+            "bio":""
         ]
         
         // Connect to server and sign new user account.

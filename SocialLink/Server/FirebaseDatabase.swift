@@ -168,13 +168,15 @@ class FirebaseDatabase {
     
     // MARK: - Create new post
     func createNewPost(newPost:[String:Any], success:(@escaping ()->Void ), failed:(@escaping ()->Void )) {
+        
         let postContent:[String:Any] = [
             "post_id": newPost["post_id"]!,
             "user_account":newPost["user_account"]!,
             "caption":newPost["caption"]!,
             "amount_like":newPost["amount_like"]!,
             "liked_by_users":[Any](),
-            "comments":[Any]()
+            "comments":[Any](),
+            "time":Date().timeIntervalSince1970
         ]
         
         db.collection("posts").document(postContent["post_id"] as! String).setData(postContent) { (error) in
@@ -290,14 +292,14 @@ class FirebaseDatabase {
         }
     }
     
-    private func unlike(from user:[String:Any]){
-        let user_account = user["user_account"] as! String
-        let post_id = user["post_id"] as! String
-        
-        db.collection("posts").document("\(post_id)").updateData([
-            "liked_by_users":FieldValue.arrayRemove(["\(user_account)"])
-        ])
-    }
+//    private func unlike(from user:[String:Any]){
+//        let user_account = user["user_account"] as! String
+//        let post_id = user["post_id"] as! String
+//
+//        db.collection("posts").document("\(post_id)").updateData([
+//            "liked_by_users":FieldValue.arrayRemove(["\(user_account)"])
+//        ])
+//    }
     
     func updateLikeStatus(post_id:String, completion:(@escaping(_ data:[Any])->Void)) {
         db.collection("posts").document("\(post_id)").getDocument { (snap, _) in
@@ -347,17 +349,8 @@ class FirebaseDatabase {
     }
     
     // MARK: - Make a comment
-    /**
-     A comment include: [
-        message
-        time
-        type = "comment"
-        user_account
-     ]
-     */
     
     func getComments(postId:String, responseData:(@escaping(_ data:[[String:Any]])->Void)){
-        
         db.collection("post_comments").document(postId).collection("comments").getDocuments { snap, _ in
             var dataResponse = [[String:Any]]()
             if let documents = snap?.documents {
@@ -383,22 +376,52 @@ class FirebaseDatabase {
         }
     }
     
-    func deleteComment(comment_id:String, at postId:String) {
-        db.collection("post_comments").document(postId).collection("comments").document(comment_id).delete()
+    func deleteComment(comment_id:String, at postId:String, completion:@escaping()->Void) {
+        db.collection("post_comments").document(postId).collection("comments").document(comment_id).delete() { _ in
+            completion()
+            // Remove all replies of comment
+            self.db.collection("comment_replies").document(comment_id).delete()
+        }
     }
     
-    // MARK: - Reply control
-    /**
-     A reply include: [
-        user_account
-        message
-        time
-        type = "reply"
-        reply_id
-     ]
-     */
+    func like_unlike_comment(comment_id:String, postId:String, fromUser:String, completion:@escaping(_ data:[String:Any])->Void) {
+        let commentRef = db.collection("post_comments").document(postId).collection("comments").document(comment_id)
+        
+        commentRef.getDocument { (data, _) in
+            guard let dataRes = data?.data() else {return}
+            guard let listUsersLiked = dataRes["liked_by_users"] as? [String] else {return}
+            
+            // Check user like or not like the reply
+            var liked = false
+            
+            for user in listUsersLiked {
+                if user == userStatus.user_account {
+                    liked = true
+                    break
+                }
+            }
+            
+            commentRef.updateData([
+                "liked_by_users":(liked ? FieldValue.arrayRemove(["\(fromUser)"]) : FieldValue.arrayUnion([fromUser]))
+            ]) { error in
+                if let err = error {
+                    print(err)
+                    return
+                }
+                
+                commentRef.getDocument { (data, _) in
+                    if let dt = data?.data() {
+                        completion(dt)
+                    }
+                }
+                
+            }
+        }
+    }
     
-    func getReply(comment_id:String, completion:@escaping(_ data:[Any])->Void){
+    // MARK: - Reply comment
+    
+    func getMultipReply(comment_id:String, completion:@escaping(_ data:[Any])->Void){
         db.collection("comment_replies").document(comment_id).collection("replies").getDocuments { (snap, error) in
             var replies = [[String:Any]]()
             if let data = snap?.documents {
@@ -410,21 +433,28 @@ class FirebaseDatabase {
             
         }
     }
+    
+//    func replies(comment_id:String, completion:@escaping(_ data:[[String:Any]])->Void){
+//        db.collection("comment_replies").document(comment_id).collection("replies").getDocuments { data, _ in
+//
+//            var replies = [[String:Any]]()
+//
+//            if let dt = data?.documents {
+//                for doc in dt {
+//                    replies.append(doc.data())
+//                }
+//                completion(replies)
+//            }
+//        }
+//    }
 
     func uploadReplyToComment(newReply:[String:Any], comment_id:String, completion:@escaping ()->Void) {
         let reply_id = newReply["reply_id"] as! String
         
+        
         db.collection("comment_replies").document(comment_id).collection("replies").document(reply_id).setData(newReply) { _ in
             completion()
         }
-    }
-    
-    func uploadReplyToReply(newReply:[String:Any],to_reply_id:String, completion:@escaping ()->Void) {
-//        let reply_id = newReply["reply_id"] as! String
-//        
-//        db.collection("comment_replies").document(to_reply_id).collection("replies").document(reply_id).setData(newReply) { _ in
-//            completion()
-//        }
     }
     
     func deleteReply(comment_id:String, reply_id:String,completion:@escaping()->Void) {
@@ -433,5 +463,47 @@ class FirebaseDatabase {
         }
     }
     
+    func getOneReply(comment_id:String, reply_id:String,completion:@escaping(_ data:[String:Any])->Void) {
+        db.collection("comment_replies").document(comment_id).collection("replies").document(reply_id).getDocument { data, _ in
+            if let dt = data?.data() {
+                completion(dt)
+            }
+        }
+    }
     
+    func like_unlike_Reply(comment_id:String, reply_id:String,fromUser:String,likeComp:@escaping(_ data:[String:Any])->Void) {
+        let refToReply = db.collection("comment_replies").document(comment_id).collection("replies").document(reply_id)
+        
+        // Danh sach nguoi da like
+        refToReply.getDocument { (dataSnap, _) in
+            guard let data = dataSnap?.data() else {return}
+            guard let listUsersLiked = data["liked_by_users"] as? [String] else {return}
+            
+            // Check user like or not like the reply
+            var liked = false
+            
+            for user in listUsersLiked {
+                if user == userStatus.user_account {
+                    liked = true
+                    break
+                }
+            }
+            
+            // Like the reply
+            refToReply.updateData([
+                "liked_by_users":(liked ? FieldValue.arrayRemove(["\(fromUser)"]) : FieldValue.arrayUnion([fromUser]))
+            ]) { error in
+                if let err = error {
+                    print(err)
+                } else {
+                    ServerFirebase.getOneReply(comment_id: comment_id, reply_id: reply_id) { data in
+                        likeComp(data)
+                    }
+                }
+            }
+            
+            
+            
+        }
+    }
 }

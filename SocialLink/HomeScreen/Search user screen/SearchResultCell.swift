@@ -11,6 +11,7 @@ class SearchResultCell: UITableViewCell {
     
     
     @IBOutlet weak var imageContainer: UIView!
+    
     @IBOutlet weak var labelAccount: UILabel!
     @IBOutlet weak var labelName: UILabel!
     

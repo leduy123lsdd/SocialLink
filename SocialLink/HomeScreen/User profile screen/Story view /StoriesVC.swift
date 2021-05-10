@@ -15,8 +15,13 @@ class StoriesVC: UIViewController {
 //    @IBOutlet var userAccountLabel: UILabel!
     
     var rootVC:UIViewController?
-    var postData = [[String:Any]]()
-    var user:String=""
+    var postData = [[String:Any]]() {
+        didSet {
+            postData = postData.sorted(by: {($0["time"] as! Double) > ($1["time"] as! Double)})
+        }
+    }
+    
+    var user:String?
     var scrollToPost:(()->Void)?
         
     override func viewDidLoad() {
@@ -30,41 +35,21 @@ class StoriesVC: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 800
         
-        self.navigationItem.title = "\(user)"
+        
+        self.navigationItem.title = user
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.backBarButtonItem?.title = ""
-        if let scrollAction = scrollToPost {
-            scrollAction()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
         
     }
     
-    // MARK: Fetch posts from friends or yours
-    func getPost(for user:String){
-        self.user = user
-//        ProgressHUD.show()
-        ServerFirebase.getUserPost(user_account: user) { data in
-            var existed = false
-            
-            for post in self.postData {
-                if (post["post_id"] as! String) == (data["post_id"] as! String) {
-               
-                    existed = true
-                }
-            }
-            
-            if !existed {
-                self.postData.append(data)
-//                self.tableView.reloadData()
-//                ProgressHUD.dismiss()
-            }
-            
-            
-        } failed: {}
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationController?.isNavigationBarHidden = false
+        
+        if let scrollAction = scrollToPost {
+            scrollAction()
+        }
+        
     }
     
     
