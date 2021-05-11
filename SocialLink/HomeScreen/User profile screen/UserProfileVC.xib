@@ -80,7 +80,7 @@
                     <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oce-Es-RjX">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="892"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="894.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-oN-Cpo">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -343,12 +343,12 @@
                                                         <constraint firstAttribute="height" constant="0.80000000000000004" id="RW2-lW-cdO"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11B-Yw-1xR" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11B-Yw-1xR" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="31" width="394" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="6Si-a8-Znu"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -357,9 +357,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2E-US-pGc">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" ambiguous="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2E-US-pGc">
                                                     <rect key="frame" x="0.0" y="53" width="394" height="177"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab</string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -368,7 +367,7 @@
                                                     <rect key="frame" x="0.0" y="235" width="394" height="35"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxy-UD-BkA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="83" height="35"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="238" height="35"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <state key="normal" title="Edit profile">
@@ -388,7 +387,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-pR-kNY" userLabel="Follow ">
-                                                            <rect key="frame" x="93" y="0.0" width="145.5" height="35"/>
+                                                            <rect key="frame" x="248" y="0.0" width="68" height="35"/>
                                                             <color key="backgroundColor" name="AccentColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <state key="normal" title="Follow">
@@ -408,7 +407,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jko-d1-6F8">
-                                                            <rect key="frame" x="248.5" y="0.0" width="145.5" height="35"/>
+                                                            <rect key="frame" x="326" y="0.0" width="68" height="35"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <state key="normal" title="Message">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -443,8 +442,8 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Posts of you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDO-NG-cwj" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="370" width="414" height="17"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                    <rect key="frame" x="0.0" y="370" width="414" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
@@ -454,7 +453,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-sP-2v0">
-                                    <rect key="frame" x="0.0" y="392" width="414" height="500"/>
+                                    <rect key="frame" x="0.0" y="394.5" width="414" height="500"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="500" id="Zwy-8u-AvD"/>
@@ -494,10 +493,10 @@
     </objects>
     <designables>
         <designable name="11B-Yw-1xR">
-            <size key="intrinsicContentSize" width="76" height="17"/>
+            <size key="intrinsicContentSize" width="25" height="19.5"/>
         </designable>
         <designable name="RDO-NG-cwj">
-            <size key="intrinsicContentSize" width="85" height="17"/>
+            <size key="intrinsicContentSize" width="95.5" height="19.5"/>
         </designable>
     </designables>
     <resources>

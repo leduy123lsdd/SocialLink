@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AddStoryCell" customModule="SocialLink" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="202"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="202"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYf-fb-tLp">
+                        <rect key="frame" x="5" y="5" width="70" height="70"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im3" translatesAutoresizingMaskIntoConstraints="NO" id="Zct-Cm-vtA">
+                                <rect key="frame" x="2" y="2" width="66" height="66"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhb-Zy-6cE">
+                                <rect key="frame" x="46" y="46" width="24" height="24"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTF-RA-MxJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <state key="normal" image="plus.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="jTF-RA-MxJ" firstAttribute="top" secondItem="uhb-Zy-6cE" secondAttribute="top" id="G4r-1i-EP5"/>
+                                    <constraint firstAttribute="height" constant="24" id="TwD-p3-gY4"/>
+                                    <constraint firstItem="jTF-RA-MxJ" firstAttribute="leading" secondItem="uhb-Zy-6cE" secondAttribute="leading" id="e6y-cE-s2w"/>
+                                    <constraint firstAttribute="trailing" secondItem="jTF-RA-MxJ" secondAttribute="trailing" id="h9x-Fb-gPC"/>
+                                    <constraint firstAttribute="bottom" secondItem="jTF-RA-MxJ" secondAttribute="bottom" id="htx-x0-rxS"/>
+                                    <constraint firstAttribute="width" constant="24" id="mBr-La-OCR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="uhb-Zy-6cE" secondAttribute="bottom" id="3dB-5a-NbL"/>
+                            <constraint firstAttribute="trailing" secondItem="uhb-Zy-6cE" secondAttribute="trailing" id="GbB-kL-yN9"/>
+                            <constraint firstItem="Zct-Cm-vtA" firstAttribute="top" secondItem="IYf-fb-tLp" secondAttribute="top" constant="2" id="JNc-7z-g2E"/>
+                            <constraint firstAttribute="trailing" secondItem="Zct-Cm-vtA" secondAttribute="trailing" constant="2" id="SgC-bL-ruw"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="gPj-d2-iEN"/>
+                            <constraint firstItem="Zct-Cm-vtA" firstAttribute="leading" secondItem="IYf-fb-tLp" secondAttribute="leading" constant="2" id="moV-mB-wr5"/>
+                            <constraint firstAttribute="height" constant="70" id="u4Q-UP-PDA"/>
+                            <constraint firstAttribute="bottom" secondItem="Zct-Cm-vtA" secondAttribute="bottom" constant="2" id="zFI-iV-s6g"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zW-p6-lmg">
+                        <rect key="frame" x="11" y="80" width="58" height="117"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="IYf-fb-tLp" secondAttribute="trailing" constant="5" id="264-wx-e4I"/>
+                <constraint firstItem="IYf-fb-tLp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="30S-5Q-KzU"/>
+                <constraint firstItem="IYf-fb-tLp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="DK1-ix-Vft"/>
+                <constraint firstItem="8zW-p6-lmg" firstAttribute="top" secondItem="IYf-fb-tLp" secondAttribute="bottom" constant="5" id="Dot-Cr-zrx"/>
+                <constraint firstItem="8zW-p6-lmg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Vjb-Hr-C5P"/>
+                <constraint firstAttribute="bottom" secondItem="8zW-p6-lmg" secondAttribute="bottom" constant="5" id="Xbv-XW-V0z"/>
+            </constraints>
+            <size key="customSize" width="80" height="202"/>
+            <connections>
+                <outlet property="containerView" destination="IYf-fb-tLp" id="mHA-GG-QrZ"/>
+                <outlet property="imageView" destination="Zct-Cm-vtA" id="Vga-GU-Q9E"/>
+            </connections>
+            <point key="canvasLocation" x="-327.536231884058" y="-118.52678571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="im3" width="540" height="811.5"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

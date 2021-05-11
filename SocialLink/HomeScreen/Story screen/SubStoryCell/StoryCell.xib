@@ -21,14 +21,14 @@
                         <rect key="frame" x="5" y="5" width="90" height="70"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im3" translatesAutoresizingMaskIntoConstraints="NO" id="vSb-Ov-m55">
-                                <rect key="frame" x="2" y="2" width="86" height="66"/>
+                                <rect key="frame" x="2" y="3" width="86" height="64"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="vSb-Ov-m55" secondAttribute="bottom" constant="2" id="DDz-S6-1sl"/>
+                            <constraint firstAttribute="bottom" secondItem="vSb-Ov-m55" secondAttribute="bottom" constant="3" id="DDz-S6-1sl"/>
                             <constraint firstAttribute="height" constant="70" id="TGT-6d-6jk"/>
-                            <constraint firstItem="vSb-Ov-m55" firstAttribute="top" secondItem="NBm-dL-foU" secondAttribute="top" constant="2" id="d2T-rf-BWm"/>
+                            <constraint firstItem="vSb-Ov-m55" firstAttribute="top" secondItem="NBm-dL-foU" secondAttribute="top" constant="3" id="d2T-rf-BWm"/>
                             <constraint firstItem="vSb-Ov-m55" firstAttribute="leading" secondItem="NBm-dL-foU" secondAttribute="leading" constant="2" id="emW-qv-RTJ"/>
                             <constraint firstAttribute="trailing" secondItem="vSb-Ov-m55" secondAttribute="trailing" constant="2" id="tvy-tI-ewQ"/>
                         </constraints>
@@ -56,7 +56,7 @@
                 <outlet property="imageView" destination="vSb-Ov-m55" id="hLS-gl-n4g"/>
                 <outlet property="name" destination="dWH-Jb-2un" id="1aY-TX-iSb"/>
             </connections>
-            <point key="canvasLocation" x="305.79710144927537" y="219.30803571428569"/>
+            <point key="canvasLocation" x="161" y="217"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -88,7 +88,7 @@ class UserProfileVC: UIViewController {
     
     // MARK: setup UI for view
     private func setupUI(){
-        self.nameLabel.text = userStatus.user_account
+        self.nameLabel.text = user_account
         self.displayName.text = userStatus.display_name
         
         collectionView.delegate = self
@@ -102,7 +102,7 @@ class UserProfileVC: UIViewController {
         }
         
         // Config for description text field
-        descriptionInfo.translatesAutoresizingMaskIntoConstraints = true
+//        descriptionInfo.translatesAutoresizingMaskIntoConstraints = true
         descriptionInfo.sizeToFit()
         descriptionInfo.isScrollEnabled = false
         descriptionInfo.isUserInteractionEnabled = false

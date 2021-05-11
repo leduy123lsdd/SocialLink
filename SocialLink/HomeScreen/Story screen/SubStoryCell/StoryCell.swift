@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Pastel
 
 class StoryCell: UICollectionViewCell {
 
@@ -18,16 +19,16 @@ class StoryCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         containerView.layer.cornerRadius = 35
-        containerView.backgroundColor = .green
+        containerView.backgroundColor = UIColor.init(red: 181, green: 101, blue: 167)
         
-        imageView.layer.cornerRadius = 33
-        imageView.layer.borderWidth = 3
+        imageView.layer.cornerRadius = 32
+        imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.white.cgColor
     }
     
     func fillData(image:UIImage?,name:String){
-//        self.imageView.image = image
         self.name.text = name
     }
+    
 
 }

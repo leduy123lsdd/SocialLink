@@ -54,6 +54,8 @@
 		0CCCA73E25F512C600C4832A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCCA73C25F512C600C4832A /* LaunchScreen.storyboard */; };
 		0CD07DF626258DFC00F2FAB0 /* ReplyCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */; };
 		0CD07DF726258DFC00F2FAB0 /* ReplyCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */; };
+		0CE4F34426497D0D00129A56 /* AddStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F34226497D0D00129A56 /* AddStoryCell.swift */; };
+		0CE4F34526497D0D00129A56 /* AddStoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F34326497D0D00129A56 /* AddStoryCell.xib */; };
 		A65BA6E5BE296F02E35E3F88 /* Pods_SocialLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E011B74B796BD6C914D50EF2 /* Pods_SocialLink.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +109,8 @@
 		0CCCA73F25F512C600C4832A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentCell.swift; sourceTree = "<group>"; };
 		0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyCommentCell.xib; sourceTree = "<group>"; };
+		0CE4F34226497D0D00129A56 /* AddStoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStoryCell.swift; sourceTree = "<group>"; };
+		0CE4F34326497D0D00129A56 /* AddStoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddStoryCell.xib; sourceTree = "<group>"; };
 		C9A957AD828E1B08CA90301B /* Pods-SocialLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLink.release.xcconfig"; path = "Target Support Files/Pods-SocialLink/Pods-SocialLink.release.xcconfig"; sourceTree = "<group>"; };
 		E011B74B796BD6C914D50EF2 /* Pods_SocialLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFAC2BA01AC4EEF216DFA0DE /* Pods-SocialLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLink.debug.xcconfig"; path = "Target Support Files/Pods-SocialLink/Pods-SocialLink.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				0CA5C48D2605F3D500D929CC /* SubStoryCell.xib */,
 				0CBF26D62608E53200043BA9 /* StoryCell.swift */,
 				0CBF26D72608E53200043BA9 /* StoryCell.xib */,
+				0CE4F34226497D0D00129A56 /* AddStoryCell.swift */,
+				0CE4F34326497D0D00129A56 /* AddStoryCell.xib */,
 			);
 			path = SubStoryCell;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 				0C238BAA26150FA300DB3CE1 /* MakeCommentVC.xib in Resources */,
 				0C76C34726353515001CD4DC /* StoriesVC.xib in Resources */,
 				0C80CA1025FC7ACF0094FCC0 /* HomeViewController.xib in Resources */,
+				0CE4F34526497D0D00129A56 /* AddStoryCell.xib in Resources */,
 				0C80CA1B25FCA3EA0094FCC0 /* SearchUserVC.xib in Resources */,
 				0CBF26E22609D62900043BA9 /* GoogleService-Info.plist in Resources */,
 			);
@@ -504,6 +511,7 @@
 				0CC8C1BD26168B53004B720C /* PaddingLabel.swift in Sources */,
 				0C238BAF2615108100DB3CE1 /* CommentCell.swift in Sources */,
 				0CA5C4882605F3C600D929CC /* MainContentCell.swift in Sources */,
+				0CE4F34426497D0D00129A56 /* AddStoryCell.swift in Sources */,
 				0C54B00625F66FFF00A76F9E /* Post.swift in Sources */,
 				0CBA94EE261EB95B003EB371 /* PostImageCell.swift in Sources */,
 				0C80CA1A25FCA3EA0094FCC0 /* SearchUserVC.swift in Sources */,

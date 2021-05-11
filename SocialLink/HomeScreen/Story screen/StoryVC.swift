@@ -81,6 +81,7 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
             tableView.rowHeight = 100
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubStoryCell") as! SubStoryCell
+            cell.rootVC = self.rootVC
             return cell
         }
         
