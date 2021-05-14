@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "EditProfileVC.setupUI():EditProfileVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userStatus">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #2 in UserProfileVC.fetchDataFor(user_account:completion:):UserProfileVC.swift">
          <PersistentStrings>
             <PersistentString
@@ -22,10 +30,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EditProfileVC.setupUI():EditProfileVC.swift">
+         contextName = "closure #1 in closure #1 in SubStoryCell.fetchFollowerUsers():SubStoryCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "userStatus">
+               value = "dataArr">
+            </PersistentString>
+            <PersistentString
+               value = "followers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

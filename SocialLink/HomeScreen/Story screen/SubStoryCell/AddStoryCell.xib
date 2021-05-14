@@ -20,8 +20,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYf-fb-tLp">
                         <rect key="frame" x="5" y="5" width="70" height="70"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im3" translatesAutoresizingMaskIntoConstraints="NO" id="Zct-Cm-vtA">
-                                <rect key="frame" x="2" y="2" width="66" height="66"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Zct-Cm-vtA">
+                                <rect key="frame" x="2" y="3.5" width="66" height="63.5"/>
+                                <color key="tintColor" red="0.68892766500000002" green="0.68892766500000002" blue="0.68892766500000002" alpha="0.90622324489999995" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhb-Zy-6cE">
                                 <rect key="frame" x="46" y="46" width="24" height="24"/>
@@ -87,7 +88,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="im3" width="540" height="811.5"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

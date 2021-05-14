@@ -15,12 +15,26 @@ class StoryVC: UIViewController {
     
     private let refreshControl = UIRefreshControl()
     
+    var doubleTapIndicatorDisappear:(()->Void)?
+    var doubleTapIndicatorAappear:(()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         getPost()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        doubleTapIndicatorDisappear?()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        doubleTapIndicatorAappear?()
+    }
+    
     
     // MARK: Fetch posts from friends or yours
     private func getPost(){
@@ -78,7 +92,7 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Story
         if indexPath.row == 0 {
-            tableView.rowHeight = 100
+            tableView.rowHeight = 105
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubStoryCell") as! SubStoryCell
             cell.rootVC = self.rootVC

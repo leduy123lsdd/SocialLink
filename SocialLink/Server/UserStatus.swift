@@ -27,8 +27,8 @@ class UserStatus {
         
         self.display_name = info_data["display_name"] as! String
         self.amount_post = info_data["amount_post"] as! Int
-        self.followers = info_data["followers"] as! Int
-        self.following = info_data["following"] as! Int
+//        self.followers = info_data["followers"] as! Int
+//        self.following = info_data["following"] as! Int
         self.posted_id = info_data["posted_id"] as! [String]
         self.bio = info_data["bio"] as! String
         

@@ -25,6 +25,7 @@
                 <outlet property="messageBtn" destination="jko-d1-6F8" id="0dF-i2-vMN"/>
                 <outlet property="nameLabel" destination="svb-r8-2TB" id="abf-op-WKk"/>
                 <outlet property="postCount" destination="nRU-j4-rwx" id="41J-UV-POq"/>
+                <outlet property="unFollowBtn" destination="I0I-dZ-qaz" id="Nbs-Np-ngK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -366,8 +367,8 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Up5-RM-Hxl">
                                                     <rect key="frame" x="0.0" y="235" width="394" height="35"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxy-UD-BkA">
-                                                            <rect key="frame" x="0.0" y="0.0" width="238" height="35"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxy-UD-BkA">
+                                                            <rect key="frame" x="0.0" y="0.0" width="83" height="35"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <state key="normal" title="Edit profile">
@@ -386,8 +387,28 @@
                                                                 <action selector="editProfile:" destination="-1" eventType="touchUpInside" id="m4p-19-W3F"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-pR-kNY" userLabel="Follow ">
-                                                            <rect key="frame" x="248" y="0.0" width="68" height="35"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0I-dZ-qaz">
+                                                            <rect key="frame" x="93" y="0.0" width="67" height="35"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                            <state key="normal" title="Unfollow">
+                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="0.59999999999999998"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <integer key="value" value="6"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="unFollowBtnAction:" destination="-1" eventType="touchUpInside" id="ycG-7d-CMB"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-pR-kNY" userLabel="Follow ">
+                                                            <rect key="frame" x="170" y="0.0" width="107" height="35"/>
                                                             <color key="backgroundColor" name="AccentColor"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <state key="normal" title="Follow">
@@ -406,8 +427,8 @@
                                                                 <action selector="followBtnAction:" destination="-1" eventType="touchUpInside" id="dyA-4M-Q7l"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jko-d1-6F8">
-                                                            <rect key="frame" x="326" y="0.0" width="68" height="35"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jko-d1-6F8">
+                                                            <rect key="frame" x="287" y="0.0" width="107" height="35"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                             <state key="normal" title="Message">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -426,6 +447,7 @@
                                                         </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="I0I-dZ-qaz" firstAttribute="width" secondItem="jko-d1-6F8" secondAttribute="width" multiplier="0.626168" id="1Eq-ci-VZw"/>
                                                         <constraint firstItem="NZg-pR-kNY" firstAttribute="width" secondItem="jko-d1-6F8" secondAttribute="width" id="82O-7a-JKf"/>
                                                         <constraint firstAttribute="height" constant="35" id="hj2-2z-FDk"/>
                                                     </constraints>

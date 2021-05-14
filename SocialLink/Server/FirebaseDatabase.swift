@@ -76,7 +76,12 @@ class FirebaseDatabase {
     }
     
     // MARK: update profile
-    func updateProfile(user_account:String ,display_name:String?, bio:String?, avatar: Data?, completion:(@escaping ()->Void), failed:(@escaping ()->Void)) {
+    func updateProfile(user_account:String ,
+                       display_name:String?,
+                       bio:String?,
+                       avatar: Data?,
+                       completion:(@escaping ()->Void),
+                       failed:(@escaping ()->Void)) {
         
         var newProfile = [String:Any]()
         

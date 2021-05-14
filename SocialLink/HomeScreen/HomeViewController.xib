@@ -11,7 +11,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="SocialLink" customModuleProvider="target">
             <connections>
                 <outlet property="homeBtn" destination="7Mm-Fu-Q0e" id="SKb-nc-cRF"/>
+                <outlet property="homeIndicator" destination="Qp1-2n-1x1" id="tIV-nQ-s7t"/>
+                <outlet property="notifBtn" destination="WLq-xy-9t0" id="x7t-rQ-b51"/>
+                <outlet property="notifIndicator" destination="37N-3b-gEN" id="bSp-8R-ngn"/>
+                <outlet property="postBtn" destination="W12-IP-xuf" id="IiZ-es-YIy"/>
+                <outlet property="postIndicator" destination="kkj-LX-qhe" id="340-hY-znr"/>
+                <outlet property="profileBtn" destination="Mzz-gz-5pS" id="0QE-Rq-ceT"/>
+                <outlet property="profileIndicator" destination="SGv-tK-2qu" id="Roz-cE-9RA"/>
                 <outlet property="scrollContainer" destination="EC1-4i-lVG" id="D0A-sR-cnf"/>
+                <outlet property="searchBtn" destination="BI8-hw-YhE" id="Hpf-yV-Xac"/>
+                <outlet property="searchIndicator" destination="QcN-Xm-KFf" id="EUT-hx-06M"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,67 +43,127 @@
                                 <constraint firstAttribute="height" constant="0.5" id="NWQ-Hf-19d"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kib-GT-Dlt">
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kib-GT-Dlt">
                             <rect key="frame" x="0.0" y="846" width="414" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mm-Fu-Q0e">
-                                    <rect key="frame" x="0.0" y="0.0" width="83" height="50"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="house.fill" catalog="system">
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="homeBtnClicked:" destination="-1" eventType="touchUpInside" id="Gdn-DP-4Dl"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BI8-hw-YhE">
-                                    <rect key="frame" x="83" y="0.0" width="82.5" height="50"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="magnifyingglass" catalog="system">
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="searchUserBtnClicked:" destination="-1" eventType="touchUpInside" id="dKw-yq-HBp"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W12-IP-xuf">
-                                    <rect key="frame" x="165.5" y="0.0" width="83" height="50"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="plus.app" catalog="system">
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="createPostClicked:" destination="-1" eventType="touchUpInside" id="FOn-gB-JPi"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLq-xy-9t0">
-                                    <rect key="frame" x="248.5" y="0.0" width="82.5" height="50"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="bell" catalog="system">
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="createPostClicked:" destination="-1" eventType="touchUpInside" id="DJC-IF-Qd8"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzz-gz-5pS">
-                                    <rect key="frame" x="331" y="0.0" width="83" height="50"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="person.circle.fill" catalog="system">
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="userProfileClicked:" destination="-1" eventType="touchUpInside" id="jpt-H5-D2s"/>
-                                    </connections>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-5h-982">
+                                    <rect key="frame" x="0.0" y="0.0" width="75" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qp1-2n-1x1">
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="2"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="HTL-Tq-oV2"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mm-Fu-Q0e" userLabel="home">
+                                            <rect key="frame" x="0.0" y="2" width="75" height="48"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" image="house" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="homeBtnClicked:" destination="-1" eventType="touchUpInside" id="Gdn-DP-4Dl"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1fY-a7-Blz">
+                                    <rect key="frame" x="85" y="0.0" width="74.5" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QcN-Xm-KFf">
+                                            <rect key="frame" x="0.0" y="0.0" width="74.5" height="2"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="CXQ-36-et7"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BI8-hw-YhE">
+                                            <rect key="frame" x="0.0" y="2" width="74.5" height="48"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" image="magnifyingglass.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="searchUserBtnClicked:" destination="-1" eventType="touchUpInside" id="dKw-yq-HBp"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IMo-lo-PCs">
+                                    <rect key="frame" x="169.5" y="0.0" width="75" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkj-LX-qhe">
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="2"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="GaC-ev-Ihv"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W12-IP-xuf">
+                                            <rect key="frame" x="0.0" y="2" width="75" height="48"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" image="plus.app" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="createPostClicked:" destination="-1" eventType="touchUpInside" id="FOn-gB-JPi"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rps-to-YRm">
+                                    <rect key="frame" x="254.5" y="0.0" width="74.5" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37N-3b-gEN">
+                                            <rect key="frame" x="0.0" y="0.0" width="74.5" height="2"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="ydU-dd-SQ5"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLq-xy-9t0">
+                                            <rect key="frame" x="0.0" y="2" width="74.5" height="48"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" image="bell" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="notifBtnACtion:" destination="-1" eventType="touchUpInside" id="8fR-M4-RIT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y6L-lz-BIW">
+                                    <rect key="frame" x="339" y="0.0" width="75" height="50"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGv-tK-2qu">
+                                            <rect key="frame" x="0.0" y="0.0" width="75" height="2"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="bMX-A7-drt"/>
+                                            </constraints>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzz-gz-5pS">
+                                            <rect key="frame" x="0.0" y="2" width="75" height="48"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" image="person.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="userProfileClicked:" destination="-1" eventType="touchUpInside" id="jpt-H5-D2s"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="W12-IP-xuf" firstAttribute="width" secondItem="WLq-xy-9t0" secondAttribute="width" id="BRX-sw-u28"/>
-                                <constraint firstItem="W12-IP-xuf" firstAttribute="width" secondItem="Mzz-gz-5pS" secondAttribute="width" id="IzW-nT-bni"/>
-                                <constraint firstItem="BI8-hw-YhE" firstAttribute="width" secondItem="W12-IP-xuf" secondAttribute="width" id="PWf-aK-nKP"/>
-                                <constraint firstItem="7Mm-Fu-Q0e" firstAttribute="width" secondItem="BI8-hw-YhE" secondAttribute="width" id="V8X-LS-vuA"/>
+                                <constraint firstItem="1fY-a7-Blz" firstAttribute="width" secondItem="IMo-lo-PCs" secondAttribute="width" id="1aq-14-C69"/>
+                                <constraint firstItem="IMo-lo-PCs" firstAttribute="width" secondItem="Rps-to-YRm" secondAttribute="width" id="mWX-K0-K1J"/>
                                 <constraint firstAttribute="height" constant="50" id="ptH-lu-JzU"/>
+                                <constraint firstItem="Qk9-5h-982" firstAttribute="width" secondItem="1fY-a7-Blz" secondAttribute="width" id="qWa-I0-a07"/>
+                                <constraint firstItem="Rps-to-YRm" firstAttribute="width" secondItem="Y6L-lz-BIW" secondAttribute="width" id="vPK-Jo-pzN"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -114,12 +183,15 @@
     </objects>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

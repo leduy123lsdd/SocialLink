@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class UserProfileVC: UIViewController {
     typealias FirebaseData = [String:Any]
@@ -20,6 +21,7 @@ class UserProfileVC: UIViewController {
     @IBOutlet var editProfileBtn: UIButton!
     @IBOutlet var messageBtn: UIButton!
     @IBOutlet var followBtn: UIButton!
+    @IBOutlet var unFollowBtn: UIButton!
     @IBOutlet var avatarImage: UIImageView!
     
     @IBOutlet var postCount: UILabel!
@@ -79,10 +81,10 @@ class UserProfileVC: UIViewController {
             // Hide follow and message btn.
             messageBtn.isHidden = true
             followBtn.isHidden = true
+            unFollowBtn.isHidden = true
         } else {
             editProfileBtn.isHidden = true
             messageBtn.isHidden = false
-            followBtn.isHidden = false
         }
     }
     
@@ -96,13 +98,11 @@ class UserProfileVC: UIViewController {
         collectionView.register(UINib(nibName: "PostImageCell", bundle: nil), forCellWithReuseIdentifier: "PostImageCell")
         collectionView.isScrollEnabled = false
         
-        [editProfileBtn,messageBtn].forEach { btn in
+        [editProfileBtn,messageBtn,unFollowBtn].forEach { btn in
             btn?.layer.borderWidth = 0.6
             btn?.layer.borderColor = UIColor.lightGray.cgColor
         }
         
-        // Config for description text field
-//        descriptionInfo.translatesAutoresizingMaskIntoConstraints = true
         descriptionInfo.sizeToFit()
         descriptionInfo.isScrollEnabled = false
         descriptionInfo.isUserInteractionEnabled = false
@@ -120,17 +120,44 @@ class UserProfileVC: UIViewController {
     
         ServerFirebase.getUserProfile(user_account: user_account) { res in
             if let response = res {
-                if let followers = response["followers"] {
-                    self.followersCount.text = "\(followers)"
+                if let followers = response["followers"],
+                   let followers_arr = followers as? [String] {
+                    
+                    self.followersCount.text = "\(followers_arr.count)"
+                    
+                    if self.user_account != userStatus.user_account {
+                        var followed = false
+                        for follower in followers_arr {
+                            if follower == userStatus.user_account {
+                                followed = true
+                                break
+                            }
+                        }
+                        
+                        if followed {
+                            self.followBtn.isHidden = true
+                            self.unFollowBtn.isHidden = false
+                        } else {
+                            self.followBtn.isHidden = false
+                            self.unFollowBtn.isHidden = true
+                        }
+                    }
+                    
                 }
-                if let following = response["following"] {
-                    self.followingCount.text = "\(following)"
+                
+                if let following = response["following"],
+                   let following_arr = following as? [String]{
+                    
+                    self.followingCount.text = "\(following_arr.count)"
                 }
+                
                 if let posted = response["posted_id"] as? [String] {
                     self.postCount.text = ("\(posted.count)")
                 }
+                
                 if let bio = response["bio"] as? String {
                     self.descriptionInfo.text = bio
+                    
                     if bio == "" {
                         self.descriptionInfo.isHidden = true
                         self.descriptionLabel.isHidden = true
@@ -192,9 +219,8 @@ class UserProfileVC: UIViewController {
         editProfileVC.reloadUserInfo = {
             self.fetchDataFor(user_account: self.user_account, completion: nil)
         }
-//        self.dismiss(animated: true) {
-            self.rootView?.navigationController?.pushViewController(editProfileVC, animated: true)
-//        }
+        self.rootView?.navigationController?.pushViewController(editProfileVC, animated: true)
+
     }
     
     @IBAction func backBtn(_ sender: Any) {
@@ -209,6 +235,26 @@ class UserProfileVC: UIViewController {
     
     @IBAction func followBtnAction(_ sender: Any) {
         
+        ProgressHUD.show()
+        
+        searchUserService.followUser(follow_user: self.user_account,
+                                   current_user: userStatus.user_account) {
+            ProgressHUD.dismiss()
+            self.followBtn.isHidden = true
+            self.unFollowBtn.isHidden = false
+        }
+    }
+    
+    @IBAction func unFollowBtnAction(_ sender: Any) {
+        
+        ProgressHUD.show()
+        
+        searchUserService.unfollow(follow_user: self.user_account,
+                                   current_user: userStatus.user_account) {
+            ProgressHUD.dismiss()
+            self.followBtn.isHidden = false
+            self.unFollowBtn.isHidden = true
+        }
     }
     
     @IBAction func messageBtnAction(_ sender: Any) {

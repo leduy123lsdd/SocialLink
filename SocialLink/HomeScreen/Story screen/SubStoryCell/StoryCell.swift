@@ -18,12 +18,16 @@ class StoryCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containerView.layer.cornerRadius = 35
-        containerView.backgroundColor = UIColor.init(red: 181, green: 101, blue: 167)
+        let heigheContainer = containerView.frame.height
+        let heightImage = imageView.frame.height
         
-        imageView.layer.cornerRadius = 32
-        imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.white.cgColor
+        containerView.layer.cornerRadius = heigheContainer/2
+        containerView.backgroundColor = UIColor.init(red: 181, green: 101, blue: 167)
+        containerView.backgroundColor = UIColor.white
+        
+        imageView.layer.cornerRadius = heightImage/2
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.orange.cgColor
     }
     
     func fillData(image:UIImage?,name:String){
