@@ -18,6 +18,7 @@
                 <outlet property="descriptionInfo" destination="t2E-US-pGc" id="CRS-aW-Exn"/>
                 <outlet property="descriptionLabel" destination="11B-Yw-1xR" id="Bds-M9-DcE"/>
                 <outlet property="displayName" destination="ASY-Jg-5LF" id="XzH-YE-bHD"/>
+                <outlet property="dongThoiGianView" destination="T5U-Ib-7rp" id="9Up-tH-GbI"/>
                 <outlet property="editProfileBtn" destination="Fxy-UD-BkA" id="W76-st-hsU"/>
                 <outlet property="followBtn" destination="NZg-pR-kNY" id="8st-u4-ozv"/>
                 <outlet property="followersCount" destination="2lg-mF-vkw" id="orM-Sq-G2t"/>
@@ -25,6 +26,7 @@
                 <outlet property="messageBtn" destination="jko-d1-6F8" id="0dF-i2-vMN"/>
                 <outlet property="nameLabel" destination="svb-r8-2TB" id="abf-op-WKk"/>
                 <outlet property="postCount" destination="nRU-j4-rwx" id="41J-UV-POq"/>
+                <outlet property="scrollView" destination="GuK-Ej-H4c" id="WZv-Q2-nxL"/>
                 <outlet property="unFollowBtn" destination="I0I-dZ-qaz" id="Nbs-Np-ngK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -63,7 +65,7 @@
                                 <constraint firstAttribute="width" constant="30" id="3aq-5x-TJs"/>
                             </constraints>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="line.horizontal.3" catalog="system">
+                            <state key="normal" image="white_back">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -81,7 +83,7 @@
                     <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oce-Es-RjX">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="894.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1024"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-oN-Cpo">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -100,41 +102,14 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka9-75-hzE">
-                                                            <rect key="frame" x="50" y="53" width="30" height="30"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS8-KW-NC4">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                                    <state key="normal" image="plus.circle.fill" catalog="system">
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                                    </state>
-                                                                </button>
-                                                            </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="GA3-g5-tNn"/>
-                                                                <constraint firstItem="dS8-KW-NC4" firstAttribute="leading" secondItem="Ka9-75-hzE" secondAttribute="leading" id="cBJ-7P-dLu"/>
-                                                                <constraint firstItem="dS8-KW-NC4" firstAttribute="top" secondItem="Ka9-75-hzE" secondAttribute="top" id="cVR-uo-Sfi"/>
-                                                                <constraint firstAttribute="trailing" secondItem="dS8-KW-NC4" secondAttribute="trailing" id="dU8-d2-EGV"/>
-                                                                <constraint firstAttribute="bottom" secondItem="dS8-KW-NC4" secondAttribute="bottom" id="f4H-4r-arG"/>
-                                                                <constraint firstAttribute="height" constant="30" id="ht9-2J-xER"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <integer key="value" value="15"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="Ka9-75-hzE" firstAttribute="bottom" secondItem="qa7-Xd-doT" secondAttribute="bottom" id="G5Q-py-Jjt"/>
                                                         <constraint firstItem="qa7-Xd-doT" firstAttribute="top" secondItem="fqu-EL-H0j" secondAttribute="top" id="IAe-fB-Hzb"/>
                                                         <constraint firstAttribute="trailing" secondItem="qa7-Xd-doT" secondAttribute="trailing" id="Jy7-pO-Df6"/>
                                                         <constraint firstAttribute="bottom" secondItem="qa7-Xd-doT" secondAttribute="bottom" constant="-3" id="Sc2-yW-P9I"/>
                                                         <constraint firstAttribute="width" secondItem="fqu-EL-H0j" secondAttribute="height" multiplier="1:1" id="VJE-6I-DVc"/>
                                                         <constraint firstItem="qa7-Xd-doT" firstAttribute="leading" secondItem="fqu-EL-H0j" secondAttribute="leading" id="VZy-pS-TA9"/>
-                                                        <constraint firstItem="Ka9-75-hzE" firstAttribute="trailing" secondItem="qa7-Xd-doT" secondAttribute="trailing" id="yty-fY-1Qa"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13g-0m-PAa" userLabel="post">
@@ -463,7 +438,7 @@
                                         <constraint firstItem="RfW-LB-dzp" firstAttribute="top" secondItem="RjX-xY-ICp" secondAttribute="top" id="y2D-PF-Mlb"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Posts of you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDO-NG-cwj" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Stories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mT-ZQ-oJd" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="370" width="414" height="19.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <nil key="textColor"/>
@@ -474,8 +449,26 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5U-Ib-7rp" customClass="DongThoiGianView" customModule="SocialLink" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="394.5" width="414" height="100"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="CNG-39-9m1"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDO-NG-cwj" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="499.5" width="414" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-sP-2v0">
-                                    <rect key="frame" x="0.0" y="394.5" width="414" height="500"/>
+                                    <rect key="frame" x="0.0" y="524" width="414" height="500"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="500" id="Zwy-8u-AvD"/>
@@ -517,15 +510,17 @@
         <designable name="11B-Yw-1xR">
             <size key="intrinsicContentSize" width="25" height="19.5"/>
         </designable>
+        <designable name="3mT-ZQ-oJd">
+            <size key="intrinsicContentSize" width="55.5" height="19.5"/>
+        </designable>
         <designable name="RDO-NG-cwj">
-            <size key="intrinsicContentSize" width="95.5" height="19.5"/>
+            <size key="intrinsicContentSize" width="44" height="19.5"/>
         </designable>
     </designables>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
-        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="white_back" width="1224" height="1632"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -534,6 +529,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

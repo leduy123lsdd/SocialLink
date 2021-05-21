@@ -7,6 +7,8 @@
 
 import UIKit
 import ImageSlideshow
+import ProgressHUD
+import Alertift
 
 class MainContentCell: UITableViewCell {
     typealias PostData = [String:Any]
@@ -19,6 +21,10 @@ class MainContentCell: UITableViewCell {
     @IBOutlet var comments: UILabel!
     @IBOutlet var slideshow: ImageSlideshow!
     @IBOutlet var likeBtn: UIButton!
+    
+    @IBOutlet var deleteBtn: UIButton!
+    
+    var deletedPost:(()->Void)?
     
     var liked = false {
         didSet {
@@ -89,6 +95,13 @@ class MainContentCell: UITableViewCell {
         // Get url of image from user
         let user_account = (data["user_account"] as? String) ?? ""
         let post_id = (data["post_id"] as? String) ?? ""
+        self.postId = post_id
+        
+        if user_account == userStatus.user_account {
+            deleteBtn.isHidden = false
+        } else {
+            deleteBtn.isHidden = true
+        }
         
         ServerFirebase.getAvatarImageURL(user_account: user_account) { urlResponse in
             if let url = urlResponse {
@@ -104,6 +117,7 @@ class MainContentCell: UITableViewCell {
         // Position of page indicator
         slideshow.pageIndicatorPosition = .init(horizontal: .center, vertical: .customUnder(padding: 5))
         
+        
         // Scale for images
         slideshow.contentScaleMode = UIViewContentMode.scaleAspectFill
         
@@ -117,10 +131,10 @@ class MainContentCell: UITableViewCell {
         slideshow.pageIndicator = pageIndicator
         
         slideshow.activityIndicator = DefaultActivityIndicator()
-        slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
+        slideshow.activityIndicator = DefaultActivityIndicator(style: .gray, color: nil)
         
         // optional way to show activity indicator during image load (skipping the line will show no activity indicator)
-        slideshow.activityIndicator = DefaultActivityIndicator(style: .large, color: .green)
+        slideshow.activityIndicator = DefaultActivityIndicator(style: .medium, color: .green)
         slideshow.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapToDisplayName))
@@ -130,6 +144,8 @@ class MainContentCell: UITableViewCell {
         // Tap to image from slide show
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapToImage))
           slideshow.addGestureRecognizer(gestureRecognizer)
+        
+        
     }
     
     @objc func didTapToImage() {
@@ -142,6 +158,7 @@ class MainContentCell: UITableViewCell {
             let addComment = MakeCommentVC(nibName: "MakeCommentVC", bundle: nil)
             if let post_id = self.postId {
                 addComment.postId = post_id
+                addComment.post_belong_user = displayName.text ?? ""
             }
             rootVC.navigationController?.pushViewController(addComment, animated: true)
         }
@@ -151,6 +168,7 @@ class MainContentCell: UITableViewCell {
     @IBAction func likeBtn(_ sender: Any) {
         if let like_function = likeClicked {
             like_function()
+            
         }
     }
     
@@ -159,8 +177,6 @@ class MainContentCell: UITableViewCell {
     }
     
     // MARK: Action when tap to display name
-    
-    
     @objc
     func tapToDisplayName(sender:UITapGestureRecognizer) {
         let userProfileVC = UserProfileVC(nibName: "UserProfileVC", bundle: nil)
@@ -169,6 +185,37 @@ class MainContentCell: UITableViewCell {
         
         rootVC?.navigationController?.pushViewController(userProfileVC, animated: true)
 
+    }
+    
+    // MARK: - delete post
+    
+    
+    
+    @IBAction func deletePost(_ sender: Any) {
+        
+        Alertift.alert(title: "Confirm", message: "Delete this post ?")
+            .action(.destructive("Oke")) {
+                
+                ProgressHUD.show()
+                
+                guard let post_id = self.postId else {
+                    ProgressHUD.dismiss()
+                    return
+                    
+                }
+                
+                
+                ServerFirebase.deletePost(post_id: post_id, user_account: userStatus.user_account) {
+                    self.rootVC?.navigationController?.popViewController(animated: true)
+                    ProgressHUD.dismiss()
+                }
+                
+            }
+            .action(.cancel("Cancel"))
+            .show()
+        
+        
+        
     }
 }
 

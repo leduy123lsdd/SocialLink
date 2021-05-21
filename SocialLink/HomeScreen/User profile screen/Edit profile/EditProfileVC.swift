@@ -45,6 +45,10 @@ class EditProfileVC: UIViewController {
         getUserData()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        reloadUserInfo?()
+    }
+    
     // MARK: Get data
     func getUserData(){
         ServerFirebase.getUserProfile(user_account: userStatus.user_account) { userInfoRes in
@@ -102,9 +106,7 @@ class EditProfileVC: UIViewController {
             self.avatarImage.image = self.pickedImages.first
             ProgressHUD.showSuccess()
             self.navigationController?.popViewController(animated: true)
-            if let reload = self.reloadUserInfo {
-                reload()
-            }
+            
         } failed: {
             ProgressHUD.showFailed()
         }

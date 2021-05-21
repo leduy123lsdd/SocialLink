@@ -18,11 +18,15 @@ class StoryVC: UIViewController {
     var doubleTapIndicatorDisappear:(()->Void)?
     var doubleTapIndicatorAappear:(()->Void)?
     
+    var deletedPost:(()->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         getPost()
+        
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -30,35 +34,52 @@ class StoryVC: UIViewController {
         doubleTapIndicatorDisappear?()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         doubleTapIndicatorAappear?()
+        
     }
     
     
     // MARK: Fetch posts from friends or yours
     private func getPost(){
+        
         refreshControl.beginRefreshing()
-        ServerFirebase.getUserPost(user_account: userStatus.user_account) { data in
-            var existed = false
-            
-            for post in self.postData {
-                if (post["post_id"] as! String) == (data["post_id"] as! String) {
-                    existed = true
-                    break
+        
+        searchUserService.getFollowingFriends(user_account: userStatus.user_account) { (friends) in
+            if friends.count == 0 {
+                self.refreshControl.endRefreshing()
+                return
+            }
+            friends.forEach { (friend) in
+                ServerFirebase.getUserPost(user_account: friend) { data in
+                    var existed = false
+                    
+                    for post in self.postData {
+                        if (post["post_id"] as! String) == (data["post_id"] as! String) {
+                            existed = true
+                            break
+                        }
+                    }
+                    
+                    if !existed {
+                        self.postData.append(data)
+                        self.postData.shuffle()
+                        self.tableView.reloadData()
+                        
+                    }
+                    
+                    self.refreshControl.endRefreshing()
+                    
+                } failed: {
+                    self.refreshControl.endRefreshing()
+                    
                 }
             }
-            
-            if !existed {
-                self.postData.append(data)
-                self.tableView.reloadData()
-            }
-            
-            self.refreshControl.endRefreshing()
-            
-        } failed: {
-            self.refreshControl.endRefreshing()
-            
         }
     }
     
@@ -92,10 +113,11 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Story
         if indexPath.row == 0 {
-            tableView.rowHeight = 105
+            tableView.rowHeight = 100
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubStoryCell") as! SubStoryCell
             cell.rootVC = self.rootVC
+            
             return cell
         }
         
@@ -116,6 +138,10 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
             cell.comments.text = "\(data.count) Comments"
         }
         
+        cell.deletedPost = {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         // Change like button icon
         cell.liked = false
         for user_like in liked_user {
@@ -132,7 +158,8 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
             
             ServerFirebase.newLike(from: [
                 "user_account":userStatus.user_account,
-                "post_id": data["post_id"]!
+                "post_id": data["post_id"]!,
+                "get_like_user":data["user_account"] as! String
             ]) { (res) in
                 self.postData[indexPath.row - 1]["liked_by_users"] = res
                 let newData = self.postData[indexPath.row - 1]["liked_by_users"] as! [Any]

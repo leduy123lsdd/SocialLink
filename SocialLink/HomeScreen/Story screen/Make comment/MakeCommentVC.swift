@@ -11,6 +11,8 @@ import Alertift
 
 class MakeCommentVC: UIViewController {
     
+    var post_belong_user:String=""
+    
     // MARK: ViewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +59,7 @@ class MakeCommentVC: UIViewController {
     var replying_to_comment_id:String = ""
     var replying_at = 0
     
-    
+    var user_get_reply = ""
     
     // MARK: Send comment
     @IBAction func sendBtnAction(_ sender: Any) {
@@ -71,6 +73,9 @@ class MakeCommentVC: UIViewController {
             } else {
                 // Reply call server .
                 sendReply(message: message, comment_id: replying_to_comment_id) { reply in
+                    
+                    
+                    
                     // Update data to tableView
                     self.commentsData.insert(reply, at: self.replying_at + 1)
                     self.tableView.reloadData()
@@ -97,6 +102,15 @@ class MakeCommentVC: UIViewController {
         ]
         
         ServerFirebase.uploadComment(post_id: self.postId!, newComment: newComment) {
+            
+            
+            if self.post_belong_user != userStatus.user_account {
+                notificationCenterServer.post_notification(user_give_notif: userStatus.user_account,
+                                                           user_get_notif: self.post_belong_user,
+                                                           post_id: self.postId!,
+                                                           type: "comment_post")
+            }
+            
             self.commentsData.append(newComment)
             self.tableView.reloadData()
         }
@@ -116,6 +130,15 @@ class MakeCommentVC: UIViewController {
         ]
         
         ServerFirebase.uploadReplyToComment(newReply: newReply, comment_id: comment_id) {
+            
+            if self.user_get_reply != userStatus.user_account && self.user_get_reply != "" {
+                
+                notificationCenterServer.post_notification(user_give_notif: userStatus.user_account,
+                                                           user_get_notif: self.user_get_reply,
+                                                           post_id: self.postId!,
+                                                           type: "reply_post")
+            }
+            
             /**
              1: add reply to reply arr
              2: get all reply which belonging to a comment, sorte by time
@@ -293,7 +316,9 @@ extension MakeCommentVC: UITableViewDelegate, UITableViewDataSource {
             // Action when user clicked on reply button
             cell.replyAction = {
                 self.isHideReplyingView(false)
+                
                 self.replyingToWho.text = "Replying to \(comment["user_account"] ?? "nil")"
+                self.user_get_reply = comment["user_account"] as! String
                 
                 self.replying_to_comment_id = comment["comment_id"] as! String
                 self.replying_at = indexPath.row

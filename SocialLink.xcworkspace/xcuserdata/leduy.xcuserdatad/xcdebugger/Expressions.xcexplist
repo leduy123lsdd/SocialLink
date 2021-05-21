@@ -3,10 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "EditProfileVC.setupUI():EditProfileVC.swift">
+         contextName = "MainContentCell.parseData(data:):MainContentCell.swift">
          <PersistentStrings>
             <PersistentString
-               value = "userStatus">
+               value = "data[&quot;images_url&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,13 +22,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MainContentCell.parseData(data:):MainContentCell.swift">
+         contextName = "EditProfileVC.setupUI():EditProfileVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "data[&quot;images_url&quot;]">
-            </PersistentString>
-            <PersistentString
-               value = "data">
+               value = "userStatus">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -37,6 +37,14 @@
             </PersistentString>
             <PersistentString
                value = "followers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in DongThoiGianView.parseData(user_account:):DongThoiGianView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "storyData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -22,6 +22,7 @@ class StoriesVC: UIViewController {
     }
     
     var user:String?
+    
     var scrollToPost:(()->Void)?
         
     override func viewDidLoad() {
@@ -75,6 +76,7 @@ extension StoriesVC: UITableViewDelegate, UITableViewDataSource {
         let data = postData[indexPath.row]
         let post_id = data["post_id"] as! String
         let liked_user = data["liked_by_users"] as! [String]
+        let get_like_user = data["user_account"] as! String
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainContentCell") as! MainContentCell
         cell.rootVC = self.rootVC
@@ -101,10 +103,11 @@ extension StoriesVC: UITableViewDelegate, UITableViewDataSource {
             
             ServerFirebase.newLike(from: [
                 "user_account":userStatus.user_account,
-                "post_id": data["post_id"]!
+                "post_id": data["post_id"]!,
+                "get_like_user":get_like_user
             ]) { (res) in
-                self.postData[indexPath.row - 1]["liked_by_users"] = res
-                let newData = self.postData[indexPath.row - 1]["liked_by_users"] as! [Any]
+                self.postData[indexPath.row]["liked_by_users"] = res
+                let newData = self.postData[indexPath.row]["liked_by_users"] as! [Any]
                 cell.likes.text = "❤️ \(newData.count) Likes"
             }
             

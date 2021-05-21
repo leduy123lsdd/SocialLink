@@ -13,6 +13,9 @@ class UserProfileVC: UIViewController {
     
     var rootView:UIViewController?
     
+    
+    @IBOutlet var dongThoiGianView: DongThoiGianView!
+    
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var displayName: UILabel!
     @IBOutlet var collectionView: UICollectionView!
@@ -27,17 +30,14 @@ class UserProfileVC: UIViewController {
     @IBOutlet var postCount: UILabel!
     @IBOutlet var followersCount: UILabel!
     @IBOutlet var followingCount: UILabel!
-    
-    
     @IBOutlet var descriptionInfo: UITextView!
-    
     @IBOutlet var descriptionLabel: PaddingLabel!
-    
-    
     @IBOutlet var backBtn: UIButton!
     
-//    var images = [UIImage]()
-    let storyData = ["doc","cat","bird","mouse","banana","mango"]
+
+    @IBOutlet var scrollView: UIScrollView!
+    private let refreshControl = UIRefreshControl()
+    
     var postData = [[String:Any]]() {
         didSet {
             let cellWidth = (self.view.frame.width-6) / 3
@@ -65,14 +65,18 @@ class UserProfileVC: UIViewController {
         
         // Setup for stories VC
         stories.rootVC = self.rootView
+        
         postData.removeAll()
+        dongThoiGianView.storyData.removeAll()
+        
         
         fetchDataFor(user_account: self.user_account, completion: nil)
+        updatePost()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        updatePost()
+        
         collectionView.reloadData()
         navigationController?.isNavigationBarHidden = true
         
@@ -87,6 +91,8 @@ class UserProfileVC: UIViewController {
             messageBtn.isHidden = false
         }
     }
+    
+    // MARK: - update post accorrding changes in posts data
     
     // MARK: setup UI for view
     private func setupUI(){
@@ -107,6 +113,21 @@ class UserProfileVC: UIViewController {
         descriptionInfo.isScrollEnabled = false
         descriptionInfo.isUserInteractionEnabled = false
         
+        dongThoiGianView.rootVC = self.rootView
+        
+        dongThoiGianView.parseData(user_account: self.user_account)
+        
+        scrollView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    @objc private func refreshData(){
+        refreshControl.beginRefreshing()
+        
+        self.updatePost()
+        self.fetchDataFor(user_account: self.user_account, completion: nil)
+        
+        self.dongThoiGianView.parseData(user_account: self.user_account)
     }
     
     // MARK: Fetch data for user
@@ -119,6 +140,7 @@ class UserProfileVC: UIViewController {
         }
     
         ServerFirebase.getUserProfile(user_account: user_account) { res in
+            self.refreshControl.endRefreshing()
             if let response = res {
                 if let followers = response["followers"],
                    let followers_arr = followers as? [String] {
@@ -163,8 +185,8 @@ class UserProfileVC: UIViewController {
                         self.descriptionLabel.isHidden = true
                     } else {
                         self.descriptionInfo.text = bio
-                        self.descriptionInfo.sizeToFit()
                         self.descriptionLabel.isHidden = false
+                        self.descriptionInfo.sizeToFit()
                     }
                 }
                 
@@ -174,9 +196,10 @@ class UserProfileVC: UIViewController {
     }
     
     
-    private func updatePost(){
+    private func updatePost(completion:(()->Void)? = nil){
+        postData.removeAll()
         ServerFirebase.getUserPost(user_account: self.user_account) { data in
-
+            self.refreshControl.endRefreshing()
             let newPost = data["post_id"] as! String
             var existed = false
 
@@ -193,7 +216,9 @@ class UserProfileVC: UIViewController {
                 self.stories.postData = self.postData
                 self.collectionView.reloadData()
             }
-        } failed: {}
+        } failed: {
+            self.refreshControl.endRefreshing()
+        }
     }
     
     
@@ -215,7 +240,9 @@ class UserProfileVC: UIViewController {
     @IBAction func editProfile(_ sender: Any) {
         // Present edit profile view
         let editProfileVC = EditProfileVC(nibName: "EditProfileVC", bundle: nil)
+        
         editProfileVC.rootView = self
+        
         editProfileVC.reloadUserInfo = {
             self.fetchDataFor(user_account: self.user_account, completion: nil)
         }
@@ -288,7 +315,6 @@ extension UserProfileVC:UICollectionViewDelegate,
         }
         
         cell.tapIntoImage = { [self] in
-            print("duy dep trai ")
             
             self.stories.scrollToPost = {
                 self.stories.tableView.scrollToRow(at: indexPath,
@@ -306,11 +332,6 @@ extension UserProfileVC:UICollectionViewDelegate,
         return cell
         
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        // Data for present of this cell
-//        let data = postData[indexPath.row]
-//    }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -333,3 +354,4 @@ extension UserProfileVC:UICollectionViewDelegate,
     }
     
 }
+

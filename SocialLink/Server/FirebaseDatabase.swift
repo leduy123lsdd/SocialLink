@@ -10,11 +10,14 @@ import Firebase
 
 let ServerFirebase = FirebaseDatabase()
 
+
+
 class FirebaseDatabase {
     private var ref: DocumentReference? = nil
     private let db = Firestore.firestore()
     private let storageReference = Storage.storage().reference()
     let storage = Storage.storage()
+    
     
     
     // MARK: - Sign up new user
@@ -184,6 +187,24 @@ class FirebaseDatabase {
             "time":Date().timeIntervalSince1970
         ]
         
+        // get all followers
+        let post_id = newPost["post_id"] as! String
+        db.collection("users").document(userStatus.user_account).getDocument { (data, _) in
+            
+            guard let dataRes = data?.data() else {return}
+            guard let followers = dataRes["followers"] as? [String] else {return}
+            
+            // send new notification for each follower
+            for follower in followers {
+                notificationCenterServer
+                    .post_notification(user_give_notif: userStatus.user_account,
+                                       user_get_notif: follower,
+                                       post_id: post_id,
+                                       type: "new_post")
+            }
+        }
+          
+        
         db.collection("posts").document(postContent["post_id"] as! String).setData(postContent) { (error) in
             if let err = error {
                 print("error when create new post  \(err)")
@@ -203,9 +224,40 @@ class FirebaseDatabase {
         ])
         
     }
+    
+    // MARK: - delete post
+    func deletePost(post_id:String, user_account:String,
+                    compeletion:@escaping()->Void){
+        // 1 xoa post id trong posted_id trong users
+        db.collection("users").document(user_account).updateData([
+            "posted_id": FieldValue.arrayRemove([post_id])
+        ]){ error in
+            if let err = error {
+                print(err)
+                return
+            }
+            
+            // delete post_data:
+            self.db.collection("posts").document(post_id).delete { (error) in
+                if let err = error {
+                    print(err)
+                    return
+                }
+                
+                self.storageReference.child("images/\(post_id)").listAll { (datasRes, _) in
+                    
+                    for data in datasRes.items {
+                        self.storageReference.child(data.fullPath).delete()
+                    }
+                    
+                }
+                compeletion()
+            }
+        }
+    }
 
     // MARK: get post by ID
-    private func getPostBy_post_id(post_id:String, completion:(@escaping (_ data:[String:Any])->Void)) {
+    public func getPostBy_post_id(post_id:String, completion:(@escaping (_ data:[String:Any])->Void)) {
         // get post info and then get images of that post
         self.db.collection("posts").document(post_id).getDocument { dataSnap, _ in
             // This is post data
@@ -220,7 +272,9 @@ class FirebaseDatabase {
     }
     
     // MARK: get posts of current user.
-    func getUserPost(user_account:String, success:(@escaping (_ dataReturn:[String:Any])->Void ), failed:(@escaping ()->Void )){
+    func getUserPost(user_account:String,
+                     success:(@escaping (_ dataReturn:[String:Any])->Void ),
+                     failed:@escaping ()->Void){
         /**
          Need: user_account to find all your posted_id
          Get post from friend need: user_account from friend and then do processes likes yours post.
@@ -235,7 +289,8 @@ class FirebaseDatabase {
                 return
             }
             // data response from server. Got posted_id
-            guard let userInfo = dataSnap?.data() else { fatalError() }
+            guard let userInfo = dataSnap?.data() else { return }
+            
             
             if let yourPosts_id = userInfo["posted_id"] as? [String] {
                 
@@ -268,7 +323,10 @@ class FirebaseDatabase {
     
     // MARK: Like update
     func newLike(from user:[String:Any], completion:(@escaping(_ data:[Any])->Void)) {
+        // user give like
         let user_account = user["user_account"] as! String
+        // user get like
+        let get_like_user = user["get_like_user"] as! String
         let post_id = user["post_id"] as! String
         var alreadyLike = false
         
@@ -284,6 +342,14 @@ class FirebaseDatabase {
                 self.db.collection("posts").document("\(post_id)").updateData([
                     "liked_by_users":FieldValue.arrayUnion([user_account])
                 ])
+                
+                if get_like_user != user_account {
+                    // Alert for that user
+                    notificationCenterServer.post_notification(user_give_notif: user_account,
+                                                               user_get_notif: get_like_user,
+                                                               post_id: post_id,
+                                                               type: "like_post")
+                }
                 
                 
             } else {
@@ -507,6 +573,18 @@ class FirebaseDatabase {
                 }
             }
             
+            
+            
+        }
+    }
+    
+    
+    // MARK: - realtime update post
+    func listenerPosts(user_account:String,
+                       action:@escaping()->Void){
+        db.collection("users").document(user_account).addSnapshotListener { (dataSnap, error) in
+            print("updated post from \(user_account)")
+            action()
             
             
         }

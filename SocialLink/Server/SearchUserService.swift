@@ -39,8 +39,24 @@ class SearchUserService {
     }
     
     // MARK: - Get all friend belong to user_account
-    func getFriends(user_account:String,
-                    completion:(@escaping()->Void)){
+    func getFollowingFriends(user_account:String,
+                             completion:(@escaping(_ dataRes:[String])->Void)){
+        
+        let userRef = db.collection("users").document(user_account)
+        
+        userRef.getDocument { dataRes, error in
+            if let err = error {
+                print("error at get post: \(err)")
+                return
+            } else {
+                guard let userInfo = dataRes?.data() else { return }
+                guard let following = userInfo["following"] else {return}
+                completion( following as! [String])
+            }
+            
+        }
+        
+        
         
     }
     
@@ -178,7 +194,18 @@ class SearchUserService {
             if let data = dataSnap {
                 var dataReturn = [Any]()
                 for doc in data.documents {
-                    dataReturn.append(doc.data())
+                    let data = doc.data()
+                    
+                    let castData = [
+                        "url":data["image_url"],
+                        "id":data["story_id"],
+                        "last_updated":data["time"],
+                        "mime_type":"image",
+                        "user_account":data["user_account"]
+                    
+                    ]
+                    
+                    dataReturn.append(castData)
                 }
                 completion(dataReturn)
             }

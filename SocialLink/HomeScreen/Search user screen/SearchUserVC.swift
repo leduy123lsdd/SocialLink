@@ -92,6 +92,7 @@ extension SearchUserVC:UITableViewDelegate, UITableViewDataSource {
         userProfileVC.user_account = user_account
         userProfileVC.rootView = rootVC
         
+        
         userProfileVC.modalPresentationStyle = .fullScreen
         rootVC?.navigationController?.pushViewController(userProfileVC, animated: true)
     }

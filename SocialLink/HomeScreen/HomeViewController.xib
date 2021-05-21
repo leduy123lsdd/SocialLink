@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="homeBtn" destination="7Mm-Fu-Q0e" id="SKb-nc-cRF"/>
                 <outlet property="homeIndicator" destination="Qp1-2n-1x1" id="tIV-nQ-s7t"/>
+                <outlet property="notReadLb" destination="YMA-zU-cSN" id="SkJ-T4-wJG"/>
                 <outlet property="notifBtn" destination="WLq-xy-9t0" id="x7t-rQ-b51"/>
                 <outlet property="notifIndicator" destination="37N-3b-gEN" id="bSp-8R-ngn"/>
                 <outlet property="postBtn" destination="W12-IP-xuf" id="IiZ-es-YIy"/>
@@ -29,6 +30,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYr-gk-YFV">
+                    <rect key="frame" x="295" y="855" width="14" height="14"/>
+                    <color key="backgroundColor" red="1" green="0.015676441869999998" blue="0.1112168065" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMA-zU-cSN">
+                    <rect key="frame" x="295" y="855" width="14" height="14"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="dsR-vm-Wwv"/>
+                        <constraint firstAttribute="height" constant="14" id="e0X-7w-jip"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ByM-e7-c8v">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
@@ -61,7 +87,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" image="house" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                             </state>
                                             <connections>
                                                 <action selector="homeBtnClicked:" destination="-1" eventType="touchUpInside" id="Gdn-DP-4Dl"/>
@@ -83,7 +109,7 @@
                                             <rect key="frame" x="0.0" y="2" width="74.5" height="48"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" image="magnifyingglass.circle" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                             </state>
                                             <connections>
                                                 <action selector="searchUserBtnClicked:" destination="-1" eventType="touchUpInside" id="dKw-yq-HBp"/>
@@ -105,7 +131,7 @@
                                             <rect key="frame" x="0.0" y="2" width="75" height="48"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" image="plus.app" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                             </state>
                                             <connections>
                                                 <action selector="createPostClicked:" destination="-1" eventType="touchUpInside" id="FOn-gB-JPi"/>
@@ -127,7 +153,7 @@
                                             <rect key="frame" x="0.0" y="2" width="74.5" height="48"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" image="bell" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                             </state>
                                             <connections>
                                                 <action selector="notifBtnACtion:" destination="-1" eventType="touchUpInside" id="8fR-M4-RIT"/>
@@ -149,7 +175,7 @@
                                             <rect key="frame" x="0.0" y="2" width="75" height="48"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <state key="normal" image="person.circle" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                             </state>
                                             <connections>
                                                 <action selector="userProfileClicked:" destination="-1" eventType="touchUpInside" id="jpt-H5-D2s"/>
@@ -172,10 +198,16 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="YMA-zU-cSN" firstAttribute="centerY" secondItem="WLq-xy-9t0" secondAttribute="centerY" constant="-10" id="1u5-IZ-TTY"/>
                 <constraint firstAttribute="bottom" secondItem="ByM-e7-c8v" secondAttribute="bottom" id="D6c-95-e9A"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ByM-e7-c8v" secondAttribute="trailing" id="cvO-wF-n3u"/>
+                <constraint firstItem="vYr-gk-YFV" firstAttribute="bottom" secondItem="YMA-zU-cSN" secondAttribute="bottom" id="g6A-cx-Qby"/>
                 <constraint firstItem="ByM-e7-c8v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nYg-2d-lXo"/>
+                <constraint firstItem="YMA-zU-cSN" firstAttribute="centerX" secondItem="WLq-xy-9t0" secondAttribute="centerX" constant="10" id="oyf-Uu-PGx"/>
+                <constraint firstItem="vYr-gk-YFV" firstAttribute="top" secondItem="YMA-zU-cSN" secondAttribute="top" id="pLO-EX-H3t"/>
+                <constraint firstItem="vYr-gk-YFV" firstAttribute="trailing" secondItem="YMA-zU-cSN" secondAttribute="trailing" id="qeA-q1-fIQ"/>
                 <constraint firstItem="EC1-4i-lVG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="sBU-Y9-aDC"/>
+                <constraint firstItem="vYr-gk-YFV" firstAttribute="leading" secondItem="YMA-zU-cSN" secondAttribute="leading" id="u6o-RV-n2r"/>
                 <constraint firstItem="ByM-e7-c8v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ufD-mK-tcw"/>
             </constraints>
             <point key="canvasLocation" x="138" y="116"/>

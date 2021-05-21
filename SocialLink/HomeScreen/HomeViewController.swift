@@ -24,6 +24,9 @@ class HomeViewController: UIViewController,UIPageViewControllerDelegate {
     @IBOutlet var profileIndicator: UIView!
     @IBOutlet weak var scrollContainer: UIView!
     
+    
+    @IBOutlet var notReadLb: UILabel!
+    
     // .fill   magnifyingglass.circle.fill magnifyingglass.circle
     var iconName = ["house",
                     "magnifyingglass.circle",
@@ -38,6 +41,8 @@ class HomeViewController: UIViewController,UIPageViewControllerDelegate {
     let createPostVC = CreatePostVC(nibName: "CreatePostVC", bundle: nil)
     let userProfileVC = UserProfileVC(nibName: "UserProfileVC", bundle: nil)
     let storyCreateStatus = StoryCreateStatus(nibName: "StoryCreateStatus", bundle: nil)
+    let notificationVC = NotificationVC(nibName: "NotificationVC", bundle: nil)
+    
     
     var pagesVC = [UIViewController]()
     var config = YPImagePickerConfiguration()
@@ -52,10 +57,18 @@ class HomeViewController: UIViewController,UIPageViewControllerDelegate {
     var currentViewIndex = 0
     
     var doubleTapValue = true
+    
+    var didApearVC:(()->Void)?
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//
+//    }
 
     // MARK: View did load
     override func viewDidLoad() {
         super.viewDidLoad()
+        didApearVC?()
+        notificationVC.homeVC = self
         storyVC.rootVC = self
         
         storyVC.doubleTapIndicatorDisappear = {
@@ -70,7 +83,7 @@ class HomeViewController: UIViewController,UIPageViewControllerDelegate {
         
         userProfileVC.rootView = self
         
-        pagesVC = [storyVC,searchUserVC,createPostVC,userProfileVC]
+        pagesVC = [storyVC,searchUserVC,createPostVC,notificationVC,userProfileVC]
         
         indicator = [homeIndicator,
                      searchIndicator,
@@ -89,6 +102,19 @@ class HomeViewController: UIViewController,UIPageViewControllerDelegate {
         })
         
         setupPageViewController()
+        notificationCenterServer.get_notification(user_account: userStatus.user_account) { (dataRes) in
+            
+            var index = 0
+            for nof in dataRes {
+                let seen_indicatior = nof["seen"] as! String
+                if seen_indicatior == "false" {
+                   index += 1
+                }
+            }
+            self.notReadLb.text = "\(index)"
+        } failed: {
+            
+        }
         
     }
     
@@ -145,14 +171,18 @@ class HomeViewController: UIViewController,UIPageViewControllerDelegate {
     
     
     @IBAction func notifBtnACtion(_ sender: Any) {
+//        notificationVC.updateNotReadNotification = { number in
+//            
+//        }
         setSelectedForBtn(location: 3)
+        changeViewTo(indexView: 3)
         
     }
     
     @IBAction func userProfileClicked(_ sender: Any) {
         userProfileVC.user_account = userStatus.user_account
         setSelectedForBtn(location: 4)
-        changeViewTo(indexView: 3)
+        changeViewTo(indexView: 4)
     }
     
     private func setupPageViewController() {

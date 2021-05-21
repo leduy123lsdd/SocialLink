@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="192" id="KGk-i7-Jjw" customClass="NotificationCell" customModule="SocialLink" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OM-9G-0SH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <color key="backgroundColor" red="0.20106471366789413" green="0.78886318673030875" blue="1" alpha="0.1853863441780822" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HpG-D4-ex8">
+                        <rect key="frame" x="10" y="5" width="300" height="70"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="rVR-dS-60B">
+                                <rect key="frame" x="0.0" y="0.0" width="71" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rVR-dS-60B" secondAttribute="height" multiplier="1:1" constant="1" id="ex2-ak-eLd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVC-8y-jAb">
+                                <rect key="frame" x="81" y="0.0" width="219" height="70"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="9OM-9G-0SH" secondAttribute="bottom" id="62B-UF-f11"/>
+                    <constraint firstAttribute="trailing" secondItem="HpG-D4-ex8" secondAttribute="trailing" constant="10" id="CNm-cQ-dw6"/>
+                    <constraint firstItem="9OM-9G-0SH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="boc-RF-w9T"/>
+                    <constraint firstAttribute="trailing" secondItem="9OM-9G-0SH" secondAttribute="trailing" id="cAg-Ot-UUm"/>
+                    <constraint firstItem="HpG-D4-ex8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kTi-s7-4cd"/>
+                    <constraint firstItem="9OM-9G-0SH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="m4y-hK-mhz"/>
+                    <constraint firstAttribute="bottom" secondItem="HpG-D4-ex8" secondAttribute="bottom" constant="5" id="oKj-vq-qBT"/>
+                    <constraint firstItem="HpG-D4-ex8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zkx-mY-fBc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatar" destination="rVR-dS-60B" id="fO9-lr-eDl"/>
+                <outlet property="backgroundColorView" destination="9OM-9G-0SH" id="rLx-Cb-HdA"/>
+                <outlet property="messageLb" destination="RVC-8y-jAb" id="Zac-Ki-Dnh"/>
+            </connections>
+            <point key="canvasLocation" x="-157.97101449275362" y="-40.178571428571423"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="girl" width="330" height="330"/>
+    </resources>
+</document>

@@ -15,6 +15,8 @@ class SubStoryCell: UITableViewCell {
     
     var rootVC:UIViewController?
     
+    
+    
     typealias DictType = [String:Any]
     var storyData = [[DictType]]()
     
@@ -22,34 +24,40 @@ class SubStoryCell: UITableViewCell {
     var picker:YPImagePicker!
     let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
     
+    let viewStoryViewController = ViewStoryViewController(nibName: "ViewStoryViewController", bundle: nil)
     
+    var yourStoryCellData:[String:Any]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "StoryCell", bundle: nil), forCellWithReuseIdentifier: "StoryCell")
-        collectionView.register(UINib(nibName: "AddStoryCell", bundle: nil), forCellWithReuseIdentifier: "AddStoryCell")
+
+        collectionView.register(IGAddStoryCell.self, forCellWithReuseIdentifier: IGAddStoryCell.reuseIdentifier)
+        collectionView.register(IGStoryListCell.self, forCellWithReuseIdentifier: IGStoryListCell.reuseIdentifier)
         
         config.library.maxNumberOfItems = 1
         config.usesFrontCamera = true
         config.screens = [.photo,.library]
+        config.library.isSquareByDefault = false
+        
         picker = YPImagePicker(configuration: config)
         
         photoEditor.modalPresentationStyle = .fullScreen
         
         photoEditor.photoEditorDelegate = self
-//        photoEditor.image = UIImage(named: "crush")!
-//        photoEditor.stickers.append(UIImage(named: "9" )!)
-//        photoEditor.stickers.append(UIImage(named: "empty" )!)
         photoEditor.hiddenControls = [.save,.share]
         photoEditor.colors = [.brown,.purple,.orange,.magenta,.yellow,.cyan,.blue,.green,.red,.white,.black]
         
         
+        viewStoryViewController.viewStoryDelegate = self
         
         fetchFollowerUsers()
+        
+        
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -61,36 +69,32 @@ class SubStoryCell: UITableViewCell {
     var userStoryAvatar = [DictType]()
     
     // Get all stories of follower
-    private func fetchFollowerUsers() {
+    public func fetchFollowerUsers() {
         
-        userStoryAvatar.removeAll()
-        storyData.removeAll()
         
-        ServerFirebase.getAvatarImageURL(user_account: userStatus.user_account) { url in
-            let newData:[String : Any] = ["user_account":userStatus.user_account,
-                                          "avatarURL":url as Any]
-            
-            self.userStoryAvatar.append(newData)
-            self.collectionView.reloadData()
-        }
         
         ServerFirebase.getUserProfile(user_account: userStatus.user_account) { (dataRes) in
+            self.userStoryAvatar.removeAll()
+            self.storyData.removeAll()
             guard let data = dataRes,
                   let followersDict = data["followers"],
                   var followers = followersDict as? [String] else  {return}
+            
             followers.append(userStatus.user_account)
+            
+            
             for user in followers {
+                
                 searchUserService.getStory(for: user) { (dataArr) in
                     
                     let dataNew = dataArr as! [DictType]
                     
                     if dataNew.count > 0 {
-                        self.storyData.append(dataNew)
-                        self.collectionView.reloadData()
-                        
                         ServerFirebase.getAvatarImageURL(user_account: user) { url in
-                            let newData:[String : Any] = ["user_account":user,"avatarURL":url as Any]
+                            
+                            let newData:[String : Any] = ["user_account":user,"avatarURL":"\(url!)"]
                             self.userStoryAvatar.append(newData)
+                            self.storyData.append(dataNew)
                             self.collectionView.reloadData()
                         }
                     }
@@ -129,49 +133,55 @@ extension SubStoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddStoryCell", for: indexPath) as! AddStoryCell
-            for user in userStoryAvatar {
-                let user_account = user["user_account"] as! String
-                let avatarURL = user["avatarURL"] as! URL
-                
-                if user_account == userStatus.user_account {
-                    cell.imageView.sd_setImage(with: avatarURL, completed: nil)
-                    break
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGAddStoryCell.reuseIdentifier, for: indexPath) as? IGAddStoryCell else { fatalError() }
+            
+            if let currentUser = self.yourStoryCellData {
+                let avatarURL = currentUser["avatarURL"] as! String
+                cell.userDetails = ("Your story","\(avatarURL)")
+            } else {
+                ServerFirebase.getAvatarImageURL(user_account: userStatus.user_account) { url in
+                    
+                    let newData:[String : Any] = ["user_account":userStatus.user_account,"avatarURL":"\(url!)"]
+                    self.yourStoryCellData = newData
+                    
+                    cell.userDetails = ("Your story","\(url!)")
                 }
             }
-            return cell
-        }
-        
-        let data = self.storyData[indexPath.row - 1]
-        let firstStory = data.first
-        let user_account = firstStory?["user_account"] as? String
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCell", for: indexPath) as! StoryCell
 
-        
-        for user in userStoryAvatar {
-            let user_acc = user["user_account"] as! String
-            let avatarURL = user["avatarURL"] as! URL
             
-            if user_acc == user_account {
-                cell.name.text = user_acc
-                cell.imageView.sd_setImage(with: avatarURL, completed: nil)
-                break
+            return cell
+        } else {
+            let data = self.storyData[indexPath.row - 1]
+            let firstStory = data.first
+            let user_account = firstStory?["user_account"] as? String
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGStoryListCell.reuseIdentifier,
+                                                                for: indexPath) as? IGStoryListCell else { fatalError() }
+
+            for user in userStoryAvatar {
+                let user_acc = user["user_account"] as! String
+                let avatarURL = user["avatarURL"] as! String
+                
+                if user_acc == user_account {
+                    cell.userDetails = (user_acc,"\(avatarURL)")
+                    return cell
+                }
             }
+            
+            
+            
         }
-        
-        return cell
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80.0, height: 100.0)
+        return indexPath.row == 0 ? CGSize(width: 80, height: 100) : CGSize(width: 80, height: 100)
     }
-    
-    
     
     // MARK: Select a story
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
+            
+            
             
             picker.didFinishPicking { [unowned picker] items, cancelled in
                 if cancelled {
@@ -195,9 +205,21 @@ extension SubStoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
             }
 
             rootVC?.present(picker, animated: true, completion: nil)
+        } else {
+            
+            let data = storyData[indexPath.row - 1]
+            
+            viewStoryViewController.storyData = self.storyData
+            viewStoryViewController.userStoryAvatar = self.userStoryAvatar
+            viewStoryViewController.fetchData(datas: data)
+            
+            rootVC?.present(viewStoryViewController, animated: true, completion: nil)
         }
         
-//        print(self.storyData[indexPath.row-1])
-        
+    }
+}
+
+extension SubStoryCell:SelectNewStory {
+    func newStoryLoction(location: Int) {
     }
 }
