@@ -25,6 +25,7 @@
                 <outlet property="followingCount" destination="6KF-Tx-bEs" id="7cn-LZ-Mxp"/>
                 <outlet property="messageBtn" destination="jko-d1-6F8" id="0dF-i2-vMN"/>
                 <outlet property="nameLabel" destination="svb-r8-2TB" id="abf-op-WKk"/>
+                <outlet property="noPostLb" destination="Uy1-0v-BQn" id="nzg-5Y-UHL"/>
                 <outlet property="postCount" destination="nRU-j4-rwx" id="41J-UV-POq"/>
                 <outlet property="scrollView" destination="GuK-Ej-H4c" id="WZv-Q2-nxL"/>
                 <outlet property="unFollowBtn" destination="I0I-dZ-qaz" id="Nbs-Np-ngK"/>
@@ -83,7 +84,7 @@
                     <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Oce-Es-RjX">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1024"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1067.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPk-oN-Cpo">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -480,6 +481,27 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hãy thêm bài đăng mới để hiển thị cho người dùng khác theo dõi" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy1-0v-BQn" customClass="PaddingLabel" customModule="SocialLink" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="1029" width="414" height="38.5"/>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" name="AccentColor"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -516,6 +538,9 @@
         <designable name="RDO-NG-cwj">
             <size key="intrinsicContentSize" width="44" height="19.5"/>
         </designable>
+        <designable name="Uy1-0v-BQn">
+            <size key="intrinsicContentSize" width="466.5" height="19.5"/>
+        </designable>
     </designables>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
@@ -535,6 +560,9 @@
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

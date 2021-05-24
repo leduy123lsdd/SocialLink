@@ -21,7 +21,7 @@ class SubStoryCell: UITableViewCell {
     var storyData = [[DictType]]()
     
     var config = YPImagePickerConfiguration()
-    var picker:YPImagePicker!
+    
     let photoEditor = PhotoEditorViewController(nibName:"PhotoEditorViewController",bundle: Bundle(for: PhotoEditorViewController.self))
     
     let viewStoryViewController = ViewStoryViewController(nibName: "ViewStoryViewController", bundle: nil)
@@ -37,12 +37,7 @@ class SubStoryCell: UITableViewCell {
         collectionView.register(IGAddStoryCell.self, forCellWithReuseIdentifier: IGAddStoryCell.reuseIdentifier)
         collectionView.register(IGStoryListCell.self, forCellWithReuseIdentifier: IGStoryListCell.reuseIdentifier)
         
-        config.library.maxNumberOfItems = 1
-        config.usesFrontCamera = true
-        config.screens = [.photo,.library]
-        config.library.isSquareByDefault = false
-        
-        picker = YPImagePicker(configuration: config)
+       
         
         photoEditor.modalPresentationStyle = .fullScreen
         
@@ -180,9 +175,15 @@ extension SubStoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
     // MARK: Select a story
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
+            var picker:YPImagePicker!
+            config.library.maxNumberOfItems = 1
+            config.usesFrontCamera = true
+            config.screens = [.photo,.library]
+            config.library.isSquareByDefault = false
+            config.showsCrop = YPCropType.none
             
-            
-            
+            picker = YPImagePicker(configuration: config)
+
             picker.didFinishPicking { [unowned picker] items, cancelled in
                 if cancelled {
                     picker?.dismiss(animated: true, completion: nil)

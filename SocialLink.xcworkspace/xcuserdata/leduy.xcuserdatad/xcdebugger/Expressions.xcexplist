@@ -3,13 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MainContentCell.parseData(data:):MainContentCell.swift">
+         contextName = "FriendVC.changeSelectedLayoutForBtn(followers:followings:):FriendVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "data[&quot;images_url&quot;]">
-            </PersistentString>
-            <PersistentString
-               value = "data">
+               value = "followersData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -30,6 +27,25 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MainContentCell.parseData(data:):MainContentCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "data[&quot;images_url&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "data">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "userProfileStoriesVC.postData.getter:userProfileStoriesVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "postData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in SubStoryCell.fetchFollowerUsers():SubStoryCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -45,14 +61,6 @@
          <PersistentStrings>
             <PersistentString
                value = "storyData">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "userProfileStoriesVC.postData.getter:userProfileStoriesVC.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "postData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

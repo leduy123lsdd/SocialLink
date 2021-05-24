@@ -44,15 +44,16 @@ class StoryVC: UIViewController {
         
     }
     
-    
     // MARK: Fetch posts from friends or yours
     private func getPost(){
         
         refreshControl.beginRefreshing()
         
+        
         searchUserService.getFollowingFriends(user_account: userStatus.user_account) { (friends) in
             if friends.count == 0 {
                 self.refreshControl.endRefreshing()
+                
                 return
             }
             friends.forEach { (friend) in
@@ -94,6 +95,9 @@ class StoryVC: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "SubStoryCell", bundle: nil), forCellReuseIdentifier: "SubStoryCell")
         tableView.register(UINib(nibName: "MainContentCell", bundle: nil), forCellReuseIdentifier: "MainContentCell")
+        tableView.register(UINib(nibName: "NoPostTableViewCell", bundle: nil), forCellReuseIdentifier: "NoPostTableViewCell")
+        
+        
         tableView.refreshControl = refreshControl
         
         refreshControl.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
@@ -107,6 +111,9 @@ class StoryVC: UIViewController {
 
 extension StoryVC:UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if postData.count == 0 {
+            return 2
+        }
         return postData.count + 1
     }
     
@@ -118,6 +125,11 @@ extension StoryVC:UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SubStoryCell") as! SubStoryCell
             cell.rootVC = self.rootVC
             
+            return cell
+        }
+        if indexPath.row == 1 && postData.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NoPostTableViewCell") as! NoPostTableViewCell
+            tableView.rowHeight = 200
             return cell
         }
         

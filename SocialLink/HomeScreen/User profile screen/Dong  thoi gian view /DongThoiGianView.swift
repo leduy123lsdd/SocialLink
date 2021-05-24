@@ -45,6 +45,8 @@ class DongThoiGianView: UIView, SelectNewStory {
         collectionView.dataSource = self
         
         collectionView.register(IGStoryListCell.self, forCellWithReuseIdentifier: IGStoryListCell.reuseIdentifier)
+        collectionView.register(UINib(nibName: "NoStoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NoStoryCollectionViewCell")
+        
         
         viewStoryViewController.viewStoryDelegate = self
         
@@ -52,15 +54,13 @@ class DongThoiGianView: UIView, SelectNewStory {
     }
     
     // Get all stories of follower
-    public func parseData(user_account:String) {
+    public func parseData(user_account:String,
+                          completion:((_ amountOfData:Int)->Void)?=nil) {
         self.user_account = user_account
         
         userStoryAvatar.removeAll()
         
-        
         let user = user_account
-        
-        
         
         searchUserService.getStory(for: user) { (dataArr) in
             self.storyData.removeAll()
@@ -118,6 +118,8 @@ class DongThoiGianView: UIView, SelectNewStory {
                                                   "avatarURL":url]
                     self.userStoryAvatar.append(newData)
                 }
+                
+                completion?(self.storyData.count)
                 self.collectionView.reloadData()
                 
             }
@@ -139,10 +141,21 @@ class DongThoiGianView: UIView, SelectNewStory {
 
 extension DongThoiGianView:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return storyData.count
+        if storyData.count > 0 {
+            return storyData.count
+        } else {
+            return 1
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if storyData.count == 0 && indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoStoryCollectionViewCell",for: indexPath) as! NoStoryCollectionViewCell
+            return cell
+        }
+        
         let data = self.storyData[indexPath.row]
         
         
@@ -173,6 +186,9 @@ extension DongThoiGianView:UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if storyData.count == 0 {
+            return CGSize(width: 200, height: 100)
+        }
         return CGSize(width: 80, height: 100)
     }
     

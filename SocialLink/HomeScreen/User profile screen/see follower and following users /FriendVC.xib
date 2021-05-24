@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendVC" customModule="SocialLink" customModuleProvider="target">
+            <connections>
+                <outlet property="followersBtn" destination="DmW-no-mvr" id="dpF-cA-L9E"/>
+                <outlet property="followingsBtn" destination="VuN-FI-0Ry" id="3t7-XD-QoW"/>
+                <outlet property="tableView" destination="YUL-Qr-9Jw" id="Ajc-Cj-RBR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xwe-wj-azJ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-Fc-RDH">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rkU-wB-YeD">
+                                    <rect key="frame" x="10" y="5" width="355" height="40"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmW-no-mvr">
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <state key="normal" title="Followers"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="followersBtnAction:" destination="-1" eventType="touchUpInside" id="hQW-kc-foa"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuN-FI-0Ry">
+                                            <rect key="frame" x="180" y="0.0" width="175" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <state key="normal" title="Followings"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="followingsBtnAction:" destination="-1" eventType="touchUpInside" id="k8y-oJ-Ymy"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DmW-no-mvr" firstAttribute="width" secondItem="VuN-FI-0Ry" secondAttribute="width" id="OgH-HE-xnj"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="rkU-wB-YeD" firstAttribute="top" secondItem="GYI-Fc-RDH" secondAttribute="top" constant="5" id="56V-hB-RkN"/>
+                                <constraint firstItem="rkU-wB-YeD" firstAttribute="leading" secondItem="GYI-Fc-RDH" secondAttribute="leading" constant="10" id="Ugz-Nl-s0F"/>
+                                <constraint firstAttribute="trailing" secondItem="rkU-wB-YeD" secondAttribute="trailing" constant="10" id="WXk-be-1tQ"/>
+                                <constraint firstAttribute="bottom" secondItem="rkU-wB-YeD" secondAttribute="bottom" constant="5" id="iKw-WV-SAn"/>
+                                <constraint firstAttribute="height" constant="50" id="wZa-rG-i9b"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YUL-Qr-9Jw">
+                            <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Xwe-wj-azJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6RJ-yR-JC1"/>
+                <constraint firstItem="Xwe-wj-azJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="A6Q-Dx-ojB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Xwe-wj-azJ" secondAttribute="bottom" id="VJ0-vW-4G1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xwe-wj-azJ" secondAttribute="trailing" id="ijH-D8-04I"/>
+            </constraints>
+            <point key="canvasLocation" x="-157" y="-21"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

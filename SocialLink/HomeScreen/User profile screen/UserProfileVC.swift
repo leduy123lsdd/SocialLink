@@ -38,8 +38,18 @@ class UserProfileVC: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     private let refreshControl = UIRefreshControl()
     
+    
+    @IBOutlet var noPostLb: PaddingLabel!
+    let friendVC = FriendVC(nibName: "FriendVC", bundle: nil)
+    
     var postData = [[String:Any]]() {
         didSet {
+            if postData.count == 0 {
+                noPostLb.isHidden = false
+            } else {
+                noPostLb.isHidden = true
+            }
+            
             let cellWidth = (self.view.frame.width-6) / 3
             let collumn = Int(postData.count/3)
             
@@ -63,13 +73,15 @@ class UserProfileVC: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
         
+        friendVC.rootVC = rootView
+        
         // Setup for stories VC
         stories.rootVC = self.rootView
         
         postData.removeAll()
         dongThoiGianView.storyData.removeAll()
         
-        
+        noPostLb.isHidden = true
         fetchDataFor(user_account: self.user_account, completion: nil)
         updatePost()
     }
@@ -89,6 +101,13 @@ class UserProfileVC: UIViewController {
         } else {
             editProfileBtn.isHidden = true
             messageBtn.isHidden = false
+        }
+        
+        if self.postData.count == 0 {
+            noPostLb.isHidden = false
+            collectionViewHeight.constant = 0
+        } else {
+            noPostLb.isHidden = true
         }
     }
     
@@ -213,10 +232,13 @@ class UserProfileVC: UIViewController {
 
             if !existed {
                 self.postData.append(data)
-                self.stories.postData = self.postData
+                
                 self.collectionView.reloadData()
             }
+            
+            
         } failed: {
+            self.collectionView.reloadData()
             self.refreshControl.endRefreshing()
         }
     }
@@ -229,11 +251,20 @@ class UserProfileVC: UIViewController {
     }
     
     @IBAction func followerAction(_ sender: Any) {
-        print("follower clicked")
+        if nameLabel.text == userStatus.user_account {
+            friendVC.fetchDataFor(user_account: userStatus.user_account)
+            self.present(friendVC, animated: true, completion: nil)
+            
+        }
+        
     }
     
     @IBAction func followingAction(_ sender: Any) {
-        print("following clicked")
+        if nameLabel.text == userStatus.user_account {
+            friendVC.fetchDataFor(user_account: userStatus.user_account)
+            self.present(friendVC, animated: true, completion: nil)
+            
+        }
     }
     
     // MARK: Edit profile button clicked
@@ -287,6 +318,7 @@ class UserProfileVC: UIViewController {
     @IBAction func messageBtnAction(_ sender: Any) {
         
     }
+    
 }
 
 // MARK: Collection View extension
@@ -316,7 +348,10 @@ extension UserProfileVC:UICollectionViewDelegate,
         
         cell.tapIntoImage = { [self] in
             
+            
             self.stories.scrollToPost = {
+                self.stories.postData = self.postData
+                self.stories.tableView.reloadData()
                 self.stories.tableView.scrollToRow(at: indexPath,
                                                    at: .top,
                                                    animated: false)
