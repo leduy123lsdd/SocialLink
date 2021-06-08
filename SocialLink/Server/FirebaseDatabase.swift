@@ -413,7 +413,7 @@ class FirebaseDatabase {
         
         for url in urlRaw {
             storage.reference(forURL: "\(url)").downloadURL { url,_ in
-                guard let urlFetched = url else {fatalError()}
+                guard let urlFetched = url else {return}
                 responseData.append(urlFetched)
             }
         }

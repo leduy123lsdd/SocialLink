@@ -22,4 +22,5 @@ target 'SocialLink' do
     pod 'FirebaseUI/Storage'
     pod "ImageSlideshow/SDWebImage"
     pod 'iOSPhotoEditor'
+    pod 'MessageKit'
 end

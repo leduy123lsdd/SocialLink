@@ -317,6 +317,45 @@ class UserProfileVC: UIViewController {
     
     @IBAction func messageBtnAction(_ sender: Any) {
         
+        let user1 = userStatus.user_account
+        let user2 = self.user_account
+        let mss = MessagesVC(nibName: "MessagesVC", bundle: nil)
+        
+        messageServer.findChatRoomForUsers(user1: user1, user2: user2) { (chatRoomFound) in
+            if let chatRoom_id = chatRoomFound {
+                
+                mss.currentSenderUser = Sender(senderId: user1, displayName: user1)
+                mss.chatRoom_id = chatRoom_id
+                
+                if user1 != userStatus.user_account {
+                    mss.sender2 = Sender(senderId: user1, displayName: user1)
+                } else {
+                    mss.sender2 = Sender(senderId: user2, displayName: user2)
+                }
+                
+                self.present(mss, animated: true, completion: nil)
+                
+            } else {
+                
+                messageServer.makeNewChatRoom(user1: user1, user2: user2) { chatRoom_id in
+                    mss.currentSenderUser = Sender(senderId: user1, displayName: user1)
+                    mss.chatRoom_id = chatRoom_id
+                    
+                    if user1 != userStatus.user_account {
+                        mss.sender2 = Sender(senderId: user1, displayName: user1)
+                    } else {
+                        mss.sender2 = Sender(senderId: user2, displayName: user2)
+                    }
+                    
+                    self.present(mss, animated: true, completion: nil)
+                }
+                
+            }
+        }
+        
+        
+        
+        
     }
     
 }

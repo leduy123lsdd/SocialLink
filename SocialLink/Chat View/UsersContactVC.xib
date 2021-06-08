@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UsersContactVC" customModule="SocialLink" customModuleProvider="target">
             <connections>
-                <outlet property="chatView" destination="Bsq-bW-diu" id="QR2-Uh-NLK"/>
+                <outlet property="searchBar" destination="piY-tT-Euh" id="Wvm-u8-4Y7"/>
                 <outlet property="tableView" destination="ZvS-jD-I2P" id="qCq-Yi-ZBf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,32 +21,69 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1m-cu-LrB">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RfW-nx-O0e">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZvS-jD-I2P">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </tableView>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bsq-bW-diu">
-                            <rect key="frame" x="375" y="0.0" width="0.0" height="667"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-mz-vtN">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jW6-W7-wdA">
+                                    <rect key="frame" x="10" y="5" width="80" height="40"/>
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="6Vq-oL-1eZ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Quay lại" image="chevron.left" catalog="system">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="cks-Ez-1Cg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="C2S-wG-k9g"/>
+                                <constraint firstAttribute="bottom" secondItem="jW6-W7-wdA" secondAttribute="bottom" constant="5" id="Lpc-Og-tfM"/>
+                                <constraint firstItem="jW6-W7-wdA" firstAttribute="leading" secondItem="shK-mz-vtN" secondAttribute="leading" constant="10" id="iDT-EX-QLA"/>
+                                <constraint firstItem="jW6-W7-wdA" firstAttribute="top" secondItem="shK-mz-vtN" secondAttribute="top" constant="5" id="ivx-eI-ne5"/>
+                            </constraints>
                         </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZvS-jD-I2P">
+                            <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <searchBar key="tableHeaderView" contentMode="redraw" id="piY-tT-Euh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </tableView>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="J1m-cu-LrB" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="BY3-8x-3Xy"/>
-                <constraint firstItem="J1m-cu-LrB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KG8-7Z-2u0"/>
-                <constraint firstItem="J1m-cu-LrB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OpD-UB-Yn4"/>
-                <constraint firstItem="J1m-cu-LrB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="VwQ-Vv-oju"/>
+                <constraint firstAttribute="bottom" secondItem="RfW-nx-O0e" secondAttribute="bottom" id="EvW-Nt-Vgn"/>
+                <constraint firstItem="RfW-nx-O0e" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZDD-te-XxK"/>
+                <constraint firstAttribute="trailing" secondItem="RfW-nx-O0e" secondAttribute="trailing" id="o9g-zB-8yd"/>
+                <constraint firstItem="RfW-nx-O0e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="oa7-XV-riI"/>
             </constraints>
             <point key="canvasLocation" x="-157" y="-21"/>
         </view>
     </objects>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

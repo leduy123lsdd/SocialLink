@@ -14,6 +14,7 @@
                 <outlet property="avatarImage" destination="Yxg-P9-41D" id="gRT-Bz-gQh"/>
                 <outlet property="collectionView" destination="2ho-9a-f9o" id="0XT-wL-p9U"/>
                 <outlet property="sendMessageTf" destination="JdV-fb-kTk" id="ZSG-pJ-Cme"/>
+                <outlet property="sendMss" destination="RlA-rN-htp" id="ykD-ma-ane"/>
                 <outlet property="slideShow" destination="Le1-rk-oeC" id="Jgi-O3-auc"/>
                 <outlet property="userAccountLb" destination="OsD-YG-Dk6" id="eCU-Hq-rwk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -114,6 +115,9 @@
                                                     <integer key="value" value="20"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="sendMss:" destination="-1" eventType="touchUpInside" id="xd2-Ig-mUZ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>

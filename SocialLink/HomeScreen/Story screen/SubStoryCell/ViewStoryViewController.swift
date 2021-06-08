@@ -21,6 +21,9 @@ class ViewStoryViewController: UIViewController {
     @IBOutlet var avatarImage: UIImageView!
     @IBOutlet var userAccountLb: UILabel!
     
+    
+    @IBOutlet weak var sendMss: UIButton!
+    
     var dongthoigianView = false 
     
     var storyImages:[InputSource]!
@@ -33,6 +36,8 @@ class ViewStoryViewController: UIViewController {
     var user_account:String!
     
     var viewStoryDelegate:SelectNewStory?
+    
+    var sendMssToUser = ""
     
     @IBOutlet var collectionView: UICollectionView!
     
@@ -149,6 +154,33 @@ class ViewStoryViewController: UIViewController {
         slideShow.activityIndicator = DefaultActivityIndicator(style: .medium, color: .gray)
         slideShow.delegate = self
     }
+    
+    // MARK: - Send reply to story.
+    
+    @IBAction func sendMss(_ sender: Any) {
+    
+        let message  = sendMessageTf.text
+        let user1 = userStatus.user_account
+        let user2 = sendMssToUser
+        
+        if message != "" {
+            messageServer.findChatRoomForUsers(user1: user1, user2: user2) { (chatRoom_id_res) in
+                if let chatRoom_id = chatRoom_id_res {
+                    messageServer.addNewMessage(chatRoom_id: chatRoom_id, sender: Sender(senderId: user1, displayName: user1), message: message!) { _ in
+                        self.sendMessageTf.text = ""
+                        self.sendMessageTf.resignFirstResponder()
+                    }
+                } else {
+                    messageServer.makeNewChatRoom(user1: user1, user2: user2) { (chatRoom_id) in
+                        messageServer.addNewMessage(chatRoom_id: chatRoom_id, sender: Sender(senderId: user1, displayName: user1), message: message!) { _ in
+                            self.sendMessageTf.text = ""
+                            self.sendMessageTf.resignFirstResponder()
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension ViewStoryViewController: ImageSlideshowDelegate {
@@ -165,9 +197,21 @@ extension ViewStoryViewController:UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let data = self.storyData[indexPath.row]
         let firstStory = data.first
-        let user_account = firstStory?["user_account"] as? String
+        let user_account = firstStory?["user_account"] as! String
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGStoryListCell.reuseIdentifier,
                                                             for: indexPath) as? IGStoryListCell else { fatalError() }
+        
+        if indexPath.row == 0 {
+            if user_account == userStatus.user_account {
+                sendMss.backgroundColor = UIColor.gray
+                sendMss.isEnabled = false
+                sendMssToUser = ""
+            } else {
+                sendMss.backgroundColor = UIColor.link
+                sendMss.isEnabled = true
+                sendMssToUser = user_account
+            }
+        }
         
         if dongthoigianView {
             let avatar_URL = firstStory?["url"] as! String
@@ -190,6 +234,17 @@ extension ViewStoryViewController:UICollectionViewDelegate, UICollectionViewData
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = storyData[indexPath.row]
+        let firstStory = data.first
+        let user_account = firstStory?["user_account"] as! String
+        if user_account == userStatus.user_account {
+            sendMss.backgroundColor = UIColor.gray
+            sendMss.isEnabled = false
+            sendMssToUser = ""
+        } else {
+            sendMss.backgroundColor = UIColor.link
+            sendMss.isEnabled = true
+            sendMssToUser = user_account
+        }
         fetchData(datas: data, shouldUpdateView: true)
     }
     
@@ -199,3 +254,6 @@ extension ViewStoryViewController:UICollectionViewDelegate, UICollectionViewData
     
 }
     
+extension ViewStoryViewController: UITextFieldDelegate {
+    
+}

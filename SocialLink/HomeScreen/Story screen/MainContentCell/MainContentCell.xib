@@ -179,7 +179,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-0C-WgR">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title=" Like">
@@ -191,7 +191,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZO-kY-6pf">
-                                                <rect key="frame" x="138" y="0.0" width="138" height="30"/>
+                                                <rect key="frame" x="207" y="0.0" width="207" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title=" Comment">
@@ -202,22 +202,9 @@
                                                     <action selector="addComment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aGp-AD-kgD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4V-07-udl">
-                                                <rect key="frame" x="276" y="0.0" width="138" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title=" Share">
-                                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="arrowshape.turn.up.right" catalog="system" symbolScale="medium"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="shareBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="h6h-oW-HaY"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="W8Q-0C-WgR" firstAttribute="width" secondItem="VZO-kY-6pf" secondAttribute="width" id="nHs-i7-xWz"/>
-                                            <constraint firstItem="VZO-kY-6pf" firstAttribute="width" secondItem="n4V-07-udl" secondAttribute="width" id="ogB-k1-fYa"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -313,7 +300,6 @@
         </designable>
     </designables>
     <resources>
-        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <image name="im3" width="540" height="811.5"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>

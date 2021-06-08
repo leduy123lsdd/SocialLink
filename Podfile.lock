@@ -338,10 +338,15 @@ PODS:
   - ImageSlideshow/SDWebImage (1.9.2):
     - ImageSlideshow/Core
     - SDWebImage (>= 3.7)
+  - InputBarAccessoryView (5.3.1):
+    - InputBarAccessoryView/Core (= 5.3.1)
+  - InputBarAccessoryView/Core (5.3.1)
   - iOSPhotoEditor (1.0.0)
   - IQKeyboardManagerSwift (6.5.6)
   - leveldb-library (1.22.1)
   - MarqueeLabel (4.0.5)
+  - MessageKit (3.6.0):
+    - InputBarAccessoryView (~> 5.3.1)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -380,6 +385,7 @@ DEPENDENCIES:
   - ImageSlideshow/SDWebImage
   - iOSPhotoEditor
   - IQKeyboardManagerSwift
+  - MessageKit
   - NotificationBannerSwift
   - Pastel
   - ProgressHUD
@@ -408,10 +414,12 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - ImageSlideshow
+    - InputBarAccessoryView
     - iOSPhotoEditor
     - IQKeyboardManagerSwift
     - leveldb-library
     - MarqueeLabel
+    - MessageKit
     - nanopb
     - NotificationBannerSwift
     - NWWebSocket
@@ -447,10 +455,12 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
+  InputBarAccessoryView: 1f75d8c9f75e5e57f3ffac36ed58635a8005e0bc
   iOSPhotoEditor: 2951f35246a31dcb428b6292248a9c065582d03e
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
+  MessageKit: a8efaf55b021672b19ffdd5a85ce1c2f3b53058e
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   NWWebSocket: 8156fe77508d5b86ce46ef2df87cc0c228402b10
@@ -465,6 +475,6 @@ SPEC CHECKSUMS:
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 5dfb0cafd91c19c9f93c0fdaf68a8ad86af12d03
+PODFILE CHECKSUM: 691a9b3a635a5bd31b83fa7d225fbfe93bdcfe22
 
 COCOAPODS: 1.10.1

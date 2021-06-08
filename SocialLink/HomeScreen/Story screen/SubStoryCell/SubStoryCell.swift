@@ -15,8 +15,6 @@ class SubStoryCell: UITableViewCell {
     
     var rootVC:UIViewController?
     
-    
-    
     typealias DictType = [String:Any]
     var storyData = [[DictType]]()
     
@@ -66,8 +64,6 @@ class SubStoryCell: UITableViewCell {
     // Get all stories of follower
     public func fetchFollowerUsers() {
         
-        
-        
         ServerFirebase.getUserProfile(user_account: userStatus.user_account) { (dataRes) in
             self.userStoryAvatar.removeAll()
             self.storyData.removeAll()
@@ -77,19 +73,34 @@ class SubStoryCell: UITableViewCell {
             
             followers.append(userStatus.user_account)
             
-            
             for user in followers {
                 
                 searchUserService.getStory(for: user) { (dataArr) in
                     
                     let dataNew = dataArr as! [DictType]
                     
-                    if dataNew.count > 0 {
+                    var filter = [DictType]()
+                    
+                    for data in dataNew {
+                        let serverTime = Double(data["last_updated"] as! String)
+                        let currentTime = Date().timeIntervalSince1970
+                        let timeBetween = ((currentTime - serverTime!) / 3600)
+
+                        if timeBetween <= 24.00 {
+                            filter.append(data)
+                        }
+                        print("Upload time: \(timeBetween)")
+                    }
+                    
+                    if filter.count > 0 {
                         ServerFirebase.getAvatarImageURL(user_account: user) { url in
                             
                             let newData:[String : Any] = ["user_account":user,"avatarURL":"\(url!)"]
                             self.userStoryAvatar.append(newData)
-                            self.storyData.append(dataNew)
+                            
+//                            self.storyData.append(dataNew)
+                            self.storyData.append(filter)
+                            
                             self.collectionView.reloadData()
                         }
                     }
@@ -148,17 +159,23 @@ extension SubStoryCell: UICollectionViewDelegate, UICollectionViewDataSource, UI
         } else {
             let data = self.storyData[indexPath.row - 1]
             let firstStory = data.first
-            let user_account = firstStory?["user_account"] as? String
+            let user_account = firstStory?["user_account"] as! String
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IGStoryListCell.reuseIdentifier,
                                                                 for: indexPath) as? IGStoryListCell else { fatalError() }
 
             for user in userStoryAvatar {
                 let user_acc = user["user_account"] as! String
                 let avatarURL = user["avatarURL"] as! String
-                
+
                 if user_acc == user_account {
                     cell.userDetails = (user_acc,"\(avatarURL)")
                     return cell
+                }
+            }
+            
+            ServerFirebase.getAvatarImageURL(user_account: user_account) { (url) in
+                if let urll = url {
+                    cell.userDetails = (user_account,"\(urll)")
                 }
             }
             

@@ -10,8 +10,12 @@ import UIKit
 class UserContactCell: UITableViewCell {
     
     @IBOutlet var avatar: UIImageView!
-    @IBOutlet var displayName: UILabel!
+
     @IBOutlet var user_account: UILabel!
+    
+    
+    @IBOutlet weak var lastText: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,13 +26,15 @@ class UserContactCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        avatar.layer.cornerRadius = 35
+        selectionStyle = .none
     }
     
     public func parseData(displayName:String,
                           user_account:String,
                           avatar:UIImage){
         self.avatar.image = avatar
-        self.displayName.text = displayName
+        
         self.user_account.text = user_account
     }
     

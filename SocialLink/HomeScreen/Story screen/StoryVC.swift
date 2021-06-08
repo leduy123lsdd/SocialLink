@@ -107,6 +107,16 @@ class StoryVC: UIViewController {
         getPost()
     }
     
+    
+    let userContactVC = UsersContactVC(nibName: "UsersContactVC", bundle: nil)
+    
+    @IBAction func goUserContact(_ sender: Any) {
+        userContactVC.modalPresentationStyle = .fullScreen
+        userContactVC.rootVC = self
+        
+        self.present(userContactVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension StoryVC:UITableViewDelegate, UITableViewDataSource {

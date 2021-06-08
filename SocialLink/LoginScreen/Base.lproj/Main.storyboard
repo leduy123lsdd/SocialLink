@@ -87,7 +87,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="232-7d-aEi">
                                                 <rect key="frame" x="209.66666666666663" y="0.0" width="164.33333333333337" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                <state key="normal" title="Forgot password?">
+                                                <state key="normal">
                                                     <color key="titleColor" red="0.28816871529999999" green="0.64341373680000002" blue="0.8044098985" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>

@@ -101,13 +101,14 @@
 		0CA7B1B3265B91C10083DF25 /* UsersContactVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA7B1B1265B91C10083DF25 /* UsersContactVC.xib */; };
 		0CA7B1B8265B920F0083DF25 /* UserContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7B1B6265B920F0083DF25 /* UserContactCell.swift */; };
 		0CA7B1B9265B920F0083DF25 /* UserContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA7B1B7265B920F0083DF25 /* UserContactCell.xib */; };
-		0CA7B1BC265B98EC0083DF25 /* ChatingUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA7B1BB265B98EC0083DF25 /* ChatingUIView.xib */; };
-		0CA7B1BF265B98FF0083DF25 /* ChatingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7B1BE265B98FF0083DF25 /* ChatingUIView.swift */; };
+		0CA7B1EE265B9C6A0083DF25 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA7B1EC265B9C6A0083DF25 /* MessagesVC.swift */; };
+		0CA7B1EF265B9C6A0083DF25 /* MessagesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA7B1ED265B9C6A0083DF25 /* MessagesVC.xib */; };
 		0CB2EA6826467FF700829D55 /* SearchUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB2EA6726467FF700829D55 /* SearchUserService.swift */; };
 		0CBA94EE261EB95B003EB371 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA94EC261EB95B003EB371 /* PostImageCell.swift */; };
 		0CBA94EF261EB95B003EB371 /* PostImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CBA94ED261EB95B003EB371 /* PostImageCell.xib */; };
 		0CBF26E22609D62900043BA9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */; };
 		0CBF26FE2609EA7000043BA9 /* FirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF26FD2609EA7000043BA9 /* FirebaseDatabase.swift */; };
+		0CC155CC2660E8F0003CEB43 /* MessageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC155CB2660E8F0003CEB43 /* MessageDataModel.swift */; };
 		0CC5D6272656579A00E90AC1 /* DongThoiGianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5D6262656579900E90AC1 /* DongThoiGianView.swift */; };
 		0CC5D62B265657A600E90AC1 /* DongThoiGianView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC5D62A265657A600E90AC1 /* DongThoiGianView.xib */; };
 		0CC8C1BD26168B53004B720C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC8C1BC26168B53004B720C /* PaddingLabel.swift */; };
@@ -119,6 +120,7 @@
 		0CCCA73E25F512C600C4832A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCCA73C25F512C600C4832A /* LaunchScreen.storyboard */; };
 		0CD07DF626258DFC00F2FAB0 /* ReplyCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */; };
 		0CD07DF726258DFC00F2FAB0 /* ReplyCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */; };
+		0CF22EB9265FB25E00E0DA9E /* MessageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF22EB8265FB25E00E0DA9E /* MessageServer.swift */; };
 		A65BA6E5BE296F02E35E3F88 /* Pods_SocialLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E011B74B796BD6C914D50EF2 /* Pods_SocialLink.framework */; };
 /* End PBXBuildFile section */
 
@@ -217,13 +219,14 @@
 		0CA7B1B1265B91C10083DF25 /* UsersContactVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersContactVC.xib; sourceTree = "<group>"; };
 		0CA7B1B6265B920F0083DF25 /* UserContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContactCell.swift; sourceTree = "<group>"; };
 		0CA7B1B7265B920F0083DF25 /* UserContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserContactCell.xib; sourceTree = "<group>"; };
-		0CA7B1BB265B98EC0083DF25 /* ChatingUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatingUIView.xib; sourceTree = "<group>"; };
-		0CA7B1BE265B98FF0083DF25 /* ChatingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatingUIView.swift; sourceTree = "<group>"; };
+		0CA7B1EC265B9C6A0083DF25 /* MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
+		0CA7B1ED265B9C6A0083DF25 /* MessagesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesVC.xib; sourceTree = "<group>"; };
 		0CB2EA6726467FF700829D55 /* SearchUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserService.swift; sourceTree = "<group>"; };
 		0CBA94EC261EB95B003EB371 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		0CBA94ED261EB95B003EB371 /* PostImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostImageCell.xib; sourceTree = "<group>"; };
 		0CBF26E12609D62900043BA9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0CBF26FD2609EA7000043BA9 /* FirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabase.swift; sourceTree = "<group>"; };
+		0CC155CB2660E8F0003CEB43 /* MessageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataModel.swift; sourceTree = "<group>"; };
 		0CC5D6262656579900E90AC1 /* DongThoiGianView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongThoiGianView.swift; sourceTree = "<group>"; };
 		0CC5D62A265657A600E90AC1 /* DongThoiGianView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongThoiGianView.xib; sourceTree = "<group>"; };
 		0CC8C1BC26168B53004B720C /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 		0CCCA73F25F512C600C4832A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD07DF426258DFC00F2FAB0 /* ReplyCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentCell.swift; sourceTree = "<group>"; };
 		0CD07DF526258DFC00F2FAB0 /* ReplyCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyCommentCell.xib; sourceTree = "<group>"; };
+		0CF22EB8265FB25E00E0DA9E /* MessageServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageServer.swift; sourceTree = "<group>"; };
 		C9A957AD828E1B08CA90301B /* Pods-SocialLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLink.release.xcconfig"; path = "Target Support Files/Pods-SocialLink/Pods-SocialLink.release.xcconfig"; sourceTree = "<group>"; };
 		E011B74B796BD6C914D50EF2 /* Pods_SocialLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFAC2BA01AC4EEF216DFA0DE /* Pods-SocialLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLink.debug.xcconfig"; path = "Target Support Files/Pods-SocialLink/Pods-SocialLink.debug.xcconfig"; sourceTree = "<group>"; };
@@ -469,6 +473,15 @@
 			path = "Make comment";
 			sourceTree = "<group>";
 		};
+		0C457C10265FAD5F00681C00 /* User cell */ = {
+			isa = PBXGroup;
+			children = (
+				0CA7B1B6265B920F0083DF25 /* UserContactCell.swift */,
+				0CA7B1B7265B920F0083DF25 /* UserContactCell.xib */,
+			);
+			path = "User cell";
+			sourceTree = "<group>";
+		};
 		0C54B00825F67A4C00A76F9E /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -624,14 +637,22 @@
 		0CA7B1AF265B91960083DF25 /* Chat View */ = {
 			isa = PBXGroup;
 			children = (
+				0CC155CE2660E8F6003CEB43 /* Data model */,
+				0C457C10265FAD5F00681C00 /* User cell */,
+				0CA7B1EB265B9C440083DF25 /* MessagesVC */,
 				0CA7B1B0265B91C10083DF25 /* UsersContactVC.swift */,
 				0CA7B1B1265B91C10083DF25 /* UsersContactVC.xib */,
-				0CA7B1B6265B920F0083DF25 /* UserContactCell.swift */,
-				0CA7B1B7265B920F0083DF25 /* UserContactCell.xib */,
-				0CA7B1BB265B98EC0083DF25 /* ChatingUIView.xib */,
-				0CA7B1BE265B98FF0083DF25 /* ChatingUIView.swift */,
 			);
 			path = "Chat View";
+			sourceTree = "<group>";
+		};
+		0CA7B1EB265B9C440083DF25 /* MessagesVC */ = {
+			isa = PBXGroup;
+			children = (
+				0CA7B1EC265B9C6A0083DF25 /* MessagesVC.swift */,
+				0CA7B1ED265B9C6A0083DF25 /* MessagesVC.xib */,
+			);
+			path = MessagesVC;
 			sourceTree = "<group>";
 		};
 		0CBA94EB261EB927003EB371 /* Collection cell */ = {
@@ -652,6 +673,14 @@
 				0CCCA73C25F512C600C4832A /* LaunchScreen.storyboard */,
 			);
 			path = "Project Configuration";
+			sourceTree = "<group>";
+		};
+		0CC155CE2660E8F6003CEB43 /* Data model */ = {
+			isa = PBXGroup;
+			children = (
+				0CC155CB2660E8F0003CEB43 /* MessageDataModel.swift */,
+			);
+			path = "Data model";
 			sourceTree = "<group>";
 		};
 		0CC5D6252656578300E90AC1 /* Dong  thoi gian view  */ = {
@@ -681,6 +710,7 @@
 				0C6D35E2260F46D900D27DB0 /* UserStatus.swift */,
 				0CB2EA6726467FF700829D55 /* SearchUserService.swift */,
 				0C385DBF2656B6130050C5B4 /* NotificationCenterServer.swift */,
+				0CF22EB8265FB25E00E0DA9E /* MessageServer.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -802,7 +832,6 @@
 				0C8ED103262041A700A3C462 /* EditProfileVC.xib in Resources */,
 				0C9B02A826526AB500C4D54B /* ViewStoryViewController.xib in Resources */,
 				0CBA94EF261EB95B003EB371 /* PostImageCell.xib in Resources */,
-				0CA7B1BC265B98EC0083DF25 /* ChatingUIView.xib in Resources */,
 				0CCCA73E25F512C600C4832A /* LaunchScreen.storyboard in Resources */,
 				0CD07DF726258DFC00F2FAB0 /* ReplyCommentCell.xib in Resources */,
 				0C5E803E2656D63300FB70FD /* NotificationCell.xib in Resources */,
@@ -824,6 +853,7 @@
 				0CA5C48F2605F3D500D929CC /* SubStoryCell.xib in Resources */,
 				0C80CA1625FCA3910094FCC0 /* StoryVC.xib in Resources */,
 				0C238BAA26150FA300DB3CE1 /* MakeCommentVC.xib in Resources */,
+				0CA7B1EF265B9C6A0083DF25 /* MessagesVC.xib in Resources */,
 				0CC5D62B265657A600E90AC1 /* DongThoiGianView.xib in Resources */,
 				0C76C34726353515001CD4DC /* StoriesVC.xib in Resources */,
 				0C80CA1025FC7ACF0094FCC0 /* HomeViewController.xib in Resources */,
@@ -884,6 +914,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C0C50B82658F6F700F61333 /* NoDataStoryCell.swift in Sources */,
+				0CC155CC2660E8F0003CEB43 /* MessageDataModel.swift in Sources */,
 				0CB2EA6826467FF700829D55 /* SearchUserService.swift in Sources */,
 				0C0C50C3265903CB00F61333 /* NoPostTableViewCell.swift in Sources */,
 				0C14B0E8264ED29600A24F12 /* AnimatedCollectionViewLayout.swift in Sources */,
@@ -929,7 +960,7 @@
 				0C5E80372656D12900FB70FD /* NotificationVC.swift in Sources */,
 				0C80CA2425FCA4110094FCC0 /* UserProfileVC.swift in Sources */,
 				0C14B0DD264ED29600A24F12 /* IGURLSession.swift in Sources */,
-				0CA7B1BF265B98FF0083DF25 /* ChatingUIView.swift in Sources */,
+				0CF22EB9265FB25E00E0DA9E /* MessageServer.swift in Sources */,
 				0C14B0E0264ED29600A24F12 /* IGPlayerView.swift in Sources */,
 				0C14B0D3264ED29600A24F12 /* IGStoryPreviewHeaderView.swift in Sources */,
 				0C14B0E5264ED29600A24F12 /* Reachability.swift in Sources */,
@@ -955,6 +986,7 @@
 				0C80CA1A25FCA3EA0094FCC0 /* SearchUserVC.swift in Sources */,
 				0C14B095264ED28000A24F12 /* IGStoryListCell.swift in Sources */,
 				0C14B092264ED28000A24F12 /* IGHomeController.swift in Sources */,
+				0CA7B1EE265B9C6A0083DF25 /* MessagesVC.swift in Sources */,
 				0C0C50BD2658FC4B00F61333 /* NoStoryCollectionViewCell.swift in Sources */,
 				0C0C50CA26590D4E00F61333 /* FriendVC.swift in Sources */,
 				0C14B0E4264ED29600A24F12 /* IGStoryPreviewView.swift in Sources */,
