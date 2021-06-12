@@ -158,5 +158,22 @@ extension FriendVC: UITableViewDelegate,
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let user = friendsData[indexPath.row]
+        let user_account = user.name
+        
+        let userProfileVC = UserProfileVC(nibName: "UserProfileVC", bundle: nil)
+        userProfileVC.user_account = user_account
+        userProfileVC.rootView = self.rootVC
+        
+        
+        userProfileVC.modalPresentationStyle = .fullScreen
+        
+        self.dismiss(animated: true) {
+            self.rootVC?.navigationController?.pushViewController(userProfileVC, animated: true)
+        }
+    }
+    
     
 }

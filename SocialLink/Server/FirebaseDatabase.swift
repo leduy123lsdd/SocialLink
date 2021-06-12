@@ -261,7 +261,7 @@ class FirebaseDatabase {
         // get post info and then get images of that post
         self.db.collection("posts").document(post_id).getDocument { dataSnap, _ in
             // This is post data
-            guard var postInfo = dataSnap?.data() else {fatalError()}
+            guard var postInfo = dataSnap?.data() else {return}
             self.storageReference.child("images/\(post_id)").listAll { list, _ in
                 self.getImagesURL_OfPost(list.items) { url in
                     postInfo["images_url"] = url

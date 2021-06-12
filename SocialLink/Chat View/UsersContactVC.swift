@@ -17,7 +17,6 @@ import UIKit
 class UsersContactVC: UIViewController {
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     var rootVC:UIViewController?
     
@@ -33,8 +32,6 @@ class UsersContactVC: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "UserContactCell", bundle: nil), forCellReuseIdentifier: "UserContactCell")
         
-        searchBar.delegate = self
-        
         // Make new contact.
         
         let sender = Sender(senderId: "duy123", displayName: "duy123")
@@ -44,9 +41,6 @@ class UsersContactVC: UIViewController {
         messageServer.getChatRoomsFor(user: userStatus.user_account) { chatRooms in
             self.chatRooms = chatRooms
             self.chatRoomsForTableView = chatRooms
-            
-            
-            
             self.tableView.reloadData()
         }
         
@@ -72,7 +66,6 @@ class UsersContactVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
 }
 
 extension UsersContactVC: UITableViewDelegate,
@@ -92,11 +85,8 @@ extension UsersContactVC: UITableViewDelegate,
         let read = dataChatRoom["read"] as! String
         
         if read == "false" {
-//            cell.backgroundColor = UIColor.systemTeal
             cell.lastText.text = "Có tin nhắn chưa đọc"
-        
         } else {
-//            cell.backgroundColor = UIColor.white
             cell.lastText.text = ""
         }
         
@@ -128,6 +118,7 @@ extension UsersContactVC: UITableViewDelegate,
         
         let mss = MessagesVC(nibName: "MessagesVC", bundle: nil)
         
+        
         mss.currentSenderUser = Sender(senderId: userStatus.user_account, displayName: userStatus.user_account)
         mss.chatRoom_id = chatRoom_id
         
@@ -145,36 +136,11 @@ extension UsersContactVC: UITableViewDelegate,
             }
         }
         
-        
         self.present(mss, animated: true, completion: nil)
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
-    }
-}
-
-extension UsersContactVC: UISearchBarDelegate {
-    // MARK: Search bar
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText == "" {
-//            filteredData = usersInfo
-        } else {
-//            filteredData = []
-//            for user in self.usersInfo {
-//                let user_account = user["user_account"] as! String
-//
-//                if user_account.lowercased().contains(searchText.lowercased()) {
-//                    filteredData.append(user)
-//                }
-//            }
-        }
-        self.tableView.reloadData()
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.view.endEditing(true)
     }
 }

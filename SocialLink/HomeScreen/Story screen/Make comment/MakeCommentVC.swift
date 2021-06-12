@@ -8,6 +8,7 @@
 import UIKit
 import ProgressHUD
 import Alertift
+import IQKeyboardManagerSwift
 
 class MakeCommentVC: UIViewController {
     
@@ -19,12 +20,14 @@ class MakeCommentVC: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
         getComments(post_id: postId!)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         self.navigationController?.isNavigationBarHidden = false
-        
+        IQKeyboardManager.shared.enable = true
         
     }
     override func viewDidAppear(_ animated: Bool) {

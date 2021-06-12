@@ -3,7 +3,6 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UsersContactVC" customModule="SocialLink" customModuleProvider="target">
             <connections>
-                <outlet property="searchBar" destination="piY-tT-Euh" id="Wvm-u8-4Y7"/>
                 <outlet property="tableView" destination="ZvS-jD-I2P" id="qCq-Yi-ZBf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,46 +22,58 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RfW-nx-O0e">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-mz-vtN">
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAQ-ma-t8Y">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jW6-W7-wdA">
-                                    <rect key="frame" x="10" y="5" width="80" height="40"/>
-                                    <color key="backgroundColor" name="AccentColor"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shK-mz-vtN">
+                                    <rect key="frame" x="0.0" y="0.0" width="166" height="50"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jW6-W7-wdA">
+                                            <rect key="frame" x="10" y="5" width="80" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="6Vq-oL-1eZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Back" image="chevron.left" catalog="system">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="cks-Ez-1Cg"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="80" id="6Vq-oL-1eZ"/>
+                                        <constraint firstAttribute="height" constant="50" id="C2S-wG-k9g"/>
+                                        <constraint firstAttribute="bottom" secondItem="jW6-W7-wdA" secondAttribute="bottom" constant="5" id="Lpc-Og-tfM"/>
+                                        <constraint firstItem="jW6-W7-wdA" firstAttribute="leading" secondItem="shK-mz-vtN" secondAttribute="leading" constant="10" id="iDT-EX-QLA"/>
+                                        <constraint firstItem="jW6-W7-wdA" firstAttribute="top" secondItem="shK-mz-vtN" secondAttribute="top" constant="5" id="ivx-eI-ne5"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                    <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="Quay lại" image="chevron.left" catalog="system">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <integer key="value" value="20"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="cks-Ez-1Cg"/>
-                                    </connections>
-                                </button>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxR-5A-ExN">
+                                    <rect key="frame" x="166" y="0.0" width="43.5" height="50"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woE-Yy-qUB">
+                                    <rect key="frame" x="209.5" y="0.0" width="165.5" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="C2S-wG-k9g"/>
-                                <constraint firstAttribute="bottom" secondItem="jW6-W7-wdA" secondAttribute="bottom" constant="5" id="Lpc-Og-tfM"/>
-                                <constraint firstItem="jW6-W7-wdA" firstAttribute="leading" secondItem="shK-mz-vtN" secondAttribute="leading" constant="10" id="iDT-EX-QLA"/>
-                                <constraint firstItem="jW6-W7-wdA" firstAttribute="top" secondItem="shK-mz-vtN" secondAttribute="top" constant="5" id="ivx-eI-ne5"/>
+                                <constraint firstItem="shK-mz-vtN" firstAttribute="width" secondItem="woE-Yy-qUB" secondAttribute="width" id="TkU-Wc-ndf"/>
                             </constraints>
-                        </view>
+                        </stackView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZvS-jD-I2P">
                             <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <searchBar key="tableHeaderView" contentMode="redraw" id="piY-tT-Euh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </tableView>
                     </subviews>
                 </stackView>
@@ -81,9 +91,6 @@
     </objects>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

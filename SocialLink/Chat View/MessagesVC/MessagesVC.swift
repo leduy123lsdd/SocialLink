@@ -74,10 +74,10 @@ class MessagesVC: MessagesViewController,
             
         }
     }
-
+    
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
     }
 
     @objc func updateCounting(){
@@ -86,6 +86,7 @@ class MessagesVC: MessagesViewController,
             if messages.count > self.messagesData.count {
                 self.messagesData = messages
                 self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToLastItem(animated: true)
             }
         }
     }
